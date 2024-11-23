@@ -1,218 +1,294 @@
-<header>
-    <div class="head-box-c">
-        <div class="header" id="head">
-            <div class="top-bar">
-                <div class="left">
-                    <div class="dark-light-mode">
-                        <span>Clair</span>
-                        <div class="switch-btn">
-                            <img width="16" height="9" class="light-model" src="{{ asset('files/wp-content/themes/Marassil/images/light.svg') }}" alt="">
-                            <img width="15" height="6" class="dark-model" src="{{ asset('files/wp-content/themes/Marassil/images/dark.svg') }}" alt="">
-                        </div>
-                        <span>Sombre</span>
-                    </div>
-                </div>
-                <div class="right">
-                    <ul class="menu">
-                        <li class="menu-item">
-                            <a href="#" target="_self">Actualités</a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="/contact" target="_self">Contacts</a>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="javascript:void(0)">Rejoignez-nous !</a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="#" target="_self">
-                                        <div class="img">
-                                            <img width="64" height="58" src="{{ asset('files/wp-content/themes/Marassil/images/menu-icon-2.svg') }}" alt="">
-                                            <img width="64" height="58" class="hover" src="{{ asset('files/wp-content/themes/Marassil/images/menu-icon-2.svg') }}" alt="">
-                                        </div>
-                                        <div class="text">
-                                            <span>Je veux devenir</span>
-                                            <p>un sponsor</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" target="_self">
-                                        <div class="img">
-                                            <img width="63" height="62" src="{{ asset('files/wp-content/themes/Marassil/images/menu-icon-3.svg') }}" alt="">
-                                            <img width="63" height="62" class="hover" src="{{ asset('files/wp-content/uploads/2022/02/menu-icon-3-orange.svg') }}" alt="">
-                                        </div>
-                                        <div class="text">
-                                            <span>Je veux devenir</span>
-                                            <p>un membre</p>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <a class="btn-give" href="/faire-un-don" target="_blank">
-                        <span>Faire un don en ligne</span>
-                    </a>
-                </div>
-            </div>
-            <div class="nav-main">
-                <div class="container">
-                    <div class="content">
-                        <ul id="menu-header-menu" class="menu">
-                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
-                                <a href="/a-propos">Découvrez <strong>l’association</strong></a>
-                                <ul class="sub-menu" style="display: none;">
-                                    <li><a href="/a-propos">À propos de MARASSIL<i></i></a></li>
-                                    <li><a href="#">Nos membres<i></i></a></li>
-                                    <li><a href="/conditions-generales">Conditions Générales de Vente<i></i></a></li>
+<header class="header -type-3 js-header">
+    <div data-anim="fade delay-3" class="header__container container">
+        <div class="headerMobile__left">
+            <button class="header__menuBtn js-menu-button">
+                <i class="icon-main-menu"></i>
+            </button>
+        </div>
 
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Nos missions &amp; <strong>Nos actions</strong></a>
-                                <ul class="sub-menu">
-                                    <li><a href="#" class="active">Actualités<i></i></a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Vous souhaitez &amp; <strong>Nous contacter</strong></a>
-                                <ul class="sub-menu">
-                                    <li><a href="/contact">Contact</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Vous souhaitez <strong>Faire un don ?</strong></a>
-                                <ul class="sub-menu">
-                                    <li><a href="/faire-un-don">Le don de A à Z</a></li>
-                                    <li><a href="#">Comment ça marche ?</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="logo">
-                            <a href="/">
-                                <img width="199" height="248" src="{{ asset('files/wp-content/themes/Marassil/images/logo.svg') }}" class="light" alt="Marassil">
-                                <img width="200" height="248" src="{{ asset('files/wp-content/themes/Marassil/images/logo-dark.svg') }}" class="dark" alt="Marassil">
-                            </a>
+        <div class="header__logo">
+            <a href="index.html" class="header__logo">
+                <img src="img/general/logo.svg" alt="logo icon" />
+            </a>
+        </div>
+
+        <div class="xl:d-none ml-30">
+            <div class="desktopNav">
+                <div class="desktopNav__item">
+                    <a href="/">Home</a>
+                </div>
+
+                <div class="desktopNav__item">
+                    <a href="#">Day Trip <i class="icon-chevron-down"></i></a>
+                    <div class="desktopNavSubnav">
+                        <div class="desktopNavSubnav__content">
+                            <div class="desktopNavSubnav__item">
+                                <a href="/day-trip-from-marrakech">Departure From Marrakech</a>
+                            </div>
+                            <div class="desktopNavSubnav__item">
+                                <a href="/day-trip-from-casablanca">Departure From Casablanca</a>
+                            </div>
+                            <div class="desktopNavSubnav__item">
+                                <a href="/day-trip-from-fes">Departure From Fes</a>
+                            </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="desktopNav__item">
+                    <a href="#">Activities <i class="icon-chevron-down"></i></a>
+                    <div class="desktopNavSubnav">
+                        <div class="desktopNavSubnav__content">
+                            <div class="desktopNavSubnav__item">
+                                <a href="/activities-in-marrakech">Marrakech</a>
+                            </div>
+                            <div class="desktopNavSubnav__item">
+                                <a href="/activities-in-agafay-desert">Agafay Desert</a>
+                            </div>
+                            <div class="desktopNavSubnav__item">
+                                <a href="/activities-in-agadir">Agadir</a>
+                            </div>
+                            <div class="desktopNavSubnav__item">
+                                <a href="/activities-in-essaouira">Essaouira</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="desktopNav__item">
+                    <a href="#">Tours <i class="icon-chevron-down"></i></a>
+                    <div class="desktopNavSubnav">
+                        <div class="desktopNavSubnav__content">
+                            <!-- Shared Group -->
+                            <div class="desktopNavSubnav__item">
+                                <a href="#">Shared Group <i class="icon-chevron-right"></i></a>
+                                <div class="desktopNavSubnav">
+                                    <div class="desktopNavSubnav__content">
+                                        <div class="desktopNavSubnav__item">
+                                            <a href="/3-days-desert-tour-from-marrakech-to-merzouga">3 Days Desert Tour From Marrakech To Merzouga</a>
+                                        </div>
+                                        <div class="desktopNavSubnav__item">
+                                            <a href="/2-days-desert-tour-to-zagora-from-marrakech">2 Days Desert Tour To Zagora From Marrakech</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Departure Locations -->
+                            <div class="desktopNavSubnav__item">
+                                <a href="/tours-from-marrakech">Departure From Marrakech</a>
+                            </div>
+                            <div class="desktopNavSubnav__item">
+                                <a href="/tours-from-casablanca">Departure From Casablanca</a>
+                            </div>
+                            <div class="desktopNavSubnav__item">
+                                <a href="/tours-from-tanger">Departure From Tanger</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="desktopNav__item">
+                    <a href="/transfers">Transfers</a>
+                </div>
+
+                <div class="desktopNav__item">
+                    <a href="/contact-us">Contact Us</a>
+                </div>
+
+                <div class="desktopNav__item">
+                    <a href="/about-us">About Us</a>
                 </div>
             </div>
         </div>
+
+        <div class="headerMobile__right">
+            <button class="d-flex">
+                <i class="icon-search text-18"></i>
+            </button>
+
+            <button class="d-flex ml-20">
+                <i class="icon-person text-18"></i>
+            </button>
+        </div>
+
+
+        <div class="header__right">
+
+          <div class="headerDropdown ml-30 js-form-dd">
+            <div class="headerDropdown__button" data-x-click="header-currency">
+              USD
+              <i class="icon-chevron-down text-18"></i>
+            </div>
+
+            <div class="headerDropdown__content" data-x="header-currency" data-x-toggle="is-active">
+              <div class="headerDropdown">
+                <div class="headerDropdown__container">
+
+                  <div class="headerDropdown__item">
+                    <button class="">U.S. Dollar</button>
+                  </div>
+
+                  <div class="headerDropdown__item">
+                    <button class="">Euro</button>
+                  </div>
+
+                  <div class="headerDropdown__item">
+                    <button class="">British Pound</button>
+                  </div>
+
+                  <div class="headerDropdown__item">
+                    <button class="">Turkish Lira</button>
+                  </div>
+
+                  <div class="headerDropdown__item">
+                    <button class="">Canadian Dollar</button>
+                  </div>
+
+                  <div class="headerDropdown__item">
+                    <button class="">Australian Dollar</button>
+                  </div>
+
+                  <div class="headerDropdown__item">
+                    <button class="">Swiss Franc</button>
+                  </div>
+
+                  <div class="headerDropdown__item">
+                    <button class="">Singapore Dollar</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+      
+        </div>
+
+
     </div>
 </header>
 
-<div class="mobile-btn-give">
-    <a class="btn-give" href="/faire-un-don" target="_blank">
-        <span>Faire un don en ligne</span>
-    </a>
-</div>
+<div class="menu js-menu">
+    <div class="menu__overlay js-menu-button"></div>
 
-<div class="mobile-header">
-    <div class="logo">
-        <a href="/">
-            <img width="199" height="248" src="{{ asset('files/wp-content/themes/Marassil/images/logo.svg') }}" class="light" alt="Marassil">
-            <img width="200" height="248" src="{{ asset('files/wp-content/themes/Marassil/images/logo-dark.svg') }}" class="dark" alt="Marassil">
-        </a>
-        <a href="/" class="stick">
-            <img width="163" height="50" src="{{ asset('files/wp-content/themes/Marassil/images/logo-stick.svg') }}" class="stick-logo" alt="Marassil">
-            <img width="163" height="50" src="{{ asset('files/wp-content/themes/Marassil/images/logo-stick-dark.svg') }}" class="stick-logo-white" alt="Marassil">
-        </a>
-    </div>
-</div>
-
-<div class="hamburger" title="Menu">
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
-<div class="header-stick">
-    <div class="logo">
-        <a href="/">
-            <img width="163" height="50" src="{{ asset('files/wp-content/themes/Marassil/images/logo-stick.svg') }}" class="stick-logo" alt="Marassil">
-            <img width="163" height="50" src="{{ asset('files/wp-content/themes/Marassil/images/logo-stick-dark.svg') }}" class="stick-logo-white" alt="Marassil">
-        </a>
-    </div>
-    <ul id="menu-header-menu-1" class="menu">
-        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
-            <a href="/a-propos">Découvrez <strong>l’association</strong></a>
-            <ul class="sub-menu" style="display: none;">
-                <li><a href="/a-propos">À propos de MARASSIL<i></i></a></li>
-                <li><a href="#">Nos membres<i></i></a></li>
-                <li><a href="/conditions-generales">Conditions Générales de Vente<i></i></a></li>
-            </ul>
-        </li>
-        <li class="menu-item-has-children">
-            <a href="#">Nos missions &amp; <strong>Nos actions</strong></a>
-            <ul class="sub-menu">
-                <li><a href="#" class="active">Actualités<i></i></a></li>
-            </ul>
-        </li>
-        <li class="menu-item-has-children">
-            <a href="#">Vous souhaitez &amp; <strong>Nous contacter</strong></a>
-            <ul class="sub-menu">
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </li>
-        <li class="menu-item-has-children">
-            <a href="#">Vous souhaitez <strong>Faire un don ?</strong></a>
-            <ul class="sub-menu">
-                <li><a href="/faire-un-don">Le don de A à Z</a></li>
-                <li><a href="#">Comment ça marche ?</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
-
-<div class="sidebar-block">
-    <div class="content-box">
-        <div class="links">
-            <!---->
-            <a
-                href="https://www.instagram.com/united_marassil_association/"
-                target="_blank"
-                title="Instagram"
-            >
-                <i class="fab fa-instagram"></i>
-            </a>
-
-            <!--end-->
-
-            <!---->
-            <a
-                href="https://www.facebook.com/UnitedMarassilAssociation/"
-                target="_blank"
-                title="Facebook"
-            >
-                <i class="fab fa-facebook"></i>
-            </a>
-
-            <!--end-->
-
-            <!---->
-            <a
-                href="https://www.youtube.com/@unitedmarassil"
-                target="_blank"
-                title="YouTube"
-            >
-                <i class="fab fa-youtube"></i>
-            </a>
-            <!--end-->
+    <div class="menu__container">
+        <div class="menu__header">
+            <h4>Main Menu</h4>
+            <button class="js-menu-button">
+                <i class="icon-cross text-10"></i>
+            </button>
         </div>
 
-        <div class="text">
-            <!---->
-            <span>Suivez-nous :</span>
+        <div class="menu__content">
+            <ul class="menuNav js-navList">
+                <li class="menuNav__item">
+                    <a href="/">Home</a>
+                </li>
+                <li class="menuNav__item -has-submenu js-has-submenu">
+                    <a>Day Trip <i class="icon-chevron-right"></i></a>
+                    <ul class="submenu">
+                        <li class="submenu__item">
+                            <a href="/day-trip-from-marrakech">Departure From Marrakech</a>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="/day-trip-from-casablanca">Departure From Casablanca</a>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="/day-trip-from-fes">Departure From Fes</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menuNav__item -has-submenu js-has-submenu">
+                    <a>Activities <i class="icon-chevron-right"></i></a>
+                    <ul class="submenu">
+                        <li class="submenu__item">
+                            <a href="/activities-in-marrakech">Marrakech</a>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="/activities-in-agafay-desert">Agafay Desert</a>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="/activities-in-agadir">Agadir</a>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="/activities-in-essaouira">Essaouira</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menuNav__item -has-submenu js-has-submenu">
+                    <a>Tours <i class="icon-chevron-right"></i></a>
+                    <ul class="submenu">
+                        <li class="submenu__item -has-submenu js-has-submenu">
+                            <a>Shared Group <i class="icon-chevron-right"></i></a>
+                            <ul class="submenu">
+                                <li class="submenu__item">
+                                    <a href="/3-days-desert-tour-from-marrakech-to-merzouga">3 Days Desert Tour From Marrakech To Merzouga</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="/2-days-desert-tour-to-zagora-from-marrakech">2 Days Desert Tour To Zagora From Marrakech</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="/tours-from-marrakech">Departure From Marrakech</a>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="/tours-from-casablanca">Departure From Casablanca</a>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="/tours-from-tanger">Departure From Tanger</a>
+                        </li>
+                    </ul>
+                </li>
 
-            <!--end-->
 
-            <!---->
-            <strong>
-                <a href="#" target="_self">Newsletter</a>
-            </strong>
-            <!--end-->
+                <li class="menuNav__item">
+                    <a href="/transfers">Transfers</a>
+                </li>
+                <li class="menuNav__item">
+                    <a href="/contact-us">Contact Us</a>
+                </li>
+                <li class="menuNav__item">
+                    <a href="/about-us">About Us</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="menu__footer">
+            <i class="icon-headphone text-50"></i>
+
+            <div class="text-20 lh-12 fw-500 mt-20">
+                <div>Speak to our agent at</div>
+                <div class="text-accent-1">+212 524 390 367</div>
+            </div>
+
+            <div class="d-flex items-center x-gap-10 pt-30">
+                <div>
+                    <a class="d-block">
+                        <i class="icon-facebook"></i>
+                    </a>
+                </div>
+                <div>
+                    <a class="d-block">
+                        <i class="icon-twitter"></i>
+                    </a>
+                </div>
+                <div>
+                    <a class="d-block">
+                        <i class="icon-instagram"></i>
+                    </a>
+                </div>
+                <div>
+                    <a class="d-block">
+                        <i class="icon-linkedin"></i>
+                    </a>
         </div>
     </div>
+    </div>
 </div>
-
-
+</div>
 

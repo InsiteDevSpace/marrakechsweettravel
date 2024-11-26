@@ -17,7 +17,7 @@
         <!-- Post Table -->
         <div class="table-responsive">
             <table class="table table-striped table-hover">
-                <thead class="table-blue">
+                <thead class="table-orange">
                     <tr>
                         <th>{{ __('messages.title') }}</th>
                         <th>{{ __('messages.description') }}</th>

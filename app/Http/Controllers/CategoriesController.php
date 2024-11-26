@@ -13,6 +13,8 @@ class CategoriesController extends Controller
         return view('categories.index', compact('categories'));
     }
 
+    
+
     public function store(Request $request)
     {
         $validated = $request->validate([

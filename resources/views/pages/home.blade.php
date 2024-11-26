@@ -3,1213 +3,1023 @@
 @extends('layouts.layout')
 
 @section('content')
-    <section class="main">
-        <div
-        data-bg="files/wp-content/themes/Marassil/images/bg-header-inner.png"
-        class="bg-img header-bg rocket-lazyload"
-        style=""
-        ></div>
-        <section class="wrapper wowo fadeInUp">
-        <section class="home-banner">
-            <div class="home-banner-box wowo fadeInUp">
-            <div class="images">
-                <div class="img img-1">
-                <div class="box">
-                    <div class="img-1-slider">
-                    <div class="slider-block">
-                        <img
-                        width="186"
-                        height="478"
-                        decoding="async"
-                        src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20186%20478'%3E%3C/svg%3E"
-                        alt=""
-                        data-lazy-src="files/images/1511_Reportage_Invivo3-186x478.jpg"
-                        /><noscript
-                        ><img
-                            width="186"
-                            height="478"
-                            decoding="async"
-                            src="files/images/1511_Reportage_Invivo3-186x478.jpg"
-                            alt=""
-                        /></noscript>
-                    </div>
-                    <div class="slider-block">
-                        <img
-                        width="186"
-                        height="478"
-                        decoding="async"
-                        src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20186%20478'%3E%3C/svg%3E"
-                        alt=""
-                        data-lazy-src="files/images/actualites-7-1-186x478.jpg"
-                        /><noscript
-                        ><img
-                            width="186"
-                            height="478"
-                            decoding="async"
-                            src="files/images/actualites-7-1-186x478.jpg"
-                            alt=""
-                        /></noscript>
-                    </div>
-                    </div>
-                </div>
-                </div>
-                <div class="img img-2">
-                <div class="box">
-                    <div class="img-p">
-            
-                    </div>
-                    <div class="home-banner-slider">
-                    <div class="slider-block">
-                        <div class="text">
-                        <h2>Marassil c&rsquo;est déjà :</h2>
-                        <p>
-                            <strong><span>38</span></strong
-                            >logements
-                        </p>
-                        <h3>temporaires <br />realisés !</h3>
-                        </div>
-                    </div>
-                    <div class="slider-block">
-                        <div class="text">
-                        <h2>Marassil c&rsquo;est</h2>
-                        <p>
-                            <strong><span>9</span></strong
-                            >camions
-                        </p>
-                        <h3>de vêtements collectés</h3>
-                        </div>
-                    </div>
-                    <div class="slider-block">
-                        <div class="text">
-                        <h2>Marassil c&rsquo;est</h2>
-                        <p>
-                            <strong><span>900</span></strong>
-                        </p>
-                        <h3>de repas donnés</h3>
-                        </div>
-                    </div>
-                    </div>
-                    <img
-                    width="504"
-                    height="670"
-                    decoding="async"
-                    src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20504%20670'%3E%3C/svg%3E"
-                    alt=""
-                    class="bg-img-cc"
-                    data-lazy-src="files/wp-content/themes/Marassil/images/home-slider-2.png"
-                    /><noscript
-                    ><img
-                        width="504"
-                        height="670"
-                        decoding="async"
-                        src="files/wp-content/themes/Marassil/images/home-slider-2.png"
-                        alt=""
-                        class="bg-img-cc"
-                    /></noscript>
-                    <p>
-                    <a href="/contact" target="_self"
-                        >Vous aussi, Rejoignez Marassil !</a
+<section data-anim-wrap class="hero -type-3">
+    <div data-anim-child="slide-up" class="hero__bg">
+        <img src="img/hero/3/bg.jpg" alt="background" />
+    </div>
+
+    <div class="container">
+        <div data-anim-child="slide-up delay-2" class="row justify-between">
+        <div class="col-xl-5 col-lg-5">
+            <div class="hero__subtitle mb-20 md:mb-10">
+            Your Adventure Begins Here for a World of Discovery!
+            </div>
+
+            <h1 class="hero__title">
+            Experience Morocco's Wonders with Marrakech Sweet Travel, Your
+            Journey, Perfectly Guided
+
+            <img src="img/hero/3/brush.svg" alt="brush stroke" />
+            </h1>
+
+            <div class="hero__filter mt-60 lg:mt-30">
+            <div class="searchForm -type-1 shadow-1">
+                <div class="searchForm__form">
+                <div class="searchFormItem js-select-control js-form-dd">
+                    <div
+                    class="searchFormItem__button"
+                    data-x-click="location"
                     >
-                    </p>
-                </div>
-                </div>
-                <div class="img img-3">
-                <div class="box">
-                    <div class="img-2-slider">
-                    <div class="slider-block">
-                        <img
-                        width="680"
-                        height="478"
-                        decoding="async"
-                        src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20680%20478'%3E%3C/svg%3E"
-                        alt=""
-                        data-lazy-src="files/images/solidarite-marassil.jpg"
-                        /><noscript
-                        ><img
-                            width="680"
-                            height="478"
-                            decoding="async"
-                            src="files/images/solidarite-marassil.jpg"
-                            alt=""
-                        /></noscript>
+                    <div
+                        class="searchFormItem__icon size-50 rounded-full bg-accent-1-05 flex-center"
+                    >
+                        <i class="text-20 icon-pin"></i>
                     </div>
-                    <div class="slider-block">
-                        <img
-                        width="940"
-                        height="672"
-                        decoding="async"
-                        src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20940%20672'%3E%3C/svg%3E"
-                        alt=""
-                        data-lazy-src="files/images/img-3.jpg"
-                        /><noscript
-                        ><img
-                            width="940"
-                            height="672"
-                            decoding="async"
-                            src="files/images/img-3.jpg"
-                            alt=""
-                        /></noscript>
-                    </div>
-                    </div>
-                    <a href="#" class="next-section btn-box"></a>
-                </div>
-                </div>
-                <div class="img img-4">
-                <div class="box">
-                    <div class="img-3-slider">
-                    <div class="slider-block">
-                        <img
-                        width="340"
-                        height="524"
-                        decoding="async"
-                        src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20340%20524'%3E%3C/svg%3E"
-                        alt=""
-                        data-lazy-src="files/images/img-4.jpg"
-                        /><noscript
-                        ><img
-                            width="340"
-                            height="524"
-                            decoding="async"
-                            src="files/images/img-4.jpg"
-                            alt=""
-                        /></noscript>
-                    </div>
-                    <div class="slider-block">
-                        <img
-                        width="170"
-                        height="263"
-                        decoding="async"
-                        src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20170%20263'%3E%3C/svg%3E"
-                        alt=""
-                        data-lazy-src="files/images/home-2-3.jpg"
-                        /><noscript
-                        ><img
-                            width="170"
-                            height="263"
-                            decoding="async"
-                            src="files/images/home-2-3.jpg"
-                            alt=""
-                        /></noscript>
-                    </div>
-                    </div>
-                </div>
-                </div>
-                <div class="img img-5">
-                <div class="box">
-                    <div class="img-4-slider">
-                    <div class="slider-block">
-                        <img
-                        width="362"
-                        height="376"
-                        decoding="async"
-                        src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20362%20376'%3E%3C/svg%3E"
-                        alt=""
-                        data-lazy-src="files/images/img-5.jpg"
-                        /><noscript
-                        ><img
-                            width="362"
-                            height="376"
-                            decoding="async"
-                            src="files/images/img-5.jpg"
-                            alt=""
-                        /></noscript>
-                    </div>
-                    <div class="slider-block">
-                        <img
-                        width="177"
-                        height="181"
-                        decoding="async"
-                        src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20177%20181'%3E%3C/svg%3E"
-                        alt=""
-                        data-lazy-src="files/images/home-2-4.jpg"
-                        /><noscript
-                        ><img
-                            width="177"
-                            height="181"
-                            decoding="async"
-                            src="files/images/home-2-4.jpg"
-                            alt=""
-                        /></noscript>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-        </section>
-
-        <section class="home-links">
-            <div class="home-links-box inner wowo fadeInUp">
-            <div class="links">
-                <div class="block">
-                <a
-                    href="#"
-                    target="_self"
-                    class="box"
-                >
-                    <div class="img">
-                    <img
-                        width="64"
-                        height="58"
-                        decoding="async"
-                        src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2058'%3E%3C/svg%3E"
-                        alt=""
-                        data-lazy-src="files/wp-content/themes/Marassil/images/menu-icon-2.svg"
-                    /><noscript
-                        ><img
-                        width="64"
-                        height="58"
-                        decoding="async"
-                        src="files/wp-content/themes/Marassil/images/menu-icon-2.svg"
-                        alt=""
-                    /></noscript>
-                    <img
-                        width="64"
-                        height="58"
-                        decoding="async"
-                        src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2058'%3E%3C/svg%3E"
-                        class="hover"
-                        alt=""
-                        data-lazy-src="files/wp-content/themes/Marassil/images/menu-icon-2.svg"
-                    /><noscript
-                        ><img
-                        width="64"
-                        height="58"
-                        decoding="async"
-                        src="files/wp-content/themes/Marassil/images/menu-icon-2.svg"
-                        class="hover"
-                        alt=""
-                    /></noscript>
-                    </div>
-                    <div class="text">
-                    <span>Je veut devient</span>
-                    <p>un sponsore</p>
-                    </div>
-                </a>
-                </div>
-                <div class="block">
-                <a
-                    href="#"
-                    target="_self"
-                    class="box"
-                >
-                    <div class="img">
-                    <img
-                        width="63"
-                        height="62"
-                        decoding="async"
-                        src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2063%2062'%3E%3C/svg%3E"
-                        alt=""
-                        data-lazy-src="files/wp-content/themes/Marassil/images/menu-icon-3.svg"
-                    /><noscript
-                        ><img
-                        width="63"
-                        height="62"
-                        decoding="async"
-                        src="files/wp-content/themes/Marassil/images/menu-icon-3.svg"
-                        alt=""
-                    /></noscript>
-                    <img
-                        width="63"
-                        height="62"
-                        decoding="async"
-                        src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2063%2062'%3E%3C/svg%3E"
-                        class="hover"
-                        alt=""
-                        data-lazy-src="files/wp-content/themes/Marassil/images/menu-icon-3.svg"
-                    /><noscript
-                        ><img
-                        width="63"
-                        height="62"
-                        decoding="async"
-                        src="files/wp-content/themes/Marassil/images/menu-icon-3.svg"
-                        class="hover"
-                        alt=""
-                    /></noscript>
-                    </div>
-                    <div class="text">
-                    <span>Je veut devient</span>
-                    <p>um mombre</p>
-                    </div>
-                </a>
-                </div>
-            </div>
-            </div>
-        </section>
-
-        <section class="home-left-text-and-right-slider not-h2">
-            <div class="home-left-text-and-right-slider-box inner wowo fadeInUp">
-            <div class="left">
-                <div class="transition-delay-1 wowo fadeInUp">
-                <h2>Un don, Une Solution</h2>
-                <h3>
-                    <span>Ensemble pour restaurer la réforme</span>, tout cela
-                    pour le bien de la patrie
-                </h3>
-                </div>
-                <div class="transition-delay-2 wowo fadeInUp">
-                <p>
-                    <strong>United MARASSIL Association</strong>, Nous sommes une
-                    organisation à but non lucratif dédiée à améliorer les
-                    conditions de vie des familles nécessiteuses et des groupes
-                    vulnérables. Grâce à l'engagement de personnes comme vous,
-                    nous pouvons faire une différence significative dans la vie de
-                    Habitants des zones touchées par le séisme.
-                </p>
-                </div>
-                <div class="block transition-delay-3 wowo fadeInUp">
-                <div class="box">
-                    <h4>
-                    <strong><span>38</span></strong> logements
-                    </h4>
-                    <h5>temporaires realises</h5>
-                </div>
-                <div class="box">
-                    <h4>
-                    Plus de
-                    <strong><span>25</span> villages</strong>
-                    </h4>
-                    <h5>ont bénéficié de la rénovation complète</h5>
-                </div>
-                <div class="box">
-                    <h4>
-                    L&rsquo;équivalent de
-                    <strong><span>900</span></strong>
-                    </h4>
-                    <h5>repas donnés</h5>
-                </div>
-                </div>
-                <div class="link">
-                <a class="btn btn-b" href="#" target="_self"
-                    ><i></i>En savoir plus sur Marassil</a
-                >
-                </div>
-            </div>
-            <div class="right">
-                <div class="left-text-and-right-slider">
-                <div class="slider-block">
-                    <div class="video">
-                    <a href="#" class="video-link embed">
-                        <div class="data-video"></div>
-                        <div class="img">
-                        <img
-                            width="594"
-                            height="743"
-                            decoding="async"
-                            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20594%20743'%3E%3C/svg%3E"
-                            alt=""
-                            class="img-bg"
-                            data-lazy-src="files/wp-content/uploads/2023/01/pierre-bot.jpg"
-                        /><noscript
-                            ><img
-                            width="594"
-                            height="743"
-                            decoding="async"
-                            src="files/wp-content/uploads/2023/01/pierre-bot.jpg"
-                            alt=""
-                            class="img-bg"
-                        /></noscript>
+                    <div class="searchFormItem__content">
+                        <h5>Where</h5>
+                        <div class="js-select-control-chosen">
+                        Search destinations
                         </div>
-                        <div class="text-and-icon">
-                        <i class="icon-play"></i>
+                    </div>
+                    </div>
+
+                    <div
+                    class="searchFormItemDropdown -location"
+                    data-x="location"
+                    data-x-toggle="is-active"
+                    >
+                    <div class="searchFormItemDropdown__container">
+                        <div class="searchFormItemDropdown__list sroll-bar-1">
+                        <div class="searchFormItemDropdown__item">
+                            <button class="js-select-control-button">
+                            <span class="js-select-control-choice"
+                                >Jemaa el-Fnaa Square
+                            </span>
+                            </button>
                         </div>
-                    </a>
+
+                        <div class="searchFormItemDropdown__item">
+                            <button class="js-select-control-button">
+                            <span class="js-select-control-choice"
+                                >Medina of Marrakech</span
+                            >
+                            </button>
+                        </div>
+
+                        <div class="searchFormItemDropdown__item">
+                            <button class="js-select-control-button">
+                            <span class="js-select-control-choice"
+                                >Koutoubia Mosque</span
+                            >
+                            </button>
+                        </div>
+
+                        <div class="searchFormItemDropdown__item">
+                            <button class="js-select-control-button">
+                            <span class="js-select-control-choice"
+                                >Majorelle Garden</span
+                            >
+                            </button>
+                        </div>
+
+                        <div class="searchFormItemDropdown__item">
+                            <button class="js-select-control-button">
+                            <span class="js-select-control-choice"
+                                >The Palmeraie</span
+                            >
+                            </button>
+                        </div>
+                        </div>
                     </div>
-                </div>
-                </div>
-                <div class="text-c">
-                <p>Je suis solidaire</p>
-                <h5>Je donne !</h5>
-                <div class="link">
-                    <a
-                    class="btn btn-b btn-button"
-                    href="#"
-                    target="_self"
-                    ><i></i>Voir tous les témoignages</a
-                    >
-                </div>
-                </div>
-            </div>
-            </div>
-        </section>
-
-        <section class="home-video style-two width-770">
-            <div class="home-video-box inner wowo fadeInUp">
-            <div class="video">
-                <a href="#" class="video-link embed">
-                <div class="data-video">
-                    <iframe
-                    title="Bilan des Journées nationales du don agricole - 9ème édition"
-                    width="640"
-                    height="360"
-                    src="https://www.youtube.com/embed/ukYWhe37ykA?feature=oembed"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen
-                    ></iframe>
-                </div>
-                <div class="img">
-                    <img
-                    width="1800"
-                    height="1013"
-                    decoding="async"
-                    src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201800%201013'%3E%3C/svg%3E"
-                    alt=""
-                    class="img-bg"
-                    data-lazy-src="files/wp-content/themes/Marassil/images/bf.png"
-                    /><noscript
-                    ><img
-                        width="1800"
-                        height="1013"
-                        decoding="async"
-                        src="files/wp-content/themes/Marassil/images/bf.png"
-                        alt=""
-                        class="img-bg"
-                    /></noscript>
-                </div>
-                <div class="text-and-icon">
-                    <i class="icon-play"></i>
-                </div>
-                </a>
-            </div>
-            <div class="text">
-                <p>
-                La Caravane de Solidarité par l'Association Maracil à Douar
-                Anamer.
-                </p>
-            </div>
-            </div>
-        </section>
-
-        <section class="home-video style-two width-770">
-            <div class="home-video-box inner wowo fadeInUp">
-            <div class="video">
-                <a href="#" class="video-link embed">
-                <div class="data-video">
-                    <iframe
-                    title="Bilan des Journées nationales du don agricole - 9ème édition"
-                    width="640"
-                    height="360"
-                    src="https://www.youtube.com/embed/xh5NtuEDjb4?feature=oembed"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen
-                    ></iframe>
-                </div>
-                <div class="img">
-                    <img
-                    width="1800"
-                    height="1013"
-                    decoding="async"
-                    src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201800%201013'%3E%3C/svg%3E"
-                    alt=""
-                    class="img-bg"
-                    data-lazy-src="files/wp-content/themes/Marassil/images/bf.png"
-                    /><noscript
-                    ><img
-                        width="1800"
-                        height="1013"
-                        decoding="async"
-                        src="files/wp-content/themes/Marassil/images/bf.png"
-                        alt=""
-                        class="img-bg"
-                    /></noscript>
-                </div>
-                <div class="text-and-icon">
-                    <i class="icon-play"></i>
-                </div>
-                </a>
-            </div>
-            <div class="text">
-                <p>United Marassil association قافلة ضحاياه الزلزال</p>
-            </div>
-            </div>
-        </section>
-
-        <section class="home-les-actualites not-h2">
-            <div class="home-les-actualites-box inner wowo fadeInUp">
-            <div class="title">
-                <h2><span>Les actualités</span> de Marassil</h2>
-
-                <a
-                class="btn btn-right"
-                href="#"
-                target="_self"
-                ><i></i>Voir toutes les actualités</a
-                >
-            </div>
-            <div class="content">
-                <div class="left">
-                <div class="list">
-                    <div class="img">
-                    <a
-                        data-bg=files/wp-content/uploads/2024/07/DSC00595-300x200.jpg"
-                        class="rocket-lazyload"
-                        href=""
-                        style=""
-                    ></a>
-                    </div>
-                    <div class="text">
-                    <span>Travail caritatif</span>
-                    <h3>
-                        <a
-                        href=""
-                        >La caravane marassil à douar aname</a
-                        >
-                    </h3>
-                    <a
-                        href=""
-                        class="btn"
-                        ><i></i>En savoir +</a
-                    >
                     </div>
                 </div>
 
-                <div class="list">
-                    <div class="img">
-                    <a
-                        data-bg=files/wp-content/uploads/2024/07/DSC00595-300x200.jpg"
-                        class="rocket-lazyload"
-                        href=""
-                        style=""
-                    ></a>
-                    </div>
-                    <div class="text">
-                    <span>Travail caritatif</span>
-                    <h3>
-                        <a
-                        href=""
-                        >Une journée à atlas kinder</a
-                        >
-                    </h3>
-                    <a
-                        href=""
-                        class="btn"
-                        ><i></i>En savoir +</a
-                    >
-                    </div>
-                </div>
-
-
-                </div>
-                <div class="right"></div>
-            </div>
-            </div>
-        </section>
-
-        <section class="home-newsletter not-h2">
-            <div class="home-newsletter-box inner wowo fadeInUp">
-            <div class="content">
-                <div class="title">
-                <h2>Newsletter Marassil</h2>
-                <p>
-                    Recevez régulièrement toutes les actualités de l'association!
-                </p>
-                </div>
-                <div class="form">
                 <div
-                    class="wpcf7 no-js"
-                    id="wpcf7-f13404-o1"
-                    lang="fr-FR"
-                    dir="ltr"
+                    class="searchFormItem js-select-control js-form-dd js-calendar"
                 >
-                    <div class="screen-reader-response">
-                    <p role="status" aria-live="polite" aria-atomic="true"></p>
-                    <ul></ul>
-                    </div>
-                    <form
-                    action="#"
-                    method="post"
-                    class="wpcf7-form init"
-                    aria-label="Formulaire de contact"
-                    novalidate="novalidate"
-                    data-status="init"
+                    <div
+                    class="searchFormItem__button"
+                    data-x-click="calendar"
                     >
-                    <div style="display: none">
-                        <input type="hidden" name="_wpcf7" value="13404" />
-                        <input
-                        type="hidden"
-                        name="_wpcf7_version"
-                        value="5.9.3"
-                        />
-                        <input type="hidden" name="_wpcf7_locale" value="fr_FR" />
-                        <input
-                        type="hidden"
-                        name="_wpcf7_unit_tag"
-                        value="wpcf7-f13404-o1"
-                        />
-                        <input
-                        type="hidden"
-                        name="_wpcf7_container_post"
-                        value="0"
-                        />
-                        <input
-                        type="hidden"
-                        name="_wpcf7_posted_data_hash"
-                        value=""
-                        />
-                    </div>
-                    <div class="form-box">
-                        <div class="form-group">
-                        <p>
-                            <span
-                            class="wpcf7-form-control-wrap"
-                            data-name="email"
-                            ><input
-                                size="40"
-                                class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
-                                aria-required="true"
-                                aria-invalid="false"
-                                placeholder="Indiquez votre email *"
-                                value=""
-                                type="email"
-                                name="email"
-                            /></span>
-                        </p>
-                        </div>
-                        <div class="form-submit">
-                        <p>
-                            <input
-                            class="wpcf7-form-control wpcf7-submit has-spinner"
-                            type="submit"
-                            value="S’inscrire"
-                            /><br />
-                            <i></i>
-                        </p>
-                        </div>
-                    </div>
-                    <p>
-                        <!-- Mailchimp for WordPress v4.9.13 - https://www.mc4wp.com/ --><input
-                        type="hidden"
-                        name="_mc4wp_subscribe_contact-form-7"
-                        value="0"
-                        /><span
-                        class="mc4wp-checkbox mc4wp-checkbox-contact-form-7"
-                        ><label
-                            ><input
-                            type="checkbox"
-                            name="_mc4wp_subscribe_contact-form-7"
-                            value="1"
-                            /><span
-                            >En cochant cette case, j&rsquo;accepte de recevoir
-                            des informations de la part de Marassil</span
-                            ></label
-                        ></span
-                        ><!-- / Mailchimp for WordPress --><br />
-                        <span class="wpcf7-form-control-wrap kc_captcha" data-name="kc_captcha">
-                        <span class="wpcf7-form-control wpcf7-radio">
-                            <span class="captcha-image">
-                            <span class="cf7ic_instructions">
-                                Veuillez prouver que vous êtes humain en sélectionnant
-                                <span> l’arbre</span>.
-                            </span>
-                            <label>
-                                <input type="radio" name="kc_captcha" value="bot" />
-                                <svg
-                                width="50"
-                                height="50"
-                                aria-hidden="true"
-                                role="img"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 576 512"
-                                >
-                                <path
-                                    fill="currentColor"
-                                    d="M415 24c-53 0-103 42-127 65-24-23-74-65-127-65C70 24 16 77 16 166c0 72 67 133 69 135l187 181c9 8 23 8 32 0l187-180c2-3 69-64 69-136 0-89-54-142-145-142z"
-                                />
-                                </svg>
-                            </label>
-                            <label>
-                                <input type="radio" name="kc_captcha" value="bot" />
-                                <svg
-                                width="50"
-                                height="50"
-                                aria-hidden="true"
-                                role="img"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 512 512"
-                                >
-                                <path
-                                    fill="currentColor"
-                                    d="M512 176a176 176 0 01-209 173l-24 27a24 24 0 01-18 8h-37v40c0 13-11 24-24 24h-40v40c0 13-11 24-24 24H24c-13 0-24-11-24-24v-78c0-6 3-13 7-17l162-162a176 176 0 11343-55zm-176-48a48 48 0 1096 0 48 48 0 00-96 0z"
-                                />
-                                </svg>
-                            </label>
-                            <label>
-                                <input type="radio" name="kc_captcha" value="kc_human" />
-                                <svg
-                                width="50"
-                                height="50"
-                                aria-hidden="true"
-                                role="img"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 384 512"
-                                >
-                                <path
-                                    fill="currentColor"
-                                    d="M377 375l-83-87h34c21 0 32-25 17-40l-82-88h33c21 0 32-25 18-40L210 8c-10-11-26-11-36 0L70 120c-14 15-3 40 18 40h33l-82 88c-15 15-4 40 17 40h34L7 375c-15 16-4 41 17 41h120c0 33-11 49-34 68-12 9-5 28 10 28h144c15 0 22-19 10-28-20-16-34-32-34-68h120c21 0 32-25 17-41z"
-                                />
-                                </svg>
-                            </label>
-                            </span>
-                            <span style="display: none">
-                            <input type="text" name="kc_honeypot" />
-                            </span>
-                        </span>
-                        </span>
-
-                    </p>
-                    <div class="wpcf7-response-output" aria-hidden="true"></div>
-                    </form>
-                </div>
-                </div>
-            </div>
-            <div class="end-text">
-                <p>
-                Votre adresse de messagerie est uniquement utilisée pour vous
-                envoyer les newsletter de Marassil. Vous pouvez à tout moment
-                utiliser le lien de désabonnement intégré dans la newsletter. En
-                savoir plus sur la
-                <a href="#">gestion de vos données et vos droits.</a>
-                </p>
-            </div>
-            </div>
-        </section>
-
-        <section class="home-logo-slider not-h2">
-            <div class="home-logo-slider-box wowo fadeInUp">
-            <div class="title inner">
-                <h2 class="is-active">Les membres de Marassil</h2>
-                <h2>Nos partenaires solidaires</h2>
-            </div>
-            <div class="content-box">
-                <div class="content-box-box inner">
-                <div class="content-list">
-                    <div class="content-list-box is-active">
-                    <div class="content logos-slider">
-                        
-
-                        <div class="block">
-                        <div class="box">
-                            <img
-                            width="300"
-                            height="160"
-                            decoding="async"
-                            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20160'%3E%3C/svg%3E"
-                            alt=""
-                            data-lazy-src="files/images/spons1.png"
-                            /><noscript
-                            ><img
-                                width="300"
-                                height="160"
-                                decoding="async"
-                                src="files/images/spons1.png"
-                                alt=""
-                            /></noscript>
-                        </div>
-                        </div>
-
-                        <div class="block">
-                        <div class="box">
-                            <img
-                            width="300"
-                            height="160"
-                            decoding="async"
-                            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20160'%3E%3C/svg%3E"
-                            alt=""
-                            data-lazy-src="files/images/spons2.png"
-                            /><noscript
-                            ><img
-                                width="300"
-                                height="160"
-                                decoding="async"
-                                src="files/images/spons2.png"
-                                alt=""
-                            /></noscript>
-                        </div>
-                        </div>
-
-                        <div class="block">
-                        <div class="box">
-                            <img
-                            width="300"
-                            height="160"
-                            decoding="async"
-                            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20160'%3E%3C/svg%3E"
-                            alt=""
-                            data-lazy-src="files/images/spons3.png"
-                            /><noscript
-                            ><img
-                                width="300"
-                                height="160"
-                                decoding="async"
-                                src="files/images/spons3.png"
-                                alt=""
-                            /></noscript>
-                        </div>
-                        </div>
-
-                        <div class="block">
-                        <div class="box">
-                            <img
-                            width="300"
-                            height="160"
-                            decoding="async"
-                            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20160'%3E%3C/svg%3E"
-                            alt=""
-                            data-lazy-src="files/images/spons4.png"
-                            /><noscript
-                            ><img
-                                width="300"
-                                height="160"
-                                decoding="async"
-                                src="files/images/spons4.png"
-                                alt=""
-                            /></noscript>
-                        </div>
-                        </div>
-
-                        <div class="block">
-                        <div class="box">
-                            <img
-                            width="300"
-                            height="160"
-                            decoding="async"
-                            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20160'%3E%3C/svg%3E"
-                            alt=""
-                            data-lazy-src="files/images/spons1.png"
-                            /><noscript
-                            ><img
-                                width="300"
-                                height="160"
-                                decoding="async"
-                                src="files/images/spons1.png"
-                                alt=""
-                            /></noscript>
-                        </div>
-                        </div>
-
-                        <div class="block">
-                        <div class="box">
-                            <img
-                            width="300"
-                            height="160"
-                            decoding="async"
-                            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20160'%3E%3C/svg%3E"
-                            alt=""
-                            data-lazy-src="files/images/spons2.png"
-                            /><noscript
-                            ><img
-                                width="300"
-                                height="160"
-                                decoding="async"
-                                src="files/images/spons2.png"
-                                alt=""
-                            /></noscript>
-                        </div>
-                        </div>
-
-                        <div class="block">
-                        <div class="box">
-                            <img
-                            width="300"
-                            height="160"
-                            decoding="async"
-                            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20160'%3E%3C/svg%3E"
-                            alt=""
-                            data-lazy-src="files/images/spons3.png"
-                            /><noscript
-                            ><img
-                                width="300"
-                                height="160"
-                                decoding="async"
-                                src="files/images/spons3.png"
-                                alt=""
-                            /></noscript>
-                        </div>
-                        </div>
-
-                        <div class="block">
-                        <div class="box">
-                            <img
-                            width="300"
-                            height="160"
-                            decoding="async"
-                            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20160'%3E%3C/svg%3E"
-                            alt=""
-                            data-lazy-src="files/images/spons4.png"
-                            /><noscript
-                            ><img
-                                width="300"
-                                height="160"
-                                decoding="async"
-                                src="files/images/spons4.png"
-                                alt=""
-                            /></noscript>
-                        </div>
-                        </div>
-                    
-
-
-
-                    </div>
-                    </div
-                    
+                    <div
+                        class="searchFormItem__icon size-50 rounded-full bg-accent-1-05 flex-center"
                     >
-                    <div class="content-list-box">
-                    <div class="content logos-slider">
+                        <i class="text-20 icon-calendar"></i>
+                    </div>
+                    <div class="searchFormItem__content">
+                        <h5>When</h5>
+                        <div>
+                        <span class="js-first-date">Add dates</span>
+                        <span class="js-last-date"></span>
+                        </div>
+                    </div>
+                    </div>
 
-                        
+                    <div
+                    class="searchFormItemDropdown -calendar"
+                    data-x="calendar"
+                    data-x-toggle="is-active"
+                    >
+                    <div class="searchFormItemDropdown__container">
+                        <div
+                        class="searchMenu-date -searchForm js-form-dd js-calendar-el"
+                        >
+                        <div
+                            class="searchMenu-date__field shadow-2"
+                            data-x-dd="searchMenu-date"
+                            data-x-dd-toggle="-is-active"
+                        >
+                            <div class="bg-white rounded-4">
+                            <div
+                                class="elCalendar js-calendar-el-calendar"
+                            ></div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
 
-                        <div class="block">
-                        <div class="box">
-                            <img
-                            width="300"
-                            height="160"
-                            decoding="async"
-                            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20160'%3E%3C/svg%3E"
-                            alt=""
-                            data-lazy-src="files/images/spons1.png"
-                            /><noscript
-                            ><img
-                                width="300"
-                                height="160"
-                                decoding="async"
-                                src="files/images/spons1.png"
-                                alt=""
-                            /></noscript>
-                        </div>
-                        </div>
+                <div class="searchFormItem js-select-control js-form-dd">
+                    <div
+                    class="searchFormItem__button"
+                    data-x-click="tour-type"
+                    >
+                    <div
+                        class="searchFormItem__icon size-50 rounded-full bg-accent-1-05 flex-center"
+                    >
+                        <i class="text-20 icon-flag"></i>
+                    </div>
+                    <div class="searchFormItem__content">
+                        <h5>Tour Type</h5>
+                        <div class="js-select-control-chosen">All tour</div>
+                    </div>
+                    </div>
 
-                        <div class="block">
-                        <div class="box">
-                            <img
-                            width="300"
-                            height="160"
-                            decoding="async"
-                            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20160'%3E%3C/svg%3E"
-                            alt=""
-                            data-lazy-src="files/images/spons2.png"
-                            /><noscript
-                            ><img
-                                width="300"
-                                height="160"
-                                decoding="async"
-                                src="files/images/spons2.png"
-                                alt=""
-                            /></noscript>
-                        </div>
-                        </div>
-
-                        <div class="block">
-                        <div class="box">
-                            <img
-                            width="300"
-                            height="160"
-                            decoding="async"
-                            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20160'%3E%3C/svg%3E"
-                            alt=""
-                            data-lazy-src="files/images/spons3.png"
-                            /><noscript
-                            ><img
-                                width="300"
-                                height="160"
-                                decoding="async"
-                                src="files/images/spons3.png"
-                                alt=""
-                            /></noscript>
-                        </div>
-                        </div>
-
-                        <div class="block">
-                        <div class="box">
-                            <img
-                            width="300"
-                            height="160"
-                            decoding="async"
-                            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20160'%3E%3C/svg%3E"
-                            alt=""
-                            data-lazy-src="files/images/spons4.png"
-                            /><noscript
-                            ><img
-                                width="300"
-                                height="160"
-                                decoding="async"
-                                src="files/images/spons4.png"
-                                alt=""
-                            /></noscript>
-                        </div>
+                    <div
+                    class="searchFormItemDropdown -tour-type"
+                    data-x="tour-type"
+                    data-x-toggle="is-active"
+                    >
+                    <div class="searchFormItemDropdown__container">
+                        <div class="searchFormItemDropdown__list sroll-bar-1">
+                        <div class="searchFormItemDropdown__item">
+                            <button class="js-select-control-button">
+                            <span class="js-select-control-choice"
+                                >City Tour</span
+                            >
+                            </button>
                         </div>
 
-                        <div class="block">
-                        <div class="box">
-                            <img
-                            width="300"
-                            height="160"
-                            decoding="async"
-                            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20160'%3E%3C/svg%3E"
-                            alt=""
-                            data-lazy-src="files/images/spons1.png"
-                            /><noscript
-                            ><img
-                                width="300"
-                                height="160"
-                                decoding="async"
-                                src="files/images/spons1.png"
-                                alt=""
-                            /></noscript>
-                        </div>
+                        <div class="searchFormItemDropdown__item">
+                            <button class="js-select-control-button">
+                            <span class="js-select-control-choice"
+                                >Hiking</span
+                            >
+                            </button>
                         </div>
 
-                        <div class="block">
-                        <div class="box">
-                            <img
-                            width="300"
-                            height="160"
-                            decoding="async"
-                            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20160'%3E%3C/svg%3E"
-                            alt=""
-                            data-lazy-src="files/images/spons2.png"
-                            /><noscript
-                            ><img
-                                width="300"
-                                height="160"
-                                decoding="async"
-                                src="files/images/spons2.png"
-                                alt=""
-                            /></noscript>
-                        </div>
+                        <div class="searchFormItemDropdown__item">
+                            <button class="js-select-control-button">
+                            <span class="js-select-control-choice"
+                                >Food Tour</span
+                            >
+                            </button>
                         </div>
 
-                        <div class="block">
-                        <div class="box">
-                            <img
-                            width="300"
-                            height="160"
-                            decoding="async"
-                            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20160'%3E%3C/svg%3E"
-                            alt=""
-                            data-lazy-src="files/images/spons3.png"
-                            /><noscript
-                            ><img
-                                width="300"
-                                height="160"
-                                decoding="async"
-                                src="files/images/spons3.png"
-                                alt=""
-                            /></noscript>
-                        </div>
+                        <div class="searchFormItemDropdown__item">
+                            <button class="js-select-control-button">
+                            <span class="js-select-control-choice"
+                                >Cultural Tours</span
+                            >
+                            </button>
                         </div>
 
-                        <div class="block">
-                        <div class="box">
-                            <img
-                            width="300"
-                            height="160"
-                            decoding="async"
-                            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20160'%3E%3C/svg%3E"
-                            alt=""
-                            data-lazy-src="files/images/spons4.png"
-                            /><noscript
-                            ><img
-                                width="300"
-                                height="160"
-                                decoding="async"
-                                src="files/images/spons4.png"
-                                alt=""
-                            /></noscript>
-                        </div>
+                        <div class="searchFormItemDropdown__item">
+                            <button class="js-select-control-button">
+                            <span class="js-select-control-choice"
+                                >Museums Tours</span
+                            >
+                            </button>
                         </div>
 
-
+                        <div class="searchFormItemDropdown__item">
+                            <button class="js-select-control-button">
+                            <span class="js-select-control-choice"
+                                >Beach Tours</span
+                            >
+                            </button>
+                        </div>
+                        </div>
                     </div>
                     </div>
                 </div>
                 </div>
-            </div>
 
-            <div class="links">
-                <a
-                class="btn btn-b"
-                href="#"
-                target="_self"
-                ><i></i>Voir tous les membres</a
+                <div class="searchForm__button">
+                <button
+                    class="button -dark-1 bg-accent-1 rounded-200 text-white"
                 >
-                <a
-                class="btn btn-b"
-                href="/contact"
-                target="_self"
-                ><i></i>Rejoignez-nous !</a
-                >
-            </div>
-            </div>
-        </section>
-
-        <section class="home-alimentaire not-h2">
-            <div class="home-alimentaire-box inner fadeInUp">
-            <a class="content" href="/faire-un-don" target="_self">
-                <div class="img-p">
-                <img
-                    width="395"
-                    height="422"
-                    decoding="async"
-                    src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20395%20422'%3E%3C/svg%3E"
-                    alt=""
-                    class="desktop"
-                    data-lazy-src="files/wp-content/uploads/2022/02/img-18.png"
-                /><noscript
-                    ><img
-                    width="395"
-                    height="422"
-                    decoding="async"
-                    src="files/wp-content/uploads/2022/02/img-18.png"
-                    alt=""
-                    class="desktop"
-                /></noscript>
-                <img
-                    width="207"
-                    height="152"
-                    decoding="async"
-                    src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20207%20152'%3E%3C/svg%3E"
-                    alt=""
-                    class="mobile"
-                    data-lazy-src="files/wp-content/uploads/2022/02/img-18.png"
-                /><noscript
-                    ><img
-                    width="207"
-                    height="152"
-                    decoding="async"
-                    src="files/wp-content/uploads/2022/02/img-18.png"
-                    alt=""
-                    class="mobile"
-                /></noscript>
+                    <i class="icon-search text-16 mr-10"></i>
+                    Search
+                </button>
                 </div>
-                <div class="text">
-                <h3>Vous avez des vêtements à donner ?</h3>
-                </div>
-            </a>
-            <div class="links">
-                <a
-                class="btn btn-b btn-button"
-                href="/faire-un-donlogin"
-                target="_self"
-                ><i></i>Faire un don en ligne</a
-                >
-                <a
-                class="btn btn-b"
-                href="/contact"
-                target="_self"
-                ><i></i>Contactez-nous</a
-                >
             </div>
             </div>
-        </section>
-        <div class="go-top">
-            <a href="#"></a>
         </div>
-        </section>
-    </section>
+
+        <div class="col-xl-7 col-lg-7">
+            <div class="hero__image">
+            <div>
+                <img src="img/hero/3/1.png" alt="image" />
+            </div>
+            <img src="img/hero/3/3.png" alt="image" />
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="layout-pt-xl layout-pb-xl">
+    <div class="container">
+        <div class="row justify-center text-center">
+        <div class="col-auto">
+            <h2 class="text-30">Trusted by All The Largest Travel Brands</h2>
+        </div>
+        </div>
+
+        <div class="row y-gap-30 justify-between pt-40 sm:pt-20">
+        <div class="col-md-auto col-6">
+            <img src="img/clients/1/1.svg" alt="image" style="width: 150px" />
+        </div>
+
+        <div class="col-md-auto col-6">
+            <img src="img/clients/1/2.svg" alt="image" style="width: 150px" />
+        </div>
+
+        <div class="col-md-auto col-6">
+            <img src="img/clients/1/3.svg" alt="image" style="width: 150px" />
+        </div>
+
+        <div class="col-md-auto col-6">
+            <img src="img/clients/1/4.svg" alt="image" style="width: 150px" />
+        </div>
+
+        <div class="col-md-auto col-6">
+            <img src="img/clients/1/5.svg" alt="image" style="width: 150px" />
+        </div>
+
+        <div class="col-md-auto col-6">
+            <img src="img/clients/1/6.svg" alt="image" style="width: 150px" />
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="layout-pt-xl">
+    <div data-anim-wrap class="container">
+        <div
+        data-anim-child="slide-up"
+        class="row justify-between items-end y-gap-10"
+        >
+        <div class="col-auto">
+            <h2 class="text-30">Shop Tickets & Tours</h2>
+        </div>
+
+        <div class="col-auto">
+            <button class="buttonArrow d-flex items-center">
+            <span>See all</span>
+            <i class="icon-arrow-top-right text-16 ml-10"></i>
+            </button>
+        </div>
+        </div>
+
+        <div
+        data-anim-child="slide-up delay-2"
+        class="row y-gap-30 pt-40 sm:pt-20"
+        >
+        <div class="col-lg-2 col-md-3 col-6">
+            <a href="#" class="featureCard -type-2 -hover-image-scale">
+            <div
+                class="featureCard__image ratio ratio-19:22 -hover-image-scale__image rounded-12"
+            >
+                <img
+                src="img/destinationCards/3/1.jpg"
+                alt="image"
+                class="img-ratio rounded-12"
+                />
+            </div>
+
+            <div class="featureCard__content text-center">
+                <h4 class="text-white text-18">City Tours</h4>
+                <div class="text-14 text-white">100+ Tours</div>
+            </div>
+            </a>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-6">
+            <a href="#" class="featureCard -type-2 -hover-image-scale">
+            <div
+                class="featureCard__image ratio ratio-19:22 -hover-image-scale__image rounded-12"
+            >
+                <img
+                src="img/destinationCards/3/2.jpg"
+                alt="image"
+                class="img-ratio rounded-12"
+                />
+            </div>
+
+            <div class="featureCard__content text-center">
+                <h4 class="text-white text-18">Cultural Tours</h4>
+                <div class="text-14 text-white">100+ Tours</div>
+            </div>
+            </a>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-6">
+            <a href="#" class="featureCard -type-2 -hover-image-scale">
+            <div
+                class="featureCard__image ratio ratio-19:22 -hover-image-scale__image rounded-12"
+            >
+                <img
+                src="img/destinationCards/3/3.jpg"
+                alt="image"
+                class="img-ratio rounded-12"
+                />
+            </div>
+
+            <div class="featureCard__content text-center">
+                <h4 class="text-white text-18">Day Cruises</h4>
+                <div class="text-14 text-white">100+ Tours</div>
+            </div>
+            </a>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-6">
+            <a href="#" class="featureCard -type-2 -hover-image-scale">
+            <div
+                class="featureCard__image ratio ratio-19:22 -hover-image-scale__image rounded-12"
+            >
+                <img
+                src="img/destinationCards/3/4.jpg"
+                alt="image"
+                class="img-ratio rounded-12"
+                />
+            </div>
+
+            <div class="featureCard__content text-center">
+                <h4 class="text-white text-18">Bus Tours</h4>
+                <div class="text-14 text-white">100+ Tours</div>
+            </div>
+            </a>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-6">
+            <a href="#" class="featureCard -type-2 -hover-image-scale">
+            <div
+                class="featureCard__image ratio ratio-19:22 -hover-image-scale__image rounded-12"
+            >
+                <img
+                src="img/destinationCards/3/5.jpg"
+                alt="image"
+                class="img-ratio rounded-12"
+                />
+            </div>
+
+            <div class="featureCard__content text-center">
+                <h4 class="text-white text-18">Beach Tours</h4>
+                <div class="text-14 text-white">100+ Tours</div>
+            </div>
+            </a>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-6">
+            <a href="#" class="featureCard -type-2 -hover-image-scale">
+            <div
+                class="featureCard__image ratio ratio-19:22 -hover-image-scale__image rounded-12"
+            >
+                <img
+                src="img/destinationCards/3/6.jpg"
+                alt="image"
+                class="img-ratio rounded-12"
+                />
+            </div>
+
+            <div class="featureCard__content text-center">
+                <h4 class="text-white text-18">Food Tours</h4>
+                <div class="text-14 text-white">100+ Tours</div>
+            </div>
+            </a>
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="layout-pt-xl">
+    <div data-anim-wrap class="container">
+        <div
+        data-anim-child="slide-up"
+        class="row y-gap-10 justify-between items-center y-gap-10"
+        >
+            <div class="col-auto">
+                <h2 class="text-30">Ways to Experience Marrakech Sweet Travel</h2>
+            </div>
+        </div>
+
+        <div
+        data-anim-child="slide-up delay-2"
+        class="relative pt-40 sm:pt-20"
+        >
+        <div
+            class="overflow-hidden js-section-slider"
+            data-gap="30"
+            data-slider-cols="xl-4 lg-3 md-2 sm-1 base-1"
+            data-nav-prev="js-slider1-prev"
+            data-nav-next="js-slider1-next"
+        >
+            <div class="swiper-wrapper">
+           
+
+
+            @foreach ($services as $service)
+            <div class="swiper-slide">
+                <a
+                    href="{{ url($service->slug) }}"
+
+                    class="tourCard -type-1 d-block border-1 bg-white hover-shadow-1 overflow-hidden rounded-12 bg-white -hover-shadow"
+                >
+                    <div class="tourCard__header">
+                        <div class="tourCard__image ratio ratio-28:20">
+                            @if ($service->images->count() > 0)
+                            <img
+                                src="{{ asset($service->images->first()->image_path) }}"
+                                alt="{{ $service->title }}"
+                                class="img-ratio"
+                            />
+                            @else
+                            <img
+                                src="{{ asset('img/default.jpg') }}"
+                                alt="Default Image"
+                                class="img-ratio"
+                            />
+                            @endif
+                        </div>
+                        <button class="tourCard__favorite">
+                            <i class="icon-heart"></i>
+                        </button>
+                    </div>
+                    <div class="tourCard__content px-20 py-10">
+                        <div
+                            class="tourCard__location d-flex items-center text-13 text-light-2"
+                        >
+                            <i class="icon-pin d-flex text-16 text-light-2 mr-5"></i>
+                            {{ $service->location }}
+                        </div>
+                        <h3 class="tourCard__title text-16 fw-500 mt-5">
+                            <span>{{ $service->title }}</span>
+                        </h3>
+                        <div class="tourCard__rating text-13 mt-5">
+                            <div class="d-flex items-center">
+                                <div class="d-flex x-gap-5">
+                                    @for ($i = 0; $i < 5; $i++)
+                                    <div>
+                                        <i class="icon-star text-10 text-yellow-2"></i>
+                                    </div>
+                                    @endfor
+                                </div>
+                                <span class="text-dark-1 ml-10">4.9 (320)</span>
+                            </div>
+                        </div>
+                        <div
+                            class="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10"
+                        >
+                            <div class="d-flex items-center">
+                                <i class="icon-clock text-16 mr-5"></i>
+                                {{ $service->duration }}
+                            </div>
+                            <div>
+                                From <span class="text-16 fw-500">${{ $service->price }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endforeach
+
+
+            
+            </div>
+        </div>
+
+        <div class="navAbsolute">
+            <button class="navAbsolute__button bg-white js-slider1-prev">
+            <i class="icon-arrow-left text-14"></i>
+            </button>
+
+            <button class="navAbsolute__button bg-white js-slider1-next">
+            <i class="icon-arrow-right text-14"></i>
+            </button>
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="layout-pt-xl layout-pb-xl">
+    <div data-anim-wrap class="container">
+        <div
+        data-anim-child="slide-up"
+        class="row justify-between items-end y-gap-10"
+        >
+        <div class="col-auto">
+            <h2 class="text-30">Trending Destinations</h2>
+        </div>
+
+        <div class="col-auto">
+            <button class="buttonArrow d-flex items-center">
+            <span>See all</span>
+            <i class="icon-arrow-top-right text-16 ml-10"></i>
+            </button>
+        </div>
+        </div>
+
+        <div class="grid -type-2 pt-40 sm:pt-20">
+        <a
+            href="#"
+            data-anim-child="slide-up delay-1"
+            class="featureCard -type-1 overflow-hidden rounded-12 px-30 py-30 -hover-image-scale"
+        >
+            <div class="featureCard__image -hover-image-scale__image">
+            <img src="img/features/2/1.jpg" alt="image" />
+            </div>
+
+            <div class="featureCard__content">
+            <h4 class="text-white">Ouzoud</h4>
+            </div>
+        </a>
+
+        <a
+            href="#"
+            data-anim-child="slide-up delay-2"
+            class="featureCard -type-1 overflow-hidden rounded-12 px-30 py-30 -hover-image-scale"
+        >
+            <div class="featureCard__image -hover-image-scale__image">
+            <img src="img/features/2/2.jpg" alt="image" />
+            </div>
+
+            <div class="featureCard__content">
+            <h4 class="text-white">Agafay</h4>
+            </div>
+        </a>
+
+        <a
+            href="#"
+            data-anim-child="slide-up delay-3"
+            class="featureCard -type-1 overflow-hidden rounded-12 px-30 py-30 -hover-image-scale"
+        >
+            <div class="featureCard__image -hover-image-scale__image">
+            <img src="img/features/2/3.jpg" alt="image" />
+            </div>
+
+            <div class="featureCard__content">
+            <h4 class="text-white">Ourika</h4>
+            </div>
+        </a>
+
+        <a
+            href="#"
+            data-anim-child="slide-up delay-4"
+            class="featureCard -type-1 overflow-hidden rounded-12 px-30 py-30 -hover-image-scale"
+        >
+            <div class="featureCard__image -hover-image-scale__image">
+            <img src="img/features/2/4.jpg" alt="image" />
+            </div>
+
+            <div class="featureCard__content">
+            <h4 class="text-white">Imlil</h4>
+            </div>
+        </a>
+
+        <a
+            href="#"
+            data-anim-child="slide-up delay-5"
+            class="featureCard -type-1 overflow-hidden rounded-12 px-30 py-30 -hover-image-scale"
+        >
+            <div class="featureCard__image -hover-image-scale__image">
+            <img src="img/features/2/5.jpg" alt="image" />
+            </div>
+
+            <div class="featureCard__content">
+            <h4 class="text-white">Majorelle</h4>
+            </div>
+        </a>
+
+        <a
+            href="#"
+            data-anim-child="slide-up delay-6"
+            class="featureCard -type-1 overflow-hidden rounded-12 px-30 py-30 -hover-image-scale"
+        >
+            <div class="featureCard__image -hover-image-scale__image">
+            <img src="img/features/2/6.jpg" alt="image" />
+            </div>
+
+            <div class="featureCard__content">
+            <h4 class="text-white">Essaouira</h4>
+            </div>
+        </a>
+        </div>
+    </div>
+</section>
+
+<section class="layout-pt-xl layout-pb-xl bg-accent-1-05">
+    <div data-anim-wrap class="container">
+        <div
+        data-anim-child="slide-up"
+        class="row justify-center text-center"
+        >
+        <div class="col-auto">
+            <h2 class="text-30">
+            Unforgettable Experiences Shared by Our Guests
+            </h2>
+        </div>
+        </div>
+
+        <div
+        data-anim-child="slide-up delay-2"
+        class="row justify-center pt-60 md:pt-30"
+        >
+        <div class="col-xl-7 col-md-8 col-sm-10">
+            <div class="overflow-hidden js-testimonialsSlider_1">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                <div class="testimonials -type-2 text-center">
+                    <div class="testimonials__icon">
+                    <svg
+                        width="60"
+                        height="43"
+                        viewBox="0 0 60 43"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                        d="M14.837 42.0652C11.0326 42.0652 7.6087 40.5435 4.56522 37.5C1.52174 34.3478 0 29.7283 0 23.6413C0 16.6848 1.84783 11.0326 5.54348 6.68478C9.34783 2.22825 14.7283 0 21.6848 0C24.1848 0 26.1413 0.163038 27.5543 0.489121V7.98912C26.0326 7.77173 24.0761 7.66304 21.6848 7.66304C17.9891 7.66304 15 8.91304 12.7174 11.413C10.5435 13.5869 9.29348 16.4674 8.96739 20.0543C10.3804 18.3152 12.663 17.4456 15.8152 17.4456C19.0761 17.4456 21.8478 18.587 24.1304 20.8696C26.413 23.0435 27.5543 25.9239 27.5543 29.5109C27.5543 33.2065 26.3587 36.25 23.9674 38.6413C21.5761 40.9239 18.5326 42.0652 14.837 42.0652ZM47.2826 42.0652C43.4783 42.0652 40.0543 40.5435 37.0109 37.5C33.9674 34.3478 32.4456 29.7283 32.4456 23.6413C32.4456 16.6848 34.2935 11.0326 37.9891 6.68478C41.7935 2.22825 47.1739 0 54.1304 0C56.6304 0 58.587 0.163038 60 0.489121V7.98912C58.4783 7.77173 56.5217 7.66304 54.1304 7.66304C50.4348 7.66304 47.4456 8.91304 45.163 11.413C42.9891 13.5869 41.7391 16.4674 41.413 20.0543C42.8261 18.3152 45.1087 17.4456 48.2609 17.4456C51.5217 17.4456 54.2935 18.587 56.5761 20.8696C58.8587 23.0435 60 25.9239 60 29.5109C60 33.2065 58.8043 36.25 56.413 38.6413C54.0217 40.9239 50.9783 42.0652 47.2826 42.0652Z"
+                        fill="#F6B231"
+                        />
+                    </svg>
+                    </div>
+
+                    <div class="text-20 md:text-18 fw-400 mt-60 md:mt-30">
+                    <b>Unforgettable Experience</b><br />
+                    Marrakech Sweet Travel provided excellent services for
+                    my friends and me during our stay in Marrakech. We
+                    booked a guided tour of Marrakech with an excellent and
+                    knowledgeable guide, Ali, who made sure we had a nice
+                    traditional breakfast before we started our tour. He
+                    showed us around Bahia Palace, the Médina, and took us
+                    to the Majorelle Gardens. He was full of energy and a
+                    really kind person.
+                    </div>
+                </div>
+                </div>
+
+                <div class="swiper-slide">
+                <div class="testimonials -type-2 text-center">
+                    <div class="testimonials__icon">
+                    <svg
+                        width="60"
+                        height="43"
+                        viewBox="0 0 60 43"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                        d="M14.837 42.0652C11.0326 42.0652 7.6087 40.5435 4.56522 37.5C1.52174 34.3478 0 29.7283 0 23.6413C0 16.6848 1.84783 11.0326 5.54348 6.68478C9.34783 2.22825 14.7283 0 21.6848 0C24.1848 0 26.1413 0.163038 27.5543 0.489121V7.98912C26.0326 7.77173 24.0761 7.66304 21.6848 7.66304C17.9891 7.66304 15 8.91304 12.7174 11.413C10.5435 13.5869 9.29348 16.4674 8.96739 20.0543C10.3804 18.3152 12.663 17.4456 15.8152 17.4456C19.0761 17.4456 21.8478 18.587 24.1304 20.8696C26.413 23.0435 27.5543 25.9239 27.5543 29.5109C27.5543 33.2065 26.3587 36.25 23.9674 38.6413C21.5761 40.9239 18.5326 42.0652 14.837 42.0652ZM47.2826 42.0652C43.4783 42.0652 40.0543 40.5435 37.0109 37.5C33.9674 34.3478 32.4456 29.7283 32.4456 23.6413C32.4456 16.6848 34.2935 11.0326 37.9891 6.68478C41.7935 2.22825 47.1739 0 54.1304 0C56.6304 0 58.587 0.163038 60 0.489121V7.98912C58.4783 7.77173 56.5217 7.66304 54.1304 7.66304C50.4348 7.66304 47.4456 8.91304 45.163 11.413C42.9891 13.5869 41.7391 16.4674 41.413 20.0543C42.8261 18.3152 45.1087 17.4456 48.2609 17.4456C51.5217 17.4456 54.2935 18.587 56.5761 20.8696C58.8587 23.0435 60 25.9239 60 29.5109C60 33.2065 58.8043 36.25 56.413 38.6413C54.0217 40.9239 50.9783 42.0652 47.2826 42.0652Z"
+                        fill="#F6B231"
+                        />
+                    </svg>
+                    </div>
+
+                    <div class="text-20 md:text-18 fw-400 mt-60 md:mt-30">
+                    <b>Great Service, Would Definitely Recommend!</b><br />
+                    We booked a day trip to Ourika Valley where we chose to
+                    do the 2-hour hike to see the waterfalls. We also had a
+                    really helpful guide called Saeed who was very caring
+                    and careful, especially because we had one member of our
+                    group who was afraid of heights. The views were
+                    stunning. Overall, we had a very nice experience and I
+                    really recommend booking this day trip with them.
+                    </div>
+                </div>
+                </div>
+
+                <div class="swiper-slide">
+                <div class="testimonials -type-2 text-center">
+                    <div class="testimonials__icon">
+                    <svg
+                        width="60"
+                        height="43"
+                        viewBox="0 0 60 43"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                        d="M14.837 42.0652C11.0326 42.0652 7.6087 40.5435 4.56522 37.5C1.52174 34.3478 0 29.7283 0 23.6413C0 16.6848 1.84783 11.0326 5.54348 6.68478C9.34783 2.22825 14.7283 0 21.6848 0C24.1848 0 26.1413 0.163038 27.5543 0.489121V7.98912C26.0326 7.77173 24.0761 7.66304 21.6848 7.66304C17.9891 7.66304 15 8.91304 12.7174 11.413C10.5435 13.5869 9.29348 16.4674 8.96739 20.0543C10.3804 18.3152 12.663 17.4456 15.8152 17.4456C19.0761 17.4456 21.8478 18.587 24.1304 20.8696C26.413 23.0435 27.5543 25.9239 27.5543 29.5109C27.5543 33.2065 26.3587 36.25 23.9674 38.6413C21.5761 40.9239 18.5326 42.0652 14.837 42.0652ZM47.2826 42.0652C43.4783 42.0652 40.0543 40.5435 37.0109 37.5C33.9674 34.3478 32.4456 29.7283 32.4456 23.6413C32.4456 16.6848 34.2935 11.0326 37.9891 6.68478C41.7935 2.22825 47.1739 0 54.1304 0C56.6304 0 58.587 0.163038 60 0.489121V7.98912C58.4783 7.77173 56.5217 7.66304 54.1304 7.66304C50.4348 7.66304 47.4456 8.91304 45.163 11.413C42.9891 13.5869 41.7391 16.4674 41.413 20.0543C42.8261 18.3152 45.1087 17.4456 48.2609 17.4456C51.5217 17.4456 54.2935 18.587 56.5761 20.8696C58.8587 23.0435 60 25.9239 60 29.5109C60 33.2065 58.8043 36.25 56.413 38.6413C54.0217 40.9239 50.9783 42.0652 47.2826 42.0652Z"
+                        fill="#F6B231"
+                        />
+                    </svg>
+                    </div>
+
+                    <div class="text-20 md:text-18 fw-400 mt-60 md:mt-30">
+                    <b>Honest and Trustful!</b><br />
+
+                    Marrakech Sweet Travel is a travel agency based in
+                    Marrakech with over 16 years of experience in the
+                    tourism sector and is officially registered with The
+                    Ministry of Tourism. It is our mission to present travel
+                    experiences in a respectful fashion that allows
+                    travelers to better discover and understand both the
+                    past and the future of our treasured land.
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div
+            class="testimonialsPagination -type-1 pt-60 md:pt-40 testimonialsSlider_1-pagination js-testimonialsSlider_1-pagination"
+            >
+            <div class="testimonialsPagination__item is-active">
+                <img src="img/avatars/1/1.jpg" alt="person" />
+
+                <div class="ml-20">
+                <div class="textj-16 lh-14 fw-500">Albert C.</div>
+                <div class="text-14 lh-14">Canada</div>
+                </div>
+            </div>
+
+            <div class="testimonialsPagination__item">
+                <img src="img/avatars/1/2.jpg" alt="person" />
+
+                <div class="ml-20">
+                <div class="textj-16 lh-14 fw-500">Lina D.</div>
+                <div class="text-14 lh-14">Spain</div>
+                </div>
+            </div>
+
+            <div class="testimonialsPagination__item">
+                <img src="img/avatars/1/3.jpg" alt="person" />
+
+                <div class="ml-20">
+                <div class="textj-16 lh-14 fw-500">Daniel P.</div>
+                <div class="text-14 lh-14">Portugal</div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="layout-pt-xl">
+    <div data-anim-wrap class="container">
+        <div class="row y-gap-30">
+        <div class="col-lg-3 col-6">
+            <div data-anim-child="fade delay-2" class="text-center">
+            <img src="img/icons/3/1.svg" alt="icon" />
+
+            <h3 class="text-40 md:text-30 lh-14 fw-700 mt-30 md:mt-15">
+                500+
+            </h3>
+            <p class="lh-15">Destinations Explored</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-6">
+            <div data-anim-child="fade delay-3" class="text-center">
+            <img src="img/icons/3/2.svg" alt="icon" />
+
+            <h3 class="text-40 md:text-30 lh-14 fw-700 mt-30 md:mt-15">
+                10K+
+            </h3>
+            <p class="lh-15">Guided Tours</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-6">
+            <div data-anim-child="fade delay-4" class="text-center">
+            <img src="img/icons/3/3.svg" alt="icon" />
+
+            <h3 class="text-40 md:text-30 lh-14 fw-700 mt-30 md:mt-15">
+                150K+
+            </h3>
+            <p class="lh-15">Happy Travelers</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-6">
+            <div data-anim-child="fade delay-5" class="text-center">
+            <img src="img/icons/3/4.svg" alt="icon" />
+
+            <h3 class="text-40 md:text-30 lh-14 fw-700 mt-30 md:mt-15">
+                4.9/5
+            </h3>
+            <p class="lh-15">Customer Rating</p>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="layout-pt-xl layout-pb-xl">
+    <div data-anim-wrap class="container">
+        <div class="row y-gap-30">
+        <div class="col-md-6">
+            <div
+            data-anim-child="slide-up delay-1"
+            class="featureCard -type-3"
+            >
+            <div class="featureCard__image">
+                <img src="img/cta/5/1.jpg" alt="image" />
+            </div>
+
+            <div class="featureCard__content">
+                <div class="text-white">
+                Enjoy these cool staycation promotions in Marrakech
+                </div>
+                <h4 class="text-30 text-white fw-700 lg:mt-10">
+                Best staycation<br />
+                deals
+                </h4>
+
+                <button class="button -md -accent-1 bg-white">
+                See activities
+                <i class="icon-arrow-top-right ml-10"></i>
+                </button>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div
+            data-anim-child="slide-up delay-1"
+            class="featureCard -type-3"
+            >
+            <div class="featureCard__image">
+                <img src="img/cta/5/2.jpg" alt="image" />
+            </div>
+
+            <div class="featureCard__content">
+                <div class="text-white">
+                Don&#39;t forget to check out these activities while
+                you&#39;re here
+                </div>
+                <h4 class="text-30 text-white fw-700 lg:mt-10">
+                All Time Favourite<br />
+                Activities in Essaouira
+                </h4>
+
+                <button class="button -md -accent-1 bg-white">
+                See activities
+                <i class="icon-arrow-top-right ml-10"></i>
+                </button>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="layout-pt-xl layout-pb-xl bg-dark-1">
+    <div data-anim-wrap class="container">
+        <div
+        data-anim-child="slide-up"
+        class="row justify-between items-end y-gap-10"
+        >
+        <div class="col-auto">
+            <h2 class="text-30 text-white">
+            Marrakech Sweet Travel Blog: Articles, Tips, and Guides
+            </h2>
+        </div>
+
+        <div class="col-auto">
+            <button class="buttonArrow d-flex items-center text-white">
+            <span>See all</span>
+            <i class="icon-arrow-top-right text-16 ml-10"></i>
+            </button>
+        </div>
+        </div>
+
+        <div
+        data-anim-child="slide-up delay-2"
+        class="row y-gap-30 pt-40 sm:pt-20"
+        >
+        <div class="col-lg-4 col-md-6">
+            <a href="#" class="blogCard -type-1">
+            <div class="blogCard__image ratio ratio-41:30">
+                <img
+                src="img/blogCards/1/1.png"
+                alt="image"
+                class="img-ratio rounded-12"
+                />
+                <div class="blogCard__badge">Trips</div>
+            </div>
+
+            <div class="blogCard__content mt-30">
+                <div class="blogCard__info text-14 text-white">
+                <div class="lh-13">April 06 2025</div>
+                <div class="blogCard__line"></div>
+                <div class="lh-13">By Osama</div>
+                </div>
+
+                <h3 class="blogCard__title text-18 fw-500 text-white mt-10">
+                Top 5 Must-See Destinations in Morocco with Marrakech Sweet
+                Travel
+                </h3>
+            </div>
+            </a>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <a href="#" class="blogCard -type-1">
+            <div class="blogCard__image ratio ratio-41:30">
+                <img
+                src="img/blogCards/1/2.png"
+                alt="image"
+                class="img-ratio rounded-12"
+                />
+                <div class="blogCard__badge">Trips</div>
+            </div>
+
+            <div class="blogCard__content mt-30">
+                <div class="blogCard__info text-14 text-white">
+                <div class="lh-13">April 06 2025</div>
+                <div class="blogCard__line"></div>
+                <div class="lh-13">By Osama</div>
+                </div>
+
+                <h3 class="blogCard__title text-18 fw-500 text-white mt-10">
+                Planning Your Perfect Moroccan Adventure: Tips from
+                Marrakech Sweet Travel
+                </h3>
+            </div>
+            </a>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <a href="#" class="blogCard -type-1">
+            <div class="blogCard__image ratio ratio-41:30">
+                <img
+                src="img/blogCards/1/3.png"
+                alt="image"
+                class="img-ratio rounded-12"
+                />
+                <div class="blogCard__badge">Trips</div>
+            </div>
+
+            <div class="blogCard__content mt-30">
+                <div class="blogCard__info text-14 text-white">
+                <div class="lh-13">April 06 2025</div>
+                <div class="blogCard__line"></div>
+                <div class="lh-13">By Osama</div>
+                </div>
+
+                <h3 class="blogCard__title text-18 fw-500 text-white mt-10">
+                Why a Guided Tour with Marrakech Sweet Travel is the Best
+                Way to Discover Morocco
+                </h3>
+            </div>
+            </a>
+        </div>
+        </div>
+    </div>
+</section>
+
+<section data-anim="slide-up" class="layout-pt-xl layout-pb-xl relative">
+    <div class="sectionBg">
+        <img src="img/cta/4/1.png" alt="image" class="img-cover" />
+    </div>
+
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-5">
+            <h2 class="text-30 text-white fw-700">
+            Subscribe to Our Travel Newsletter
+            <br class="md:d-none" />
+            And Stay Updated!
+            </h2>
+            <p class="text-white mt-30">
+            Sign up to receive exclusive travel tips, destination
+            highlights, and the latest offers from Marrakech Sweet Travel.
+            </p>
+
+            <div class="singleInput type-1 mt-30">
+            <input type="text" placeholder="Your email" />
+            <button class="button -md -dark-1 bg-white">Subscribe</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
 
 @endsection

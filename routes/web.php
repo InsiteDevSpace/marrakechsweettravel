@@ -24,6 +24,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Auth-specific routes (login, register, etc.)
+require __DIR__ . '/auth.php';
+
+// Middleware-protected routes
 Route::middleware('auth')->group(function () {
     // Profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -41,7 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('services', ServiceController::class);
 });
 
-// Generic slug-based route (must be last)
-Route::get('/{slug}', [ServiceController::class, 'showService'])->name('services.showService');
-
-require __DIR__ . '/auth.php';
+// Generic slug-based route (make sure to exclude known paths)
+Route::get('/{slug}', [ServiceController::class, 'showService'])
+    ->where('slug', '^(?!login|register|password|dashboard|profile|api|logout).*$')
+    ->name('services.showService');

@@ -421,9 +421,9 @@
         data-anim-child="slide-up"
         class="row y-gap-10 justify-between items-center y-gap-10"
         >
-        <div class="col-auto">
-            <h2 class="text-30">Ways to Experience Marrakech Sweet Travel</h2>
-        </div>
+            <div class="col-auto">
+                <h2 class="text-30">Ways to Experience Marrakech Sweet Travel</h2>
+            </div>
         </div>
 
         <div
@@ -438,337 +438,76 @@
             data-nav-next="js-slider1-next"
         >
             <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <a
-                href="#"
-                class="tourCard -type-1 d-block border-1 bg-white hover-shadow-1 overflow-hidden rounded-12 bg-white -hover-shadow"
-                >
-                <div class="tourCard__header">
-                    <div class="tourCard__image ratio ratio-28:20">
-                    <img
-                        src="img/tourCards/1.png"
-                        alt="Marrakech City Tour"
-                        class="img-ratio"
-                    />
-                    </div>
-                    <button class="tourCard__favorite">
-                    <i class="icon-heart"></i>
-                    </button>
-                </div>
-                <div class="tourCard__content px-20 py-10">
-                    <div
-                    class="tourCard__location d-flex items-center text-13 text-light-2"
-                    >
-                    <i
-                        class="icon-pin d-flex text-16 text-light-2 mr-5"
-                    ></i>
-                    Marrakech, Morocco
-                    </div>
-                    <h3 class="tourCard__title text-16 fw-500 mt-5">
-                    <span>Full-Day Guided Marrakech City Tour</span>
-                    </h3>
-                    <div class="tourCard__rating text-13 mt-5">
-                    <div class="d-flex items-center">
-                        <div class="d-flex x-gap-5">
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        </div>
-                        <span class="text-dark-1 ml-10">4.9 (320)</span>
-                    </div>
-                    </div>
-                    <div
-                    class="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10"
-                    >
-                    <div class="d-flex items-center">
-                        <i class="icon-clock text-16 mr-5"></i>
-                        1 day
-                    </div>
-                    <div>
-                        From <span class="text-16 fw-500">$65.00</span>
-                    </div>
-                    </div>
-                </div>
-                </a>
-            </div>
+           
 
-            <div class="swiper-slide">
-                <a
-                href="#"
-                class="tourCard -type-1 d-block border-1 bg-white hover-shadow-1 overflow-hidden rounded-12 bg-white -hover-shadow"
-                >
-                <div class="tourCard__header">
-                    <div class="tourCard__image ratio ratio-28:20">
-                    <img
-                        src="img/tourCards/2.png"
-                        alt="Atlas Mountains Tour"
-                        class="img-ratio"
-                    />
-                    </div>
-                    <button class="tourCard__favorite">
-                    <i class="icon-heart"></i>
-                    </button>
-                </div>
-                <div class="tourCard__content px-20 py-10">
-                    <div
-                    class="tourCard__location d-flex items-center text-13 text-light-2"
-                    >
-                    <i
-                        class="icon-pin d-flex text-16 text-light-2 mr-5"
-                    ></i>
-                    Atlas Mountains, Morocco
-                    </div>
-                    <h3 class="tourCard__title text-16 fw-500 mt-5">
-                    <span>Atlas Mountains & Berber Villages Day Trip</span>
-                    </h3>
-                    <div class="tourCard__rating text-13 mt-5">
-                    <div class="d-flex items-center">
-                        <div class="d-flex x-gap-5">
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        </div>
-                        <span class="text-dark-1 ml-10">4.8 (275)</span>
-                    </div>
-                    </div>
-                    <div
-                    class="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10"
-                    >
-                    <div class="d-flex items-center">
-                        <i class="icon-clock text-16 mr-5"></i>
-                        1 day
-                    </div>
-                    <div>
-                        From <span class="text-16 fw-500">$85.00</span>
-                    </div>
-                    </div>
-                </div>
-                </a>
-            </div>
 
+            @foreach ($services as $service)
             <div class="swiper-slide">
                 <a
-                href="#"
-                class="tourCard -type-1 d-block border-1 bg-white hover-shadow-1 overflow-hidden rounded-12 bg-white -hover-shadow"
-                >
-                <div class="tourCard__header">
-                    <div class="tourCard__image ratio ratio-28:20">
-                    <img
-                        src="img/tourCards/3.png"
-                        alt="Camel Ride in Agafay"
-                        class="img-ratio"
-                    />
-                    </div>
-                    <button class="tourCard__favorite">
-                    <i class="icon-heart"></i>
-                    </button>
-                </div>
-                <div class="tourCard__content px-20 py-10">
-                    <div
-                    class="tourCard__location d-flex items-center text-13 text-light-2"
-                    >
-                    <i
-                        class="icon-pin d-flex text-16 text-light-2 mr-5"
-                    ></i>
-                    Agafay Desert, Morocco
-                    </div>
-                    <h3 class="tourCard__title text-16 fw-500 mt-5">
-                    <span
-                        >Sunset Camel Ride & Dinner in the Agafay Desert</span
-                    >
-                    </h3>
-                    <div class="tourCard__rating text-13 mt-5">
-                    <div class="d-flex items-center">
-                        <div class="d-flex x-gap-5">
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        </div>
-                        <span class="text-dark-1 ml-10">4.7 (198)</span>
-                    </div>
-                    </div>
-                    <div
-                    class="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10"
-                    >
-                    <div class="d-flex items-center">
-                        <i class="icon-clock text-16 mr-5"></i>
-                        5 hours
-                    </div>
-                    <div>
-                        From <span class="text-16 fw-500">$45.00</span>
-                    </div>
-                    </div>
-                </div>
-                </a>
-            </div>
+                    href="{{ url($service->slug) }}"
 
-            <div class="swiper-slide">
-                <a
-                href="#"
-                class="tourCard -type-1 d-block border-1 bg-white hover-shadow-1 overflow-hidden rounded-12 bg-white -hover-shadow"
+                    class="tourCard -type-1 d-block border-1 bg-white hover-shadow-1 overflow-hidden rounded-12 bg-white -hover-shadow"
                 >
-                <div class="tourCard__header">
-                    <div class="tourCard__image ratio ratio-28:20">
-                    <img
-                        src="img/tourCards/4.png"
-                        alt="Essaouira Day Trip"
-                        class="img-ratio"
-                    />
-                    </div>
-                    <button class="tourCard__favorite">
-                    <i class="icon-heart"></i>
-                    </button>
-                </div>
-                <div class="tourCard__content px-20 py-10">
-                    <div
-                    class="tourCard__location d-flex items-center text-13 text-light-2"
-                    >
-                    <i
-                        class="icon-pin d-flex text-16 text-light-2 mr-5"
-                    ></i>
-                    Essaouira, Morocco
-                    </div>
-                    <h3 class="tourCard__title text-16 fw-500 mt-5">
-                    <span>Essaouira Full-Day Excursion from Marrakech</span>
-                    </h3>
-                    <div class="tourCard__rating text-13 mt-5">
-                    <div class="d-flex items-center">
-                        <div class="d-flex x-gap-5">
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
+                    <div class="tourCard__header">
+                        <div class="tourCard__image ratio ratio-28:20">
+                            @if ($service->images->count() > 0)
+                            <img
+                                src="{{ asset($service->images->first()->image_path) }}"
+                                alt="{{ $service->title }}"
+                                class="img-ratio"
+                            />
+                            @else
+                            <img
+                                src="{{ asset('img/default.jpg') }}"
+                                alt="Default Image"
+                                class="img-ratio"
+                            />
+                            @endif
                         </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        </div>
-                        <span class="text-dark-1 ml-10">4.8 (255)</span>
+                        <button class="tourCard__favorite">
+                            <i class="icon-heart"></i>
+                        </button>
                     </div>
+                    <div class="tourCard__content px-20 py-10">
+                        <div
+                            class="tourCard__location d-flex items-center text-13 text-light-2"
+                        >
+                            <i class="icon-pin d-flex text-16 text-light-2 mr-5"></i>
+                            {{ $service->location }}
+                        </div>
+                        <h3 class="tourCard__title text-16 fw-500 mt-5">
+                            <span>{{ $service->title }}</span>
+                        </h3>
+                        <div class="tourCard__rating text-13 mt-5">
+                            <div class="d-flex items-center">
+                                <div class="d-flex x-gap-5">
+                                    @for ($i = 0; $i < 5; $i++)
+                                    <div>
+                                        <i class="icon-star text-10 text-yellow-2"></i>
+                                    </div>
+                                    @endfor
+                                </div>
+                                <span class="text-dark-1 ml-10">4.9 (320)</span>
+                            </div>
+                        </div>
+                        <div
+                            class="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10"
+                        >
+                            <div class="d-flex items-center">
+                                <i class="icon-clock text-16 mr-5"></i>
+                                {{ $service->duration }}
+                            </div>
+                            <div>
+                                From <span class="text-16 fw-500">${{ $service->price }}</span>
+                            </div>
+                        </div>
                     </div>
-                    <div
-                    class="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10"
-                    >
-                    <div class="d-flex items-center">
-                        <i class="icon-clock text-16 mr-5"></i>
-                        1 day
-                    </div>
-                    <div>
-                        From <span class="text-16 fw-500">$75.00</span>
-                    </div>
-                    </div>
-                </div>
                 </a>
             </div>
+            @endforeach
 
-            <div class="swiper-slide">
-                <a
-                href="#"
-                class="tourCard -type-1 d-block border-1 bg-white hover-shadow-1 overflow-hidden rounded-12 bg-white -hover-shadow"
-                >
-                <div class="tourCard__header">
-                    <div class="tourCard__image ratio ratio-28:20">
-                    <img
-                        src="img/tourCards/5.png"
-                        alt="Ouzoud Waterfalls Tour"
-                        class="img-ratio"
-                    />
-                    </div>
-                    <button class="tourCard__favorite">
-                    <i class="icon-heart"></i>
-                    </button>
-                </div>
-                <div class="tourCard__content px-20 py-10">
-                    <div
-                    class="tourCard__location d-flex items-center text-13 text-light-2"
-                    >
-                    <i
-                        class="icon-pin d-flex text-16 text-light-2 mr-5"
-                    ></i>
-                    Ouzoud, Morocco
-                    </div>
-                    <h3 class="tourCard__title text-16 fw-500 mt-5">
-                    <span>Ouzoud Waterfalls Day Tour from Marrakech</span>
-                    </h3>
-                    <div class="tourCard__rating text-13 mt-5">
-                    <div class="d-flex items-center">
-                        <div class="d-flex x-gap-5">
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        <div>
-                            <i class="icon-star text-10 text-yellow-2"></i>
-                        </div>
-                        </div>
-                        <span class="text-dark-1 ml-10">4.9 (305)</span>
-                    </div>
-                    </div>
-                    <div
-                    class="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10"
-                    >
-                    <div class="d-flex items-center">
-                        <i class="icon-clock text-16 mr-5"></i>
-                        1 day
-                    </div>
-                    <div>
-                        From <span class="text-16 fw-500">$70.00</span>
-                    </div>
-                    </div>
-                </div>
-                </a>
-            </div>
+
+            
             </div>
         </div>
 

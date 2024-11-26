@@ -15,7 +15,7 @@
 
         <div class="table-responsive">
             <table class="table table-striped table-hover">
-                <thead class="table-blue">
+                <thead class="table-orange">
                     <tr>
                         <th scope="col">{{ __('messages.name') }}</th>
                         <th scope="col">{{ __('messages.date_created') }}</th>

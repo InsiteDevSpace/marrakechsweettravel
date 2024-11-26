@@ -24,11 +24,9 @@
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                         {{ __('messages.posts') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('members.index')">
-                        {{ __('messages.members') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('donations.index')" :active="request()->routeIs('donations.index')">
-                        {{ __('messages.donations') }}
+     
+                    <x-nav-link :href="route('services.index')" :active="request()->routeIs('services.index')">
+                        {{ __('messages.services') }}
                     </x-nav-link>
                 </div>
 

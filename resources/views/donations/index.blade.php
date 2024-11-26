@@ -17,7 +17,7 @@
         <!-- Table -->
         <div class="table-responsive">
             <table class="table table-striped table-hover">
-                <thead class="table-dark">
+                <thead class="table-orange">
                     <tr>
                         <th scope="col">{{ __('messages.first_name') }}</th>
                         <th scope="col">{{ __('messages.last_name') }}</th>

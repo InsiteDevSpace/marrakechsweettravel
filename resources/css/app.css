@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-.table-blue th {
-    background-color: #223de2 !important;
+.table-orange th {
+    background-color: #f6b231 !important;
     color: white !important;
+}
+
+.border-indigo-400 {
+    --tw-border-opacity: 1;
+    border-color: #f6b231;
 }
 
 /* Remove text underline from action icons */

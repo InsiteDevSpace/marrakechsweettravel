@@ -142,7 +142,7 @@ return [
     'day_trip' => 'Day Trip',
     'activity' => 'Activity',
     'tour' => 'Tour',
-     'add_service' => 'Add Service',
+    'add_service' => 'Add Service',
     'title' => 'Title',
     'enter_title' => 'Enter the title',
     'type' => 'Type',
@@ -210,7 +210,18 @@ return [
     'x_highlights' => ':count Highlights',
     'no_highlights' => 'No Highlights',
     'currency_symbol' => '$',
-
-
-
+    //Transfers
+    'transfer_details' => 'Transfer Details',
+    'departure' => 'Departure',
+    'destination' => 'Destination',
+    'type' => 'Type',
+    'price' => 'Price',
+    'min_people' => 'Minimum People',
+    'max_people' => 'Maximum People',
+    'estimated_time' => 'Estimated Time',
+    'departure_destination_same' => 'Departure and destination must be different.',
+    'transfers_list' => 'List of transfers',
+    'add_transfer' => 'Add a transfer',
+    'edit_transfer' => 'Edit transfer',
+    'transfers' => 'Transfers'
 ];

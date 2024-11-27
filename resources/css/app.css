@@ -44,3 +44,9 @@ td a {
     align-items: center; /* Align icons in the center */
     justify-content: center;
 }
+
+#imagePreview {
+    padding: 10px;
+    width: 90%;
+    margin: 0 auto;
+}

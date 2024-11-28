@@ -9,14 +9,23 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TransferController;
 use Illuminate\Support\Facades\Route;
 
 // Static and specific routes
 Route::get('/', [HomeController::class, 'index'])->name('pages.home');
-Route::get('/a-propos', function () { return view('pages.about'); });
-Route::get('/contact', function () { return view('pages.contact'); });
-Route::get('/faire-un-don', function () { return view('pages.donation'); });
-Route::get('/conditions-generales', function () { return view('pages.conditions-generales'); });
+Route::get('/a-propos', function () {
+    return view('pages.about');
+});
+Route::get('/contact', function () {
+    return view('pages.contact');
+});
+Route::get('/faire-un-don', function () {
+    return view('pages.donation');
+});
+Route::get('/conditions-generales', function () {
+    return view('pages.conditions-generales');
+});
 Route::post('/donate', [DonationController::class, 'donate'])->name('donations.donate');
 
 // Authentication routes
@@ -35,11 +44,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('language/{lang}', [LanguageController::class, 'switchLang'])->name('language.switch');
-    
+
     // CRUD routes
     Route::resource('users', UserController::class);
     Route::resource('categories', CategoriesController::class);
     Route::resource('posts', PostsController::class);
+    Route::resource('transfers', TransferController::class);
     Route::resource('members', MembersController::class);
     Route::resource('donations', DonationController::class);
     Route::resource('services', ServiceController::class);

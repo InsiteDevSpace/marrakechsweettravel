@@ -35,7 +35,7 @@ return [
     'cant_undo' => 'Vous ne pourrez pas annuler cela !',
     'yes_delete' => 'Oui, supprimer !',
     'cancel' => 'Annuler',
-     'posts' => 'Articles',
+    'posts' => 'Articles',
     'post_list' => 'Liste des articles',
     'add_post' => 'Ajouter un article',
     'edit_post' => 'Modifier l\'article',
@@ -220,6 +220,19 @@ return [
     'x_highlights' => ':count Points forts',
     'no_highlights' => 'Aucun point fort',
     'currency_symbol' => '$',
-
+    //Transfers
+    'transfer_details' => 'Détails du transfert',
+    'departure' => 'Départ',
+    'destination' => 'Destination',
+    'type' => 'Type',
+    'price' => 'Prix',
+    'min_people' => 'Nombre minimum de personnes',
+    'max_people' => 'Nombre maximum de personnes',
+    'estimated_time' => 'Temps estimé',
+    'departure_destination_same' => 'Le départ et la destination doivent être différents.',
+    'transfers_list' => 'Liste des transferts',
+    'add_transfer' => 'Add a transfer',
+    'edit_transfer' => 'Modifier le transfert',
+    'transfers' => 'Transfers'
 
 ];

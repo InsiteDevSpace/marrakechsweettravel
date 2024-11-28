@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MembersController;
 use App\Http\Controllers\PostsController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReservationTransferController;
 use App\Http\Controllers\TransferController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +49,9 @@ Route::middleware('auth')->group(function () {
 
     // CRUD routes
     Route::resource('users', UserController::class);
+    Route::resource('clients', ClientController::class);
+    Route::resource('reservation_transfers', ReservationTransferController::class);
+
     Route::resource('categories', CategoriesController::class);
     Route::resource('posts', PostsController::class);
     Route::resource('transfers', TransferController::class);

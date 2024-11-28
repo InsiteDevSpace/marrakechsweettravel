@@ -41,6 +41,8 @@
                         <th>{{ __('messages.destination') }}</th>
                         <th>{{ __('messages.type') }}</th>
                         <th>{{ __('messages.price') }}</th>
+                        <th>{{ __('messages.start_date') }}</th>
+                        <th>{{ __('messages.end_date') }}</th>
                         <th>{{ __('messages.min_people') }}</th>
                         <th>{{ __('messages.max_people') }}</th>
                         <th>{{ __('messages.estimated_time') }}</th>
@@ -54,6 +56,8 @@
                             <td>{{ $transfer->destination }}</td>
                             <td>{{ $transfer->type }}</td>
                             <td>${{ number_format($transfer->price, 2) }}</td>
+                            <td>{{ $transfer->start_date }}</td>
+                            <td>{{ $transfer->end_date }}</td>
                             <td>{{ $transfer->min_people }}</td>
                             <td>{{ $transfer->max_people }}</td>
                             <td>{{ $transfer->estimated_time ? $transfer->estimated_time . ' mins' : 'N/A' }}</td>
@@ -105,10 +109,13 @@
                     <form id="addTransferForm" action="{{ route('transfers.store') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
+                        <!-- Image upload -->
                         <div class="mb-3">
                             <label for="image" class="form-label">{{ __('messages.image') }}</label>
                             <input type="file" name="image" class="form-control" required>
                         </div>
+
+                        <!-- Departure select -->
                         <div class="mb-3">
                             <label for="departure" class="form-label">{{ __('messages.departure') }}</label>
                             <select name="departure" class="form-select" required>
@@ -138,8 +145,9 @@
                                 <option value="TOUBKAL">TOUBKAL</option>
                                 <option value="BENGUERIR">BENGUERIR</option>
                             </select>
-
                         </div>
+
+                        <!-- Destination select -->
                         <div class="mb-3">
                             <label for="destination" class="form-label">{{ __('messages.destination') }}</label>
                             <select name="destination" class="form-select" required>
@@ -170,31 +178,54 @@
                                 <option value="BENGUERIR">BENGUERIR</option>
                             </select>
                         </div>
+
+                        <!-- Type selection -->
                         <div class="mb-3">
                             <label for="type" class="form-label">{{ __('messages.type') }}</label>
-                            <select name="type" class="form-select" required>
+                            <select name="type" id="type" class="form-select" required>
                                 <option value="one_way">{{ __('messages.one_way') }}</option>
                                 <option value="round_trip">{{ __('messages.round_trip') }}</option>
                             </select>
                         </div>
+
+                        <!-- Start Date -->
+                        <div class="mb-3">
+                            <label for="start_date" class="form-label">{{ __('messages.start_date') }}</label>
+                            <input type="date" name="start_date" class="form-control" required>
+                        </div>
+
+                        <!-- End Date (hidden initially) -->
+                        <div class="mb-3" id="endDateField" style="display: none;">
+                            <label for="end_date" class="form-label">{{ __('messages.end_date') }}</label>
+                            <input type="date" name="end_date" class="form-control">
+                        </div>
+
+                        <!-- Price field -->
                         <div class="mb-3">
                             <label for="price" class="form-label">{{ __('messages.price') }}</label>
                             <input type="number" name="price" class="form-control" step="0.01" min="0"
                                 required>
                         </div>
+
+                        <!-- Min People field -->
                         <div class="mb-3">
                             <label for="min_people" class="form-label">{{ __('messages.min_people') }}</label>
                             <input type="number" name="min_people" class="form-control" min="1" required>
                         </div>
+
+                        <!-- Max People field -->
                         <div class="mb-3">
                             <label for="max_people" class="form-label">{{ __('messages.max_people') }}</label>
                             <input type="number" name="max_people" class="form-control" min="1" required>
                         </div>
+
+                        <!-- Estimated Time field -->
                         <div class="mb-3">
                             <label for="estimated_time"
                                 class="form-label">{{ __('messages.estimated_time') }}</label>
                             <input type="number" name="estimated_time" class="form-control">
                         </div>
+
                         <button type="submit" class="btn btn-primary">{{ __('messages.add_transfer') }}</button>
                     </form>
                 </div>
@@ -215,12 +246,16 @@
                     <form id="editTransferForm" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
+
+                        <!-- Image upload with preview -->
                         <div class="mb-3">
                             <label for="image" class="form-label">{{ __('messages.image') }}</label>
                             <input type="file" name="image" class="form-control" id="imageInput">
                             <img id="imagePreview" src="" alt="Current Image" class="mt-3 d-none"
                                 style="max-width: 100%; height: auto;">
                         </div>
+
+                        <!-- Departure select -->
                         <div class="mb-3">
                             <label for="departure" class="form-label">{{ __('messages.departure') }}</label>
                             <select name="departure" class="form-select" required>
@@ -251,6 +286,8 @@
                                 <option value="BENGUERIR">BENGUERIR</option>
                             </select>
                         </div>
+
+                        <!-- Destination select -->
                         <div class="mb-3">
                             <label for="destination" class="form-label">{{ __('messages.destination') }}</label>
                             <select name="destination" class="form-select" required>
@@ -281,37 +318,61 @@
                                 <option value="BENGUERIR">BENGUERIR</option>
                             </select>
                         </div>
+
+                        <!-- Type selection -->
                         <div class="mb-3">
                             <label for="type" class="form-label">{{ __('messages.type') }}</label>
-                            <select name="type" class="form-select" required>
+                            <select name="type" id="type" class="form-select" required>
                                 <option value="one_way">{{ __('messages.one_way') }}</option>
                                 <option value="round_trip">{{ __('messages.round_trip') }}</option>
                             </select>
                         </div>
+
+                        <!-- Start Date -->
+                        <div class="mb-3">
+                            <label for="start_date" class="form-label">{{ __('messages.start_date') }}</label>
+                            <input type="date" name="start_date" class="form-control" required>
+                        </div>
+
+                        <!-- End Date (hidden initially) -->
+                        <div class="mb-3" id="endDateField" style="display: nonee;">
+                            <label for="end_date" class="form-label">{{ __('messages.end_date') }}</label>
+                            <input type="date" name="end_date" class="form-control">
+                        </div>
+
+                        <!-- Price field -->
                         <div class="mb-3">
                             <label for="price" class="form-label">{{ __('messages.price') }}</label>
                             <input type="number" name="price" class="form-control" step="0.01" min="0"
                                 required>
                         </div>
+
+                        <!-- Min People field -->
                         <div class="mb-3">
                             <label for="min_people" class="form-label">{{ __('messages.min_people') }}</label>
                             <input type="number" name="min_people" class="form-control" min="1" required>
                         </div>
+
+                        <!-- Max People field -->
                         <div class="mb-3">
                             <label for="max_people" class="form-label">{{ __('messages.max_people') }}</label>
                             <input type="number" name="max_people" class="form-control" min="1" required>
                         </div>
+
+                        <!-- Estimated Time field -->
                         <div class="mb-3">
                             <label for="estimated_time"
                                 class="form-label">{{ __('messages.estimated_time') }}</label>
                             <input type="number" name="estimated_time" class="form-control">
                         </div>
-                        <!-- Loading spinner -->
+
+                        <!-- Loading spinner (hidden initially) -->
                         <div class="text-center d-none" id="editLoadingSpinner">
                             <div class="spinner-border text-primary" role="status">
                                 <span class="visually-hidden">Loading...</span>
                             </div>
                         </div>
+
                         <button type="button" class="btn btn-primary"
                             onclick="submitEditTransferForm()">{{ __('messages.save_changes') }}</button>
                     </form>
@@ -343,6 +404,11 @@
             </div>
         </div>
     </div>
+
+    <!-- Notifications -->
+    @if (session('success'))
+        <div id="success-message" data-message="{{ session('success') }}"></div>
+    @endif
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
@@ -427,5 +493,43 @@
                 }
             });
         }
+
+        // Trigger SweetAlert2 Success notification
+        document.addEventListener("DOMContentLoaded", function() {
+            var successMessage = document.getElementById('success-message');
+            if (successMessage) {
+                var message = successMessage.getAttribute('data-message');
+                Swal.fire({
+                    icon: 'success',
+                    title: message,
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the type dropdown and end date field
+            const typeSelect = document.getElementById('type');
+            const endDateField = document.getElementById('endDateField');
+
+            // Function to toggle the end date field visibility
+            function toggleEndDateField() {
+                if (typeSelect.value === 'round_trip') {
+                    endDateField.style.display = 'block';
+                } else {
+                    endDateField.style.display = 'none';
+                }
+            }
+
+            // Initialize visibility based on the selected type
+            toggleEndDateField();
+
+            // Add event listener to toggle on change
+            typeSelect.addEventListener('change', toggleEndDateField);
+        });
     </script>
 </x-app-layout>

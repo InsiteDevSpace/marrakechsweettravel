@@ -32,6 +32,14 @@
                     <x-nav-link :href="route('transfers.index')" :active="request()->routeIs('transfers.index')">
                         {{ __('messages.transfers') }}
                     </x-nav-link>
+                    <!-- Add clients Link -->
+                    <x-nav-link :href="route('clients.index')" :active="request()->routeIs('clients.index')">
+                        {{ __('messages.clients') }}
+                    </x-nav-link>
+                    <!-- Reservation Link -->
+                    <x-nav-link :href="route('reservation_transfers.index')" :active="request()->routeIs('reservation_transfers.index')">
+                        {{ __('messages.reservation_transfers') }}
+                    </x-nav-link>
                 </div>
             </div>
 

@@ -30,6 +30,8 @@ class TransferController extends Controller
             'price' => 'required|numeric|min:0',
             'departure' => 'required|string|max:255',
             'destination' => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'end_date' => $request->type === 'round_trip' ? 'required|date' : 'nullable|date',
             'type' => 'required|in:one_way,round_trip',
         ]);
 
@@ -44,7 +46,7 @@ class TransferController extends Controller
         Transfer::create($validated);
 
         // Redirect to the transfers index page with a success message
-        return redirect()->route('transfers.index')->with('success', 'Transfer created successfully.');
+        return redirect()->route('transfers.index')->with('success',  __('messages.transfer_created_success'));
     }
 
     public function show($id)
@@ -78,7 +80,7 @@ class TransferController extends Controller
 
         $transfer->update($validated);
 
-        return redirect()->route('transfers.index')->with('success', 'Transfer updated successfully.');
+        return redirect()->route('transfers.index')->with('success', __('messages.transfer_updated_success'));
     }
 
 
@@ -90,6 +92,6 @@ class TransferController extends Controller
         $transfer->delete();
 
         // Redirect back to the transfers index page with a success message
-        return redirect()->route('transfers.index')->with('success', 'Transfer deleted successfully.');
+        return redirect()->route('transfers.index')->with('success',  __('messages.transfer_deleted_success'));
     }
 }

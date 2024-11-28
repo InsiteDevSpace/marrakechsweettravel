@@ -12,7 +12,7 @@ class ReservationTransfer extends Model
     protected $table = "reservation_transfers";
 
     protected $fillable = [
-        'user_id',
+        'client_id',
         'transfer_id',
         'total_people',
         'total_price',
@@ -24,8 +24,8 @@ class ReservationTransfer extends Model
         return $this->belongsTo(Transfer::class);
     }
 
-    public function user()
+    public function client()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Client::class);
     }
 }

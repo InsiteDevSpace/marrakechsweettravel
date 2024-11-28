@@ -9,7 +9,6 @@ class Transfer extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [
         'image',
         'min_people',
@@ -19,6 +18,8 @@ class Transfer extends Model
         'departure',
         'destination',
         'type',
+        'start_date',
+        'end_date'
     ];
 
     public function reservations()

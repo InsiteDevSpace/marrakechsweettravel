@@ -111,21 +111,40 @@
                         <ul class="list-group">
                             <li class="list-group-item"><strong>{{ __('messages.client') }}:</strong> <span
                                     id="reservation-client"></span></li>
+                            <li class="list-group-item"><strong>{{ __('messages.client_phone') }}:</strong> <span
+                                    id="reservation-client-phone"></span></li>
+                            <li class="list-group-item"><strong>{{ __('messages.client_address') }}:</strong> <span
+                                    id="reservation-client-address"></span></li>
+                            <li class="list-group-item"><strong>{{ __('messages.client_nationality') }}:</strong> <span
+                                    id="reservation-client-nationality"></span></li>
+                            <li class="list-group-item"><strong>{{ __('messages.passport_number') }}:</strong> <span
+                                    id="reservation-client-passport"></span></li>
                             <li class="list-group-item"><strong>{{ __('messages.transfer') }}:</strong> <span
                                     id="reservation-transfer"></span></li>
                             <li class="list-group-item"><strong>{{ __('messages.total_people') }}:</strong> <span
                                     id="reservation-people"></span></li>
-
-                            <li class="list-group-item"><strong>{{ __('messages.start_date') }}:</strong> <span
-                                    id="reservation-start_date"></span></li>
-
-                            <li class="list-group-item"><strong>{{ __('messages.end_date') }}:</strong> <span
-                                    id="reservation-end_date"></span></li>
-
                             <li class="list-group-item"><strong>{{ __('messages.total_price') }}:</strong> <span
                                     id="reservation-price"></span></li>
                             <li class="list-group-item"><strong>{{ __('messages.date') }}:</strong> <span
                                     id="reservation-date"></span></li>
+                            <li class="list-group-item"><strong>{{ __('messages.start_date') }}:</strong> <span
+                                    id="reservation-start_date"></span></li>
+                            <li class="list-group-item"><strong>{{ __('messages.end_date') }}:</strong> <span
+                                    id="reservation-end_date"></span></li>
+                            <li class="list-group-item"><strong>{{ __('messages.hotel_name') }}:</strong> <span
+                                    id="reservation-hotel_name"></span></li>
+                            <li class="list-group-item"><strong>{{ __('messages.hotel_address') }}:</strong> <span
+                                    id="reservation-hotel_address"></span></li>
+                            <li class="list-group-item"><strong>{{ __('messages.flight_number') }}:</strong> <span
+                                    id="reservation-flight_number"></span></li>
+                            <li class="list-group-item"><strong>{{ __('messages.flight_time') }}:</strong> <span
+                                    id="reservation-flight_time"></span></li>
+                            <li class="list-group-item"><strong>{{ __('messages.hotel_phone') }}:</strong> <span
+                                    id="reservation-hotel_phone"></span></li>
+                            <li class="list-group-item"><strong>{{ __('messages.comment') }}:</strong> <span
+                                    id="reservation-comment"></span></li>
+                            <li class="list-group-item"><strong>{{ __('messages.type') }}:</strong> <span
+                                    id="reservation-type"></span></li>
                         </ul>
                     </div>
                     <div class="modal-footer">
@@ -136,15 +155,18 @@
             </div>
         </div>
 
+
         <!-- Modal for Adding New Reservation -->
         <div class="modal fade" id="addReservationModal" tabindex="-1" aria-labelledby="addReservationModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addReservationModalLabel">{{ __('messages.add_new_reservation') }}
+                        <h5 class="modal-title" id="addReservationModalLabel">
+                            {{ __('messages.add_new_reservation') }}
                         </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form id="addReservationForm" action="{{ route('reservation_transfers.store') }}"
@@ -201,6 +223,41 @@
                                 <label for="booking_date" class="form-label">{{ __('messages.date') }}</label>
                                 <input type="date" class="form-control" id="date" name="date" required>
                             </div>
+
+                            <div class="mb-3">
+                                <label for="hotel_name">{{ __('messages.hotel_name') }}</label>
+                                <input type="text" class="form-control" name="hotel_name" id="hotel_name"
+                                    required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="hotel_address">{{ __('messages.hotel_address') }}</label>
+                                <input type="text" class="form-control" name="hotel_address" id="hotel_address"
+                                    required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="Flight_number">{{ __('messages.flight_number') }}</label>
+                                <input type="text" class="form-control" name="Flight_number" id="Flight_number"
+                                    required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="Flight_time">{{ __('messages.flight_time') }}</label>
+                                <input type="datetime-local" class="form-control" name="Flight_time"
+                                    id="Flight_time" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="hotel_phone">{{ __('messages.hotel_phone') }}</label>
+                                <input type="text" class="form-control" name="hotel_phone" id="hotel_phone">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="Comment">{{ __('messages.comment') }}</label>
+                                <textarea class="form-control" name="Comment" id="Comment"></textarea>
+                            </div>
+
 
                             <div class="alert alert-danger d-none" id="errorAlert"></div>
                             <div class="text-center d-none" id="loadingSpinner">
@@ -298,6 +355,42 @@
                                 <input type="date" class="form-control" id="edit_date" name="date" required>
                             </div>
 
+
+                            <div class="mb-3">
+                                <label for="hotel_name">{{ __('messages.hotel_name') }}</label>
+                                <input type="text" class="form-control" name="hotel_name" id="hotel_name"
+                                    required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="hotel_address">{{ __('messages.hotel_address') }}</label>
+                                <input type="text" class="form-control" name="hotel_address" id="hotel_address"
+                                    required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="Flight_number">{{ __('messages.flight_number') }}</label>
+                                <input type="text" class="form-control" name="Flight_number" id="Flight_number"
+                                    required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="Flight_time">{{ __('messages.flight_time') }}</label>
+                                <input type="datetime-local" class="form-control" name="Flight_time"
+                                    id="Flight_time" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="hotel_phone">{{ __('messages.hotel_phone') }}</label>
+                                <input type="text" class="form-control" name="hotel_phone" id="hotel_phone">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="Comment">{{ __('messages.comment') }}</label>
+                                <textarea class="form-control" name="Comment" id="Comment"></textarea>
+                            </div>
+
+
                             <div class="alert alert-danger d-none" id="editErrorAlert"></div>
 
                             <div class="modal-footer">
@@ -328,13 +421,27 @@
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('reservation-client').textContent = data.client.name;
-                    document.getElementById('reservation-transfer').textContent = data.transfer.departure + ' ' + data
+                    document.getElementById('reservation-client-phone').textContent = data.client.phone;
+                    document.getElementById('reservation-client-address').textContent = data.client.address;
+                    document.getElementById('reservation-client-nationality').textContent = data.client.nationality;
+                    document.getElementById('reservation-client-passport').textContent = data.client.passport_number;
+
+                    document.getElementById('reservation-transfer').textContent = data.transfer.departure + ' - ' + data
                         .transfer.destination;
                     document.getElementById('reservation-people').textContent = data.total_people;
                     document.getElementById('reservation-price').textContent = `$${data.total_price}`;
                     document.getElementById('reservation-date').textContent = data.date;
                     document.getElementById('reservation-start_date').textContent = data.transfer.start_date;
-                    document.getElementById('reservation-end_date').textContent = data.transfer.end_date;
+                    document.getElementById('reservation-end_date').textContent = data.transfer.end_date ? data.transfer
+                        .end_date : 'N/A';
+                    document.getElementById('reservation-hotel_name').textContent = data.hotel_name;
+                    document.getElementById('reservation-hotel_address').textContent = data.hotel_address;
+                    document.getElementById('reservation-flight_number').textContent = data.flight_number;
+                    document.getElementById('reservation-flight_time').textContent = data.flight_time;
+                    document.getElementById('reservation-hotel_phone').textContent = data.hotel_phone;
+                    document.getElementById('reservation-comment').textContent = data.comment;
+                    document.getElementById('reservation-type').textContent = data.transfer.type === 'round_trip' ?
+                        'Round Trip' : 'One Way';
                 })
                 .catch(error => console.error('Error fetching reservation details:', error));
 
@@ -342,6 +449,7 @@
             var myModal = new bootstrap.Modal(document.getElementById('showReservationModal'));
             myModal.show();
         }
+
 
         // Confirm Delete with SweetAlert2
         function confirmDelete(id) {
@@ -374,6 +482,12 @@
                     form.querySelector('[name="total_people"]').value = data.total_people;
                     form.querySelector('[name="total_price"]').value = data.total_price;
                     form.querySelector('[name="date"]').value = data.date;
+                    form.querySelector('[name="hotel_name"]').value = data.hotel_name;
+                    form.querySelector('[name="hotel_address"]').value = data.hotel_address;
+                    form.querySelector('[name="Flight_number"]').value = data.Flight_number;
+                    form.querySelector('[name="Flight_time"]').value = data.Flight_time;
+                    form.querySelector('[name="hotel_phone"]').value = data.hotel_phone || '';
+                    form.querySelector('[name="Comment"]').value = data.Comment || '';
 
                     // Update the total price based on the number of people
                     updatePriceedit();

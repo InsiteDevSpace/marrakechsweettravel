@@ -17,6 +17,13 @@ class ReservationTransfer extends Model
         'total_people',
         'total_price',
         'date',
+        'status',
+        'hotel_name',
+        'hotel_address',
+        'Flight_number',
+        'Flight_time',
+        'hotel_phone',
+        'Comment'
     ];
 
     public function transfer()

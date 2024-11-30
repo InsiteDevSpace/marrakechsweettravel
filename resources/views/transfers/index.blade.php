@@ -392,14 +392,44 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p><strong>{{ __('messages.departure') }}:</strong> <span id="transfer-departure"></span></p>
-                    <p><strong>{{ __('messages.destination') }}:</strong> <span id="transfer-destination"></span></p>
-                    <p><strong>{{ __('messages.type') }}:</strong> <span id="transfer-type"></span></p>
-                    <p><strong>{{ __('messages.price') }}:</strong> <span id="transfer-price"></span></p>
-                    <p><strong>{{ __('messages.min_people') }}:</strong> <span id="transfer-min-people"></span></p>
-                    <p><strong>{{ __('messages.max_people') }}:</strong> <span id="transfer-max-people"></span></p>
-                    <p><strong>{{ __('messages.estimated_time') }}:</strong> <span
-                            id="transfer-estimated-time"></span></p>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <p><strong>{{ __('messages.departure') }}:</strong> <span id="transfer-departure"></span>
+                            </p>
+                        </li>
+                        <li class="list-group-item">
+                            <p><strong>{{ __('messages.destination') }}:</strong> <span
+                                    id="transfer-destination"></span></p>
+                        </li>
+                        <li class="list-group-item">
+                            <p><strong>{{ __('messages.start_date') }}:</strong> <span
+                                    id="transfer-start_date"></span></p>
+                        </li>
+                        <li class="list-group-item">
+                            <p><strong>{{ __('messages.end_date') }}:</strong> <span id="transfer-end_date"></span>
+                            </p>
+                        </li>
+                        <li class="list-group-item">
+                            <p><strong>{{ __('messages.type') }}:</strong> <span id="transfer-type"></span></p>
+                        </li>
+                        <li class="list-group-item">
+                            <p><strong>{{ __('messages.price') }}:</strong> <span id="transfer-price"></span></p>
+                        </li>
+                        <li class="list-group-item">
+                            <p><strong>{{ __('messages.min_people') }}:</strong> <span
+                                    id="transfer-min-people"></span></p>
+                        </li>
+                        <li class="list-group-item">
+                            <p><strong>{{ __('messages.max_people') }}:</strong> <span
+                                    id="transfer-max-people"></span></p>
+                        </li>
+                        <li class="list-group-item">
+                            <p><strong>{{ __('messages.estimated_time') }}:</strong> <span
+                                    id="transfer-estimated-time"></span></p>
+                        </li>
+                    </ul>
+
+
                 </div>
             </div>
         </div>
@@ -418,6 +448,8 @@
                 .then(data => {
                     document.getElementById('transfer-departure').textContent = data.departure;
                     document.getElementById('transfer-destination').textContent = data.destination;
+                    document.getElementById('transfer-start_date').textContent = data.start_date;
+                    document.getElementById('transfer-end_date').textContent = data.end_date;
                     document.getElementById('transfer-type').textContent = data.type;
                     document.getElementById('transfer-price').textContent = `$${data.price}`;
                     document.getElementById('transfer-min-people').textContent = data.min_people;

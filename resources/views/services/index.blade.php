@@ -1,4 +1,11 @@
 <x-app-layout>
+
+    @section('title', __('messages.services_list'))
+
+
+
+
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('messages.services') }}
@@ -15,64 +22,85 @@
         </div>
 
         <!-- Table -->
-        <div class="table-responsive">
-            <table class="table table-striped table-hover">
-                <thead class="table-orange">
-                    <tr>
-                        <th scope="col">{{ __('messages.title') }}</th>
-                        <th scope="col">{{ __('messages.type') }}</th>
-                        <th scope="col">{{ __('messages.price') }}</th>
-                        <th scope="col">{{ __('messages.duration') }}</th>
-                        <th scope="col">{{ __('messages.location') }}</th>
-                        <th scope="col" class="text-center">{{ __('messages.actions') }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($services as $service)
-                        <tr>
-                            <!-- Title -->
-                            <td>{{ $service->title }}</td>
+       <div class="table-responsive">
+    <table class="table table-hover align-middle">
+        <thead class="bg-light border-bottom">
+            <tr>
+                <th scope="col" class="text-center" style="width: 60px;">{{ __('messages.image') }}</th>
+                <th scope="col">{{ __('messages.title') }}</th>
+                <th scope="col">{{ __('messages.type') }}</th>
+                <th scope="col">{{ __('messages.price') }}</th>
+                <th scope="col">{{ __('messages.duration') }}</th>
+                <th scope="col">{{ __('messages.location') }}</th>
+                <th scope="col" class="text-center">{{ __('messages.actions') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($services as $service)
+                <tr class="border-bottom">
+                    <!-- Image -->
+                    <td class="text-center">
+                        @if ($service->images && $service->images->isNotEmpty())
+                            <img 
+                                src="{{ asset($service->images->first()->image_path) }}" 
+                                alt="{{ $service->title }}" 
+                                style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                        @else
+                            <span class="text-muted">{{ __('messages.no_image') }}</span>
+                        @endif
+                    </td>
 
-                            <!-- Type -->
-                            <td>
-                                @switch($service->type)
-                                    @case('day_trip') {{ __('messages.day_trip') }} @break
-                                    @case('activity') {{ __('messages.activity') }} @break
-                                    @case('tour') {{ __('messages.tour') }} @break
-                                    @default {{ __('messages.unknown') }}
-                                @endswitch
-                            </td>
+                    <!-- Title -->
+                    <td class="fw-semibold">
+                        {{ $service->title }}
+                    </td>
 
-                            <!-- Price -->
-                            <td>
-                                {{ number_format($service->price, 2) }} {{ __('messages.currency_symbol') }}
-                            </td>
+                    <!-- Type -->
+                    <td>
+                        @switch($service->type)
+                            @case('day_trip') <span class="badge bg-primary">{{ __('messages.day_trip') }}</span> @break
+                            @case('activity') <span class="badge bg-success">{{ __('messages.activity') }}</span> @break
+                            @case('tour') <span class="badge bg-warning text-dark">{{ __('messages.tour') }}</span> @break
+                            @default <span class="badge bg-secondary">{{ __('messages.unknown') }}</span>
+                        @endswitch
+                    </td>
 
-                            <!-- Duration -->
-                            <td>{{ $service->duration }}</td>
+                    <!-- Price -->
+                    <td>
+                        <span class="fw-bold text-success">
+                            {{ number_format($service->price, 2) }} {{ __('messages.currency_symbol') }}
+                        </span>
+                    </td>
 
-                            <!-- Location -->
-                            <td>{{ $service->location }}</td>
+                    <!-- Duration -->
+                    <td>
+                        <i class="bi bi-clock text-primary me-1"></i> {{ $service->duration }}
+                    </td>
 
-            
+                    <!-- Location -->
+                    <td>
+                        <i class="bi bi-geo-alt text-danger me-1"></i> {{ $service->location }}
+                    </td>
 
-                            <!-- Actions -->
-                            <td class="text-center">
-                                <a href="javascript:void(0);" onclick="showService({{ $service->id }})" class="me-2" data-bs-toggle="tooltip" title="{{ __('messages.show') }}">
-                                    <i data-feather="eye" class="action-icon text-info"></i>
-                                </a>
-                                <a href="{{ route('services.edit', $service->id) }}" class="me-2" data-bs-toggle="tooltip" title="{{ __('messages.edit') }}">
-                                    <i data-feather="edit" class="action-icon text-primary"></i>
-                                </a>
-                                <a href="javascript:void(0);" onclick="deleteService({{ $service->id }})" class="me-2" data-bs-toggle="tooltip" title="{{ __('messages.delete') }}">
-                                    <i data-feather="trash-2" class="action-icon text-danger"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+                    <!-- Actions -->
+                    <td class="text-center">
+                        <a href="javascript:void(0);" onclick="showService({{ $service->id }})" class="text-info me-2" data-bs-toggle="tooltip" title="{{ __('messages.show') }}">
+                            <i class="bi bi-eye"></i>
+                        </a>
+                        <a href="{{ route('services.edit', $service->id) }}" class="text-primary me-2" data-bs-toggle="tooltip" title="{{ __('messages.edit') }}">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <a href="javascript:void(0);" onclick="deleteService({{ $service->id }})" class="text-danger me-2" data-bs-toggle="tooltip" title="{{ __('messages.delete') }}">
+                            <i class="bi bi-trash"></i>
+                        </a>
+
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
 
 
         <!-- Pagination -->
@@ -103,14 +131,14 @@
 
                         <div class="mb-3">
                             <label for="title" class="form-label">{{ __('messages.overview') }}</label>
-                            <input type="text" class="form-control" id="title" aria-describedby="title-label" name="overview" placeholder="{{ __('messages.enter_overview') }}" required>
+                            <textarea class="form-control mb-2" name="overview" rows="2" placeholder="{{ __('messages.overview') }}" required></textarea>
 
 
                         </div>
 
                         <div class="mb-3">
                             <label for="title" class="form-label">{{ __('messages.description') }}</label>
-                            <input type="text" class="form-control" id="title" aria-describedby="title-label" name="description" placeholder="{{ __('messages.enter_description') }}" required>
+                            <textarea class="form-control mb-2" name="description" rows="5" placeholder="{{ __('messages.enter_description') }}" required></textarea>
 
 
                         </div>
@@ -164,16 +192,26 @@
                             <input type="number" class="form-control" id="max_participants" name="max_participants" min="1" placeholder="{{ __('messages.enter_max_participants') }}">
                         </div>
 
-                        <!-- Highlight (Multiple Fields) -->
                         <div class="mb-3">
                             <label for="highlight" class="form-label">{{ __('messages.highlight') }}</label>
                             <div id="highlightWrapper">
-                                <div class="input-group mb-2">
-                                    <input type="text" class="form-control" name="highlight[]" placeholder="{{ __('messages.enter_highlight') }}">
-                                    <button type="button" class="btn btn-outline-secondary" onclick="addField('highlightWrapper', 'highlight')">+</button>
+                                <div class="mb-3">
+                                    <!-- Highlight Text -->
+                                    <label for="highlight_text" class="form-label">{{ __('messages.enter_highlight') }}</label>
+                                    <input type="text" class="form-control mb-2" name="highlight[]" placeholder="{{ __('messages.enter_highlight') }}">
+                                    
+                                    <!-- Highlight Detail -->
+                                    <label for="highlight_detail" class="form-label">{{ __('messages.enter_highlight_detail') }}</label>
+                                    <textarea class="form-control mb-2" name="highlight_detail[]" rows="3" placeholder="{{ __('messages.enter_highlight_detail') }}"></textarea>
+                                    
+                                    <!-- Add/Remove Buttons -->
+                                    <button type="button" class="btn btn-outline-secondary mt-2" onclick="addField('highlightWrapper', 'highlight', 'highlight_detail')">+</button>
                                 </div>
                             </div>
                         </div>
+
+
+
 
                         <!-- Inclusions (Multiple Fields) -->
                         <div class="mb-3">
@@ -186,6 +224,11 @@
                             </div>
                         </div>
 
+
+
+
+
+
                         <!-- Important Info (Multiple Fields) -->
                         <div class="mb-3">
                             <label for="important_info" class="form-label">{{ __('messages.important_info') }}</label>
@@ -196,6 +239,10 @@
                                 </div>
                             </div>
                         </div>
+
+
+
+                        
 
                         <!-- Images -->
 
@@ -232,45 +279,93 @@
 
     <!-- Show Service Modal -->
     <div class="modal fade" id="showServiceModal" tabindex="-1" aria-labelledby="showServiceModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="showServiceModalLabel">{{ __('messages.service_details') }}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content shadow-lg border-0 rounded-12">
+                <!-- Modal Header -->
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title fw-bold" id="showServiceModalLabel">
+                        {{ __('messages.service_details') }}
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <!-- Dynamic Content -->
-                    <h4>{{ __('messages.title') }}: <span id="service-title"></span></h4>
-                    <p>{{ __('messages.type') }}: <span id="service-type"></span></p>
-                    <p>{{ __('messages.price') }}: <span id="service-price"></span></p>
-                    <p>{{ __('messages.duration') }}: <span id="service-duration"></span></p>
-                    <p>{{ __('messages.max_participants') }}: <span id="service-max-participants"></span></p>
-                    <p>{{ __('messages.location') }}: <span id="service-location"></span></p>
-                    <p>{{ __('messages.description') }}: <span id="service-description"></span></p>
 
-                    <!-- Highlights -->
-                    <h5>{{ __('messages.highlights') }}</h5>
-                    <ul id="service-highlights"></ul>
+                <!-- Modal Body -->
+                <div class="modal-body p-4">
+                    <div class="row">
+                        <!-- Left Section: Details -->
+                        <div class="col-lg-6">
+                            <h4 class="fw-bold">{{ __('messages.title') }}</h4>
+                            <p id="service-title"></p>
 
-                    <!-- Inclusions -->
-                    <h5>{{ __('messages.inclusions') }}</h5>
-                    <ul id="service-inclusions"></ul>
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <p class="mb-1">{{ __('messages.type') }}</p>
+                                    <p id="service-type" class="fw-semibold"></p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="mb-1">{{ __('messages.price') }}</p>
+                                    <p id="service-price" class="fw-semibold"></p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="mb-1">{{ __('messages.duration') }}</p>
+                                    <p id="service-duration" class="fw-semibold"></p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="mb-1">{{ __('messages.max_participants') }}</p>
+                                    <p id="service-max-participants" class="fw-semibold"></p>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <p class="mb-1">{{ __('messages.location') }}</p>
+                                    <p id="service-location" class="fw-semibold"></p>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <p class="mb-1">{{ __('messages.overview') }}</p>
+                                    <p id="service-overview"></p>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <p class="mb-1">{{ __('messages.description') }}</p>
+                                    <p id="service-description"></p>
+                                </div>
+                            </div>
+                        </div>
 
-                    <!-- Important Info -->
-                    <h5>{{ __('messages.important_info') }}</h5>
-                    <ul id="service-important-info"></ul>
-                    
+                        <!-- Right Section: Highlights, Inclusions, Important Info -->
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <h5 class="fw-bold">{{ __('messages.highlights') }}</h5>
+                                <ul id="service-highlights" class="list-unstyled ps-3"></ul>
+                            </div>
 
-                    <!-- Images -->
-                    <h5>{{ __('messages.images') }}</h5>
-                    <div id="service-images" class="d-flex flex-wrap"></div>
+                            <div class="mb-3">
+                                <h5 class="fw-bold">{{ __('messages.inclusions') }}</h5>
+                                <ul id="service-inclusions" class="list-unstyled ps-3"></ul>
+                            </div>
+
+                            <div>
+                                <h5 class="fw-bold">{{ __('messages.important_info') }}</h5>
+                                <ul id="service-important-info" class="list-unstyled ps-3"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image Gallery -->
+                    <div class="mt-4">
+                        <h5 class="fw-bold">{{ __('messages.images') }}</h5>
+                        <div id="service-images" class="d-flex flex-wrap gap-3">
+                            <!-- Dynamically filled -->
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
+
+                <!-- Modal Footer -->
+                <div class="modal-footer bg-light d-flex justify-content-end">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('messages.close') }}</button>
                 </div>
             </div>
         </div>
     </div>
+
+
 
 
     <!-- Notifications -->
@@ -319,15 +414,45 @@
 
 
 
-        function addField(wrapperId, fieldName) {
+        function addField(wrapperId, fieldName, detailFieldName = null) {
             const wrapper = document.getElementById(wrapperId);
             const newField = document.createElement('div');
-            newField.className = 'input-group mb-2';
-            newField.innerHTML = `
-                <input type="text" class="form-control" name="${fieldName}[]" placeholder="${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)}">
-                <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">-</button>
+            newField.className = 'mb-3';
+
+            let fieldHTML = `
+                <!-- Text -->
+                <label for="${fieldName}" class="form-label">${getTranslation('enter_' + fieldName)}</label>
+                <input type="text" class="form-control mb-2" name="${fieldName}[]" placeholder="${getTranslation('enter_' + fieldName)}">
             `;
+
+            // Add detail field if detailFieldName is provided
+            if (detailFieldName) {
+                fieldHTML += `
+                    <!-- Detail -->
+                    <label for="${detailFieldName}" class="form-label">${getTranslation('enter_' + detailFieldName)}</label>
+                    <textarea class="form-control mb-2" name="${detailFieldName}[]" rows="3" placeholder="${getTranslation('enter_' + detailFieldName)}"></textarea>
+                `;
+            }
+
+            // Add the remove button
+            fieldHTML += `
+                <button type="button" class="btn btn-outline-danger mt-2" onclick="removeField(this)">-</button>
+            `;
+
+            newField.innerHTML = fieldHTML;
             wrapper.appendChild(newField);
+        }
+
+
+        // Function to get translations from the backend (optional for dynamic strings)
+        function getTranslation(key) {
+            const translations = {
+                enter_highlight: "{{ __('messages.enter_highlight') }}",
+                enter_highlight_detail: "{{ __('messages.enter_highlight_detail') }}",
+                enter_inclusions: "{{ __('messages.enter_inclusions') }}",
+                enter_important_info: "{{ __('messages.enter_important_info') }}"
+            };
+            return translations[key] || key;
         }
 
         function removeField(button) {
@@ -375,15 +500,19 @@
                     document.getElementById('service-duration').textContent = data.duration || 'N/A';
                     document.getElementById('service-max-participants').textContent = data.max_participants || 'N/A';
                     document.getElementById('service-location').textContent = data.location || 'N/A';
+                    document.getElementById('service-overview').textContent = data.overview || 'N/A';
                     document.getElementById('service-description').textContent = data.description || 'N/A';
 
-                    // Populate highlights
+                    // Populate highlights and details
                     const highlightsList = document.getElementById('service-highlights');
                     highlightsList.innerHTML = '';
                     if (data.highlights && data.highlights.length > 0) {
                         data.highlights.forEach(highlight => {
                             const li = document.createElement('li');
-                            li.textContent = highlight.text || 'N/A';
+                            li.innerHTML = `
+                                <strong>${highlight.text || 'N/A'}</strong><br>
+                                <span>${highlight.highlight_detail || 'No detail available'}</span>
+                            `;
                             highlightsList.appendChild(li);
                         });
                     } else {
@@ -446,6 +575,31 @@
         }
 
 
+        function deleteService(serviceId) {
+        Swal.fire({
+            title: "{{ __('messages.are_you_sure') }}",
+            text: "{{ __('messages.delete_confirmation') }}",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: "{{ __('messages.yes_delete') }}",
+            cancelButtonText: "{{ __('messages.cancel') }}"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Send delete request using a form submission
+                const form = document.createElement('form');
+                form.action = `/services/${serviceId}`;
+                form.method = 'POST';
+                form.innerHTML = `
+                    @csrf
+                    @method('DELETE')
+                `;
+                document.body.appendChild(form);
+                form.submit();
+            }
+        });
+    }
 
 
         

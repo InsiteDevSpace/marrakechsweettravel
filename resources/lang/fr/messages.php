@@ -340,4 +340,18 @@ return [
     'reservation_date_invalid_range' => 'The reservation date cannot be within the transfer date range.',
     'not_enough_places' => 'Not enough places available for this transfer.',
     'reservation_updated' => 'The reservation has been updated successfully.',
+    'enter_highlight_detail' => 'Entrez les détails du point fort',
+    'highlight_detail' => 'Détail du point fort',
+
+    'are_you_sure' => 'Êtes-vous sûr ?',
+    'delete_confirmation' => 'Cette action est irréversible.',
+    'yes_delete' => 'Oui, supprimez-le !',
+    'cancel' => 'Annuler',
+    'deleted' => 'Supprimé !',
+    'service_deleted' => 'Le service a été supprimé avec succès.',
+    'error' => 'Erreur !',
+    'service_not_deleted' => 'Le service n\'a pas pu être supprimé.',
+    'something_went_wrong' => 'Une erreur s\'est produite. Veuillez réessayer.',
+
+
 ];

@@ -19,12 +19,13 @@
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                         {{ __('messages.users') }}
                     </x-nav-link>
+                    <!-- 
                     <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')">
                         {{ __('messages.categories') }}
                     </x-nav-link>
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                         {{ __('messages.posts') }}
-                    </x-nav-link>
+                    </x-nav-link>-->
                     <x-nav-link :href="route('services.index')" :active="request()->routeIs('services.index')">
                         {{ __('messages.services') }}
                     </x-nav-link>

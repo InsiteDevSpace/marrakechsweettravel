@@ -1,4 +1,8 @@
 <x-app-layout>
+
+    @section('title', __('messages.user_management'))
+
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('messages.user_management') }}

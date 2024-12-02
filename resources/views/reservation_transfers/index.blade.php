@@ -1,4 +1,8 @@
 <x-app-layout>
+
+
+    @section('title', __('messages.reservation_transfer_management'))
+
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
             {{ __('messages.reservation_transfer_management') }}
@@ -244,7 +248,7 @@
 
                             <div class="mb-3">
                                 <label for="Flight_time">{{ __('messages.flight_time') }}</label>
-                                <input type="datetime-local" class="form-control" name="Flight_time"
+                                <input type="time" class="form-control" name="Flight_time"
                                     id="Flight_time" required>
                             </div>
 
@@ -376,7 +380,7 @@
 
                             <div class="mb-3">
                                 <label for="Flight_time">{{ __('messages.flight_time') }}</label>
-                                <input type="datetime-local" class="form-control" name="Flight_time"
+                                <input type="time" class="form-control" name="Flight_time"
                                     id="Flight_time" required>
                             </div>
 

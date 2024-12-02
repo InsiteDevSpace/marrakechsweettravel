@@ -331,5 +331,19 @@ return [
     'reservation_date_invalid_range' => 'The reservation date cannot be within the transfer date range.',
     'not_enough_places' => 'Not enough places available for this transfer.',
     'reservation_updated' => 'The reservation has been updated successfully.',
+    'enter_highlight_detail' => 'Enter highlight detail',
+    'highlight_detail' => 'Highlight Detail',
+
+    'are_you_sure' => 'Are you sure?',
+    'delete_confirmation' => 'This action cannot be undone.',
+    'yes_delete' => 'Yes, delete it!',
+    'cancel' => 'Cancel',
+    'deleted' => 'Deleted!',
+    'service_deleted' => 'The service has been deleted successfully.',
+    'error' => 'Error!',
+    'service_not_deleted' => 'The service could not be deleted.',
+    'something_went_wrong' => 'Something went wrong. Please try again.',
+
+
 
 ];

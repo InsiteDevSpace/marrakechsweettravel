@@ -46,6 +46,8 @@ class ServiceController extends Controller
             'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'highlight' => 'nullable|array',
             'highlight.*' => 'nullable|string|max:255',
+            'highlight_detail' => 'nullable|array',
+            'highlight_detail.*' => 'nullable|string|max:800',
             'inclusions' => 'nullable|array',
             'inclusions.*' => 'nullable|string|max:255',
             'important_info' => 'nullable|array',
@@ -80,11 +82,15 @@ class ServiceController extends Controller
             }
 
 
-            // Save highlights
+           // Save highlights
             if (!empty($validated['highlight'])) {
-                foreach ($validated['highlight'] as $highlightText) {
+                foreach ($validated['highlight'] as $index => $highlightText) {
                     if (!empty($highlightText)) {
-                        $service->highlights()->create(['text' => $highlightText]);
+                        $highlightDetail = $validated['highlight_detail'][$index] ?? null;
+                        $service->highlights()->create([
+                            'text' => $highlightText,
+                            'highlight_detail' => $highlightDetail,
+                        ]);
                     }
                 }
             }
@@ -135,6 +141,7 @@ class ServiceController extends Controller
             'duration' => $service->duration,
             'max_participants' => $service->max_participants,
             'location' => $service->location,
+            'overview' => $service->overview,
             'description' => $service->description,
             'highlights' => $service->highlights,
             'inclusions' => $service->inclusions,
@@ -255,4 +262,6 @@ class ServiceController extends Controller
 
         return redirect()->route('services.index')->with('success', __('messages.service_deleted'));
     }
+
+    
 }

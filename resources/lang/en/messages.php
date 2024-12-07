@@ -343,6 +343,10 @@ return [
     'error' => 'Error!',
     'service_not_deleted' => 'The service could not be deleted.',
     'something_went_wrong' => 'Something went wrong. Please try again.',
+    'edit_service' => 'Edit Service',
+    'service_updated' => 'Service updated successfully.',
+
+
 
 
 

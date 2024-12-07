@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('members', MembersController::class);
     Route::resource('donations', DonationController::class);
     Route::resource('services', ServiceController::class);
+
 });
 
 // Generic slug-based route (make sure to exclude known paths)

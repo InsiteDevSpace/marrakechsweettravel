@@ -23,83 +23,84 @@
 
         <!-- Table -->
        <div class="table-responsive">
-    <table class="table table-hover align-middle">
-        <thead class="bg-light border-bottom">
-            <tr>
-                <th scope="col" class="text-center" style="width: 60px;">{{ __('messages.image') }}</th>
-                <th scope="col">{{ __('messages.title') }}</th>
-                <th scope="col">{{ __('messages.type') }}</th>
-                <th scope="col">{{ __('messages.price') }}</th>
-                <th scope="col">{{ __('messages.duration') }}</th>
-                <th scope="col">{{ __('messages.location') }}</th>
-                <th scope="col" class="text-center">{{ __('messages.actions') }}</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($services as $service)
-                <tr class="border-bottom">
-                    <!-- Image -->
-                    <td class="text-center">
-                        @if ($service->images && $service->images->isNotEmpty())
-                            <img 
-                                src="{{ asset($service->images->first()->image_path) }}" 
-                                alt="{{ $service->title }}" 
-                                style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                        @else
-                            <span class="text-muted">{{ __('messages.no_image') }}</span>
-                        @endif
-                    </td>
+            <table class="table table-hover align-middle">
+                <thead class="bg-light border-bottom">
+                    <tr>
+                        <th scope="col" class="text-center" style="width: 60px;">{{ __('messages.image') }}</th>
+                        <th scope="col">{{ __('messages.title') }}</th>
+                        <th scope="col">{{ __('messages.type') }}</th>
+                        <th scope="col">{{ __('messages.price') }}</th>
+                        <th scope="col">{{ __('messages.duration') }}</th>
+                        <th scope="col">{{ __('messages.location') }}</th>
+                        <th scope="col" class="text-center">{{ __('messages.actions') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($services as $service)
+                        <tr class="border-bottom">
+                            <!-- Image -->
+                            <td class="text-center">
+                                @if ($service->images && $service->images->isNotEmpty())
+                                    <img 
+                                        src="{{ asset($service->images->first()->image_path) }}" 
+                                        alt="{{ $service->title }}" 
+                                        style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                                @else
+                                    <span class="text-muted">{{ __('messages.no_image') }}</span>
+                                @endif
+                            </td>
 
-                    <!-- Title -->
-                    <td class="fw-semibold">
-                        {{ $service->title }}
-                    </td>
+                            <!-- Title -->
+                            <td class="fw-semibold">
+                                {{ $service->title }}
+                            </td>
 
-                    <!-- Type -->
-                    <td>
-                        @switch($service->type)
-                            @case('day_trip') <span class="badge bg-primary">{{ __('messages.day_trip') }}</span> @break
-                            @case('activity') <span class="badge bg-success">{{ __('messages.activity') }}</span> @break
-                            @case('tour') <span class="badge bg-warning text-dark">{{ __('messages.tour') }}</span> @break
-                            @default <span class="badge bg-secondary">{{ __('messages.unknown') }}</span>
-                        @endswitch
-                    </td>
+                            <!-- Type -->
+                            <td>
+                                @switch($service->type)
+                                    @case('day_trip') <span class="badge bg-primary">{{ __('messages.day_trip') }}</span> @break
+                                    @case('activity') <span class="badge bg-success">{{ __('messages.activity') }}</span> @break
+                                    @case('tour') <span class="badge bg-warning text-dark">{{ __('messages.tour') }}</span> @break
+                                    @default <span class="badge bg-secondary">{{ __('messages.unknown') }}</span>
+                                @endswitch
+                            </td>
 
-                    <!-- Price -->
-                    <td>
-                        <span class="fw-bold text-success">
-                            {{ number_format($service->price, 2) }} {{ __('messages.currency_symbol') }}
-                        </span>
-                    </td>
+                            <!-- Price -->
+                            <td>
+                                <span class="fw-bold text-success">
+                                    {{ number_format($service->price, 2) }} {{ __('messages.currency_symbol') }}
+                                </span>
+                            </td>
 
-                    <!-- Duration -->
-                    <td>
-                        <i class="bi bi-clock text-primary me-1"></i> {{ $service->duration }}
-                    </td>
+                            <!-- Duration -->
+                            <td>
+                                <i class="bi bi-clock text-primary me-1"></i> {{ $service->duration }}
+                            </td>
 
-                    <!-- Location -->
-                    <td>
-                        <i class="bi bi-geo-alt text-danger me-1"></i> {{ $service->location }}
-                    </td>
+                            <!-- Location -->
+                            <td>
+                                <i class="bi bi-geo-alt text-danger me-1"></i> {{ $service->location }}
+                            </td>
 
-                    <!-- Actions -->
-                    <td class="text-center">
-                        <a href="javascript:void(0);" onclick="showService({{ $service->id }})" class="text-info me-2" data-bs-toggle="tooltip" title="{{ __('messages.show') }}">
-                            <i class="bi bi-eye"></i>
-                        </a>
-                        <a href="{{ route('services.edit', $service->id) }}" class="text-primary me-2" data-bs-toggle="tooltip" title="{{ __('messages.edit') }}">
-                            <i class="bi bi-pencil-square"></i>
-                        </a>
-                        <a href="javascript:void(0);" onclick="deleteService({{ $service->id }})" class="text-danger me-2" data-bs-toggle="tooltip" title="{{ __('messages.delete') }}">
-                            <i class="bi bi-trash"></i>
-                        </a>
+                            <!-- Actions -->
+                            <td class="text-center">
+                                <a href="javascript:void(0);" onclick="showService({{ $service->id }})" class="text-info me-2" data-bs-toggle="tooltip" title="{{ __('messages.show') }}">
+                                    <i class="bi bi-eye"></i>
+                                <a href="javascript:void(0);" onclick="editService({{ $service->id }})" class="text-primary me-2">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
 
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
+
+                                <a href="javascript:void(0);" onclick="deleteService({{ $service->id }})" class="text-danger me-2" data-bs-toggle="tooltip" title="{{ __('messages.delete') }}">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
 
 
 
@@ -119,46 +120,70 @@
                 </div>
                 <div class="modal-body">
                     <form id="addServiceForm" action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data">
-
                         @csrf
+
                         <!-- Title -->
                         <div class="mb-3">
                             <label for="title" class="form-label">{{ __('messages.title') }}</label>
-                            <input type="text" class="form-control" id="title" aria-describedby="title-label" name="title" placeholder="{{ __('messages.enter_title') }}" required>
-
-
+                            <input type="text" class="form-control" id="title" name="title" placeholder="{{ __('messages.enter_title') }}" required>
                         </div>
 
+                        <!-- Overview -->
                         <div class="mb-3">
-                            <label for="title" class="form-label">{{ __('messages.overview') }}</label>
+                            <label for="overview" class="form-label">{{ __('messages.overview') }}</label>
                             <textarea class="form-control mb-2" name="overview" rows="2" placeholder="{{ __('messages.overview') }}" required></textarea>
-
-
                         </div>
 
+                        <!-- Description -->
                         <div class="mb-3">
-                            <label for="title" class="form-label">{{ __('messages.description') }}</label>
+                            <label for="description" class="form-label">{{ __('messages.description') }}</label>
                             <textarea class="form-control mb-2" name="description" rows="5" placeholder="{{ __('messages.enter_description') }}" required></textarea>
-
-
-                        </div>
-                        <div class="mb-3">
-                            <label for="title" class="form-label">{{ __('messages.location') }}</label>
-                            <input type="text" class="form-control" id="title" aria-describedby="title-label" name="location" placeholder="{{ __('messages.enter_location') }}" required>
-
-
                         </div>
 
+                        <!-- Grouped Fields: Duration and Discount -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="duration" class="form-label">{{ __('messages.duration') }}</label>
+                                <input type="text" class="form-control" id="duration" name="duration" placeholder="{{ __('messages.enter_duration') }}" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="discount" class="form-label">{{ __('messages.discount') }}</label>
+                                <input type="number" class="form-control" id="discount" name="discount" min="0" max="100" placeholder="{{ __('messages.enter_discount') }}">
+                            </div>
+                        </div>
+
 
                         <div class="mb-3">
-                            <label for="title" class="form-label">{{ __('messages.min_age') }}</label>
-                            <input type="number" class="form-control" id="min_age" aria-describedby="title-label" name="min_age" placeholder="{{ __('messages.min_age') }}" required>
+                            <label for="location" class="form-label">{{ __('messages.location') }}</label>
+                            <input type="text" class="form-control" id="location" name="location" placeholder="{{ __('messages.enter_location') }}" required>
+                        </div>
 
+                        <!-- Grouped Fields: Max Participants and Min Age -->
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <label for="max_participants" class="form-label">{{ __('messages.max_participants') }}</label>
+                                <input type="number" class="form-control" id="max_participants" name="max_participants" min="1" placeholder="{{ __('messages.enter_max_participants') }}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="min_age" class="form-label">{{ __('messages.min_age') }}</label>
+                                <input type="number" class="form-control" id="min_age" name="min_age" min="0" placeholder="{{ __('messages.enter_min_age') }}">
+                            </div>
+                        </div>
 
+                        <!-- Grouped Fields: Map Latitude and Longitude -->
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <label for="map_lat" class="form-label">{{ __('messages.map_lat') }}</label>
+                                <input type="number" class="form-control" id="map_lat" name="map_lat" placeholder="{{ __('messages.enter_lat') }}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="map_lng" class="form-label">{{ __('messages.map_lng') }}</label>
+                                <input type="number" class="form-control" id="map_lng" name="map_lng" placeholder="{{ __('messages.enter_lng') }}">
+                            </div>
                         </div>
 
                         <!-- Type -->
-                        <div class="mb-3">
+                        <div class="mb-3 mt-3">
                             <label for="type" class="form-label">{{ __('messages.type') }}</label>
                             <select class="form-select" id="type" name="type" required>
                                 <option value="">{{ __('messages.select_type') }}</option>
@@ -174,46 +199,21 @@
                             <input type="number" class="form-control" id="price" name="price" min="0" placeholder="{{ __('messages.enter_price') }}" required>
                         </div>
 
-                        <!-- Discount -->
-                        <div class="mb-3">
-                            <label for="discount" class="form-label">{{ __('messages.discount') }}</label>
-                            <input type="number" class="form-control" id="discount" name="discount" min="0" max="100" placeholder="{{ __('messages.enter_discount') }}">
-                        </div>
-
-                        <!-- Duration -->
-                        <div class="mb-3">
-                            <label for="duration" class="form-label">{{ __('messages.duration') }}</label>
-                            <input type="text" class="form-control" id="duration" name="duration" placeholder="{{ __('messages.enter_duration') }}" required>
-                        </div>
-
-                        <!-- Max Participants -->
-                        <div class="mb-3">
-                            <label for="max_participants" class="form-label">{{ __('messages.max_participants') }}</label>
-                            <input type="number" class="form-control" id="max_participants" name="max_participants" min="1" placeholder="{{ __('messages.enter_max_participants') }}">
-                        </div>
-
+                        <!-- Highlights -->
                         <div class="mb-3">
                             <label for="highlight" class="form-label">{{ __('messages.highlight') }}</label>
                             <div id="highlightWrapper">
                                 <div class="mb-3">
-                                    <!-- Highlight Text -->
                                     <label for="highlight_text" class="form-label">{{ __('messages.enter_highlight') }}</label>
                                     <input type="text" class="form-control mb-2" name="highlight[]" placeholder="{{ __('messages.enter_highlight') }}">
-                                    
-                                    <!-- Highlight Detail -->
                                     <label for="highlight_detail" class="form-label">{{ __('messages.enter_highlight_detail') }}</label>
                                     <textarea class="form-control mb-2" name="highlight_detail[]" rows="3" placeholder="{{ __('messages.enter_highlight_detail') }}"></textarea>
-                                    
-                                    <!-- Add/Remove Buttons -->
                                     <button type="button" class="btn btn-outline-secondary mt-2" onclick="addField('highlightWrapper', 'highlight', 'highlight_detail')">+</button>
                                 </div>
                             </div>
                         </div>
 
-
-
-
-                        <!-- Inclusions (Multiple Fields) -->
+                        <!-- Inclusions -->
                         <div class="mb-3">
                             <label for="inclusions" class="form-label">{{ __('messages.inclusions') }}</label>
                             <div id="inclusionsWrapper">
@@ -224,12 +224,7 @@
                             </div>
                         </div>
 
-
-
-
-
-
-                        <!-- Important Info (Multiple Fields) -->
+                        <!-- Important Info -->
                         <div class="mb-3">
                             <label for="important_info" class="form-label">{{ __('messages.important_info') }}</label>
                             <div id="importantInfoWrapper">
@@ -240,40 +235,156 @@
                             </div>
                         </div>
 
-
-
-                        
-
                         <!-- Images -->
-
-
-
-                         <div class="mb-3">
+                        <div class="mb-3">
                             <label for="images" class="form-label">{{ __('messages.images') }}</label>
                             <input type="file" class="form-control" id="images" name="images[]" multiple accept="image/*" onchange="previewImages()" required>
                             <div id="imagePreview" class="mt-3 d-flex flex-wrap"></div>
                             <small class="text-muted">{{ __('messages.max_images') }}</small>
                         </div>
 
-                        <!-- Map Latitude -->
-                        <div class="mb-3">
-                            <label for="map_lat" class="form-label">{{ __('messages.map_lat') }}</label>
-                            <input type="number" class="form-control" id="map_lat" name="map_lat" placeholder="{{ __('messages.enter_lat') }}">
-                        </div>
-
-                        <!-- Map Longitude -->
-                        <div class="mb-3">
-                            <label for="map_lng" class="form-label">{{ __('messages.map_lng') }}</label>
-                            <input type="number" class="form-control" id="map_lng" name="map_lng" placeholder="{{ __('messages.enter_lng') }}">
-                        </div>
-
                         <!-- Submit Button -->
-                        <button type="submit" class="btn btn-primary">{{ __('messages.add_service') }}</button>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary">{{ __('messages.add_service') }}</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+    <div class="modal fade" id="editServiceModal" tabindex="-1" aria-labelledby="editServiceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editServiceModalLabel">{{ __('messages.edit_service') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editServiceForm" action="" method="POST" enctype="multipart/form-data">
+
+
+                        @csrf
+                        @method('PUT')
+
+                        <!-- Title -->
+                        <div class="mb-3">
+                            <label for="edit-title" class="form-label">{{ __('messages.title') }}</label>
+                            <input type="text" class="form-control" id="edit-title" name="title" placeholder="{{ __('messages.enter_title') }}" required>
+                        </div>
+
+                        <!-- Overview -->
+                        <div class="mb-3">
+                            <label for="edit-overview" class="form-label">{{ __('messages.overview') }}</label>
+                            <textarea class="form-control mb-2" id="edit-overview" name="overview" rows="2" placeholder="{{ __('messages.overview') }}" required></textarea>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-3">
+                            <label for="edit-description" class="form-label">{{ __('messages.description') }}</label>
+                            <textarea class="form-control mb-2" id="edit-description" name="description" rows="5" placeholder="{{ __('messages.enter_description') }}" required></textarea>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="edit-title" class="form-label">{{ __('messages.location') }}</label>
+                            <input type="text" class="form-control" id="edit-location" name="location" placeholder="{{ __('messages.enter_location') }}" required>
+                        </div>
+
+                        <!-- Grouped Fields: Duration and Discount -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="edit-duration" class="form-label">{{ __('messages.duration') }}</label>
+                                <input type="text" class="form-control" id="edit-duration" name="duration" placeholder="{{ __('messages.enter_duration') }}" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="edit-discount" class="form-label">{{ __('messages.discount') }}</label>
+                                <input type="number" class="form-control" id="edit-discount" name="discount" min="0" max="100" placeholder="{{ __('messages.enter_discount') }}">
+                            </div>
+                        </div>
+
+                        <!-- Grouped Fields: Max Participants and Min Age -->
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <label for="edit-max_participants" class="form-label">{{ __('messages.max_participants') }}</label>
+                                <input type="number" class="form-control" id="edit-max_participants" name="max_participants" min="1" placeholder="{{ __('messages.enter_max_participants') }}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="edit-min_age" class="form-label">{{ __('messages.min_age') }}</label>
+                                <input type="number" class="form-control" id="edit-min_age" name="min_age" min="0" placeholder="{{ __('messages.enter_min_age') }}">
+                            </div>
+                        </div>
+
+
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <label for="edit-map_lat" class="form-label">{{ __('messages.map_lat') }}</label>
+                                <input type="number" class="form-control" id="edit-map_lat" name="map_lat" placeholder="{{ __('messages.enter_lat') }}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="edit-map_lng" class="form-label">{{ __('messages.map_lng') }}</label>
+                                <input type="number" class="form-control" id="edit-map_lng" name="map_lng" placeholder="{{ __('messages.enter_lng') }}">
+                            </div>
+                        </div>
+
+                        <!-- Type -->
+                        <div class="mb-3 mt-3">
+                            <label for="edit-type" class="form-label">{{ __('messages.type') }}</label>
+                            <select class="form-select" id="edit-type" name="type" required>
+                                <option value="day_trip">{{ __('messages.day_trip') }}</option>
+                                <option value="activity">{{ __('messages.activity') }}</option>
+                                <option value="tour">{{ __('messages.tour') }}</option>
+                            </select>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="edit-price" class="form-label">{{ __('messages.price') }}</label>
+                            <input type="number" class="form-control" id="edit-price" name="price" placeholder="{{ __('messages.enter_price') }}" required>
+                        </div>
+
+                        <!-- Highlights -->
+                        <div class="mb-3">
+                            <label for="edit-highlight" class="form-label">{{ __('messages.highlight') }}</label>
+                            <div id="edit-highlightWrapper"></div>
+                            <button type="button" class="btn btn-outline-secondary" onclick="addField('edit-highlightWrapper', 'highlight', 'highlight_detail')">+</button>
+                        </div>
+
+                        <!-- Inclusions -->
+                        <div class="mb-3">
+                            <label for="edit-inclusions" class="form-label">{{ __('messages.inclusions') }}</label>
+                            <div id="edit-inclusionsWrapper"></div>
+                            <button type="button" class="btn btn-outline-secondary" onclick="addField('edit-inclusionsWrapper', 'inclusions')">+</button>
+                        </div>
+
+                        <!-- Important Info -->
+                        <div class="mb-3">
+                            <label for="edit-important_info" class="form-label">{{ __('messages.important_info') }}</label>
+                            <div id="edit-importantInfoWrapper"></div>
+                            <button type="button" class="btn btn-outline-secondary" onclick="addField('edit-importantInfoWrapper', 'important_info')">+</button>
+                        </div>
+
+                        <!-- Images -->
+                        <div class="mb-3">
+                            <label for="edit-images" class="form-label">{{ __('messages.images') }}</label>
+                            <input type="file" class="form-control" id="edit-images" name="images[]" multiple accept="image/*" onchange="previewImages('edit-imagePreview', 'edit-images')">
+                            <div id="edit-imagePreview" class="mt-3 d-flex flex-wrap"></div>
+                            <small class="text-muted">{{ __('messages.max_images') }}</small>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary">{{ __('messages.save_changes') }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
 
@@ -381,15 +492,6 @@
 
         document.getElementById('addServiceForm').addEventListener('submit', function (e) {
             const highlightFields = document.querySelectorAll('[name="highlight[]"]');
-            if (Array.from(highlightFields).every(field => !field.value.trim())) {
-                e.preventDefault();
-                alert("Please add at least one highlight.");
-                return;
-            }
-        });
-
-        document.getElementById('addServiceForm').addEventListener('submit', function (e) {
-            const highlightFields = document.querySelectorAll('[name="highlight[]"]');
             const lat = document.getElementById('map_lat').value;
             const lng = document.getElementById('map_lng').value;
 
@@ -482,6 +584,120 @@
                 });
             }
         }
+
+        
+
+
+        function editService(serviceId) {
+            fetch(`/services/${serviceId}`)
+                .then(response => response.json())
+                .then(service => {
+                    // Populate the modal fields
+                        document.getElementById('edit-title').value = service.title || '';
+                        document.getElementById('edit-overview').value = service.overview || '';
+                        document.getElementById('edit-description').value = service.description || '';
+                        document.getElementById('edit-map_lat').value = service.map_lat || '';
+                        document.getElementById('edit-map_lng').value = service.map_lng || '';
+
+                        document.getElementById('edit-duration').value = service.duration || '';
+                        document.getElementById('edit-location').value = service.location || '';
+                        document.getElementById('edit-price').value = service.price || '';
+                        document.getElementById('edit-discount').value = service.discount !== undefined ? service.discount : '';
+                        document.getElementById('edit-max_participants').value = service.max_participants || '';
+                        document.getElementById('edit-min_age').value = service.min_age !== undefined ? service.min_age : '';
+                        document.getElementById('edit-type').value = service.type || '';
+                   
+                    // Populate highlights
+                    const highlightWrapper = document.getElementById('edit-highlightWrapper');
+                    highlightWrapper.innerHTML = '';
+                    if (service.highlights && Array.isArray(service.highlights)) {
+                        service.highlights.forEach(highlight => {
+                            const div = document.createElement('div');
+                            div.className = 'mb-3';
+                            div.innerHTML = `
+                                <input type="text" class="form-control mb-2" name="highlight[]" value="${highlight.text || ''}">
+                                <textarea class="form-control mb-2" name="highlight_detail[]" rows="3">${highlight.highlight_detail || ''}</textarea>
+                                <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">-</button>
+                            `;
+                            highlightWrapper.appendChild(div);
+                        });
+                    }
+
+                    // Populate inclusions
+                    populateArrayField('edit-inclusionsWrapper', service.inclusions || [], 'inclusions');
+
+                    // Populate important info
+                    populateArrayField('edit-importantInfoWrapper', service.importantInfos || [], 'important_info');
+
+                    // Populate images
+                    populateImages('edit-imagePreview', service.images || []);
+
+                    // Set the action dynamically in `editService`
+                    const editForm = document.getElementById('editServiceForm');
+                    editForm.action = `/services/${serviceId}`;
+
+
+                    // Show the modal
+                    const editModal = new bootstrap.Modal(document.getElementById('editServiceModal'));
+                    editModal.show();
+                })
+                .catch(error => {
+                    console.error('Error fetching service details:', error);
+                    alert('Failed to load service details. Please try again.');
+                });
+        }
+
+
+
+        function populateArrayField(wrapperId, items, name) {
+            const wrapper = document.getElementById(wrapperId);
+            wrapper.innerHTML = ''; // Clear previous content
+
+            // Check if the items array exists and is not empty
+            if (items && Array.isArray(items) && items.length > 0) {
+                items.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'input-group mb-2';
+                    div.innerHTML = `
+                        <input type="text" class="form-control" name="${name}[]" value="${item.text || ''}">
+                        <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">-</button>
+                    `;
+                    wrapper.appendChild(div);
+                });
+            } else {
+                // Add an empty input field if no data exists
+                const div = document.createElement('div');
+                div.className = 'input-group mb-2';
+                div.innerHTML = `
+                    <input type="text" class="form-control" name="${name}[]" placeholder="Enter ${name}">
+                    <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">-</button>
+                `;
+                wrapper.appendChild(div);
+            }
+        }
+
+
+
+        function populateImages(previewId, images) {
+            const imagePreview = document.getElementById(previewId);
+            imagePreview.innerHTML = '';
+            images.forEach(image => {
+                const img = document.createElement('img');
+                img.src = `/${image.image_path}`;
+                img.alt = 'Service Image';
+                img.style.width = '100px';
+                img.style.height = '100px';
+                img.style.objectFit = 'cover';
+                img.style.marginRight = '10px';
+                imagePreview.appendChild(img);
+            });
+        }
+
+        function removeField(button) {
+            button.parentElement.remove();
+        }
+
+
 
 
         function showService(serviceId) {

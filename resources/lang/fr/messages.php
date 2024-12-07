@@ -352,6 +352,7 @@ return [
     'error' => 'Erreur !',
     'service_not_deleted' => 'Le service n\'a pas pu être supprimé.',
     'something_went_wrong' => 'Une erreur s\'est produite. Veuillez réessayer.',
-
+    'edit_service' => 'Modifier le service',
+    'service_updated' => 'Service mis à jour avec succès.',
 
 ];

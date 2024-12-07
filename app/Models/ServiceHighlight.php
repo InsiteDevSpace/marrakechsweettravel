@@ -9,7 +9,7 @@ class ServiceHighlight extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['service_id', 'text'];
+    protected $fillable = ['service_id', 'text','highlight_detail'];
 
     public function service()
     {

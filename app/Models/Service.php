@@ -47,6 +47,17 @@ class Service extends Model
         return $this->hasMany(ServiceImportantInfo::class);
     }
 
+    public function availabilities()
+    {
+        return $this->hasMany(ServiceAvailability::class);
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
+
 
     
 }

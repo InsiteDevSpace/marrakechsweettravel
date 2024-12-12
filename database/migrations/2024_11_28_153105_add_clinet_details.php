@@ -28,7 +28,13 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('clients', function (Blueprint $table) {
-            //
+            $table->dropColumn('city');
+            $table->dropColumn('state');
+            $table->dropColumn('zip_code');
+            $table->dropColumn('country');
+            $table->dropColumn('passport_number');
+            $table->dropColumn('birth_day');
+            $table->dropColumn('nationality');
         });
     }
 };

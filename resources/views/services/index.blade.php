@@ -86,6 +86,7 @@
                             <td class="text-center">
                                 <a href="javascript:void(0);" onclick="showService({{ $service->id }})" class="text-info me-2" data-bs-toggle="tooltip" title="{{ __('messages.show') }}">
                                     <i class="bi bi-eye"></i>
+                                </a>
                                 <a href="javascript:void(0);" onclick="editService({{ $service->id }})" class="text-primary me-2">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>

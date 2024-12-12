@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Models\ServiceAvailability;
 use App\Models\ServiceImage;
 use App\Models\ServiceHighlight;
 use App\Models\ServiceInclusion;
@@ -270,6 +271,28 @@ class ServiceController extends Controller
 
         return redirect()->route('services.index')->with('success', __('messages.service_deleted'));
     }
+
+
+
+    public function getAvailability($id)
+    {
+        $availability = ServiceAvailability::where('service_id', $id)
+            ->get(['available_date', 'start_time', 'end_time']);
+
+        $dates = $availability->pluck('available_date');
+        $timeSlots = $availability->map(function ($slot) {
+            return [
+                'start_time' => $slot->start_time,
+                'end_time' => $slot->end_time,
+            ];
+        });
+
+        return response()->json([
+            'dates' => $dates,
+            'timeSlots' => $timeSlots,
+        ]);
+    }
+
 
     
 }

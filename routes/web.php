@@ -10,8 +10,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ReservationTransferController;
 use App\Http\Controllers\TransferController;
+use App\Http\Controllers\ServiceAvailabilityController;
+
 use Illuminate\Support\Facades\Route;
 
 // Static and specific routes
@@ -58,6 +61,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('members', MembersController::class);
     Route::resource('donations', DonationController::class);
     Route::resource('services', ServiceController::class);
+    Route::resource('service_availability', ServiceAvailabilityController::class);
+    Route::resource('reservations', ReservationController::class);
+    Route::get('/services/{id}/availability', [ServiceController::class, 'getAvailability']);
+
 
 });
 

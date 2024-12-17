@@ -401,7 +401,30 @@ return [
     'ok' => 'OK',
     'select_client' => 'Select Client',
     'reservation_deleted_successfully' => 'Reservation Deleted Successfully',
-    
+    'available_date' => 'Available Date',
+    'currency' => 'Currency',
+
+    'enter_min_age' => 'Enter the minimum age',
+    'image' => 'Image',
+    'title' => 'Title',
+    'type' => 'Type',
+    'price' => 'Price',
+    'duration' => 'Duration',
+    'days' => 'Day(s)',
+    'day' => 'Day',
+    'location' => 'Location',
+    'availability' => 'Availability',
+    'creation_date' => 'Creation Date',
+    'show' => 'Show',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'no_image' => 'No Image',
+    'day_trip' => 'Day Trip',
+    'activity' => 'Activity',
+    'tour' => 'Tour',
+    'unknown' => 'Unknown',
+    'not_available' => 'Not Available',
+
 
 
 

@@ -80,6 +80,17 @@
                         @csrf
 
 
+                         <!-- Service -->
+                        <div class="mb-3">
+                            <label for="service_id" class="form-label">{{ __('messages.service') }}</label>
+                            <select class="form-select" id="service_id" name="service_id" required>
+                                <option value="">{{ __('messages.select_service') }}</option>
+                                @foreach ($services as $service)
+                                    <option value="{{ $service->id }}">{{ $service->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
 
                         <!-- Start Date -->
                         <div class="mb-3">
@@ -104,19 +115,6 @@
                             <label for="end_time" class="form-label">{{ __('messages.end_time') }}</label>
                             <input type="time" class="form-control" id="end_time" name="end_time" required>
                         </div>
-
-
-                        <!-- Service -->
-                        <div class="mb-3">
-                            <label for="service_id" class="form-label">{{ __('messages.service') }}</label>
-                            <select class="form-select" id="service_id" name="service_id" required>
-                                <option value="">{{ __('messages.select_service') }}</option>
-                                @foreach ($services as $service)
-                                    <option value="{{ $service->id }}">{{ $service->title }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
             
 
                         <!-- Remaining Slots -->

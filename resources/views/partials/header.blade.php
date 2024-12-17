@@ -115,58 +115,73 @@
         </div>
 
 
-        <div class="header__right">
+     <div class="header__right">
 
-          <div class="headerDropdown ml-30 js-form-dd">
-            <div class="headerDropdown__button" data-x-click="header-currency">
-              USD
-              <i class="icon-chevron-down text-18"></i>
-            </div>
-
-            <div class="headerDropdown__content" data-x="header-currency" data-x-toggle="is-active">
-              <div class="headerDropdown">
-                <div class="headerDropdown__container">
-
-                  <div class="headerDropdown__item">
-                    <button class="">U.S. Dollar</button>
-                  </div>
-
-                  <div class="headerDropdown__item">
-                    <button class="">Euro</button>
-                  </div>
-
-                  <div class="headerDropdown__item">
-                    <button class="">British Pound</button>
-                  </div>
-
-                  <div class="headerDropdown__item">
-                    <button class="">Turkish Lira</button>
-                  </div>
-
-                  <div class="headerDropdown__item">
-                    <button class="">Canadian Dollar</button>
-                  </div>
-
-                  <div class="headerDropdown__item">
-                    <button class="">Australian Dollar</button>
-                  </div>
-
-                  <div class="headerDropdown__item">
-                    <button class="">Swiss Franc</button>
-                  </div>
-
-                  <div class="headerDropdown__item">
-                    <button class="">Singapore Dollar</button>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-      
+    <div class="headerDropdown ml-30 js-form-dd">
+        <!-- Dropdown button -->
+        <div id="dropdownButton" style="cursor: pointer; display: inline-block;" class="headerDropdown__button" data-x-click="header-currency">
+            {{ session('currency', 'USD') }} <!-- Dynamically show the selected currency -->
+            <i class="icon-chevron-down text-18"></i>
         </div>
+
+        <!-- Dropdown content -->
+        <div id="dropdownContent" style="display: none; position: absolute;" class="headerDropdown__content" data-x="header-currency" data-x-toggle="is-active">
+            <div class="headerDropdown">
+                <div class="headerDropdown__container">
+                    <!-- Dropdown items -->
+                    @foreach (['USD', 'EUR', 'GBP'] as $currency)
+                        <div class="headerDropdown__item">
+                            <button data-currency="{{ $currency }}">{{ $currency }}</button>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdownButton = document.getElementById('dropdownButton');
+            const dropdownContent = document.getElementById('dropdownContent');
+
+            // Toggle dropdown visibility
+            dropdownButton.addEventListener('click', function () {
+                const isVisible = dropdownContent.style.display === 'block';
+                dropdownContent.style.display = isVisible ? 'none' : 'block';
+            });
+
+            // Handle currency selection
+            dropdownContent.addEventListener('click', function (event) {
+                if (event.target.tagName === 'BUTTON') {
+                    const selectedCurrency = event.target.getAttribute('data-currency');
+                    fetch(`/set-currency?currency=${selectedCurrency}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                // Update the dropdown button text
+                                dropdownButton.firstChild.textContent = selectedCurrency;
+                                location.reload(); // Reload the page to update prices
+                            } else {
+                                alert('Failed to update currency. Please try again.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('An error occurred while updating the currency.');
+                        });
+                    dropdownContent.style.display = 'none'; // Close dropdown
+                }
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function (event) {
+                if (!dropdownButton.contains(event.target) && !dropdownContent.contains(event.target)) {
+                    dropdownContent.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</div>
 
 
     </div>

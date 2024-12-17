@@ -12,9 +12,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $services = Service::with(['images'])->get(); // Eager load images
-        return view('pages.home', compact('services'));
+        $services = Service::with(['images'])->get();
+        $conversionRates = config('currency.rates');
+        $defaultCurrency = config('currency.default');
+
+        return view('pages.home', compact('services', 'conversionRates', 'defaultCurrency'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.

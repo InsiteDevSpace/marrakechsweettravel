@@ -47,7 +47,11 @@
 
                             <!-- Reservation Dates -->
                             <td>
-                                @if($reservation->reservation_dates)
+                                @if($reservation->start_date && $reservation->end_date)
+                                    <span class="badge bg-secondary">
+                                        {{ __('Start: ') . $reservation->start_date . __(' End: ') . $reservation->end_date }}
+                                    </span>
+                                @elseif($reservation->reservation_dates)
                                     <span class="badge bg-secondary">
                                         {{ implode(', ', json_decode($reservation->reservation_dates)) }}
                                     </span>
@@ -55,6 +59,7 @@
                                     <span class="text-muted">{{ __('messages.no_dates') }}</span>
                                 @endif
                             </td>
+
 
                             <!-- Adults Count -->
                             <td>
@@ -66,13 +71,13 @@
                                 @if($reservation->children_count > 0)
                                     <span class="badge bg-warning text-dark">{{ $reservation->children_count }}</span>
                                 @else
-                                    <span class="text-muted">{{ __('messages.none') }}</span>
+                                    <span class="text-muted">-</span>
                                 @endif
                             </td>
 
                             <!-- Total Price -->
                             <td>
-                                <span class="fw-bold text-success">{{ number_format($reservation->total_price, 2) }} {{ __('messages.currency') }}</span>
+                                <span class="fw-bold text-success">{{ number_format($reservation->total_price, 2) }} $</span>
                             </td>
 
                             <!-- Payment Status -->
@@ -81,8 +86,11 @@
                                     @case('paid')
                                         <span class="badge bg-success">{{ __('messages.paid') }}</span>
                                         @break
-                                    @case('unpaid')
-                                        <span class="badge bg-danger">{{ __('messages.unpaid') }}</span>
+                                    @case('cancelled')
+                                        <span class="badge bg-danger">{{ __('messages.cancelled') }}</span>
+                                        @break
+                                     @case('pending')
+                                        <span class="badge bg-warning">{{ __('messages.pending') }}</span>
                                         @break
                                     @default
                                         <span class="badge bg-secondary">{{ __('messages.unknown') }}</span>
@@ -157,7 +165,8 @@
                                             data-start-date="{{ $service->availabilities->pluck('start_date')->first() }}"
                                             data-end-date="{{ $service->availabilities->pluck('end_date')->first() }}"
                                             data-start-time="{{ $service->availabilities->pluck('start_time')->first() }}"
-                                            data-end-time="{{ $service->availabilities->pluck('end_time')->first() }}">
+                                            data-end-time="{{ $service->availabilities->pluck('end_time')->first() }} "
+                                            data-duration="{{ $service->duration }}">
                                         {{ $service->title }}
                                     </option>
                                 @endforeach
@@ -172,12 +181,24 @@
                             <p><strong>{{ __('messages.available_date') }}:</strong> <span id="available_dates"></span></p>
                             <p><strong>{{ __('messages.start_time') }}:</strong> <span id="start_time"></span></p>
                             <p><strong>{{ __('messages.end_time') }}:</strong> <span id="end_time"></span></p>
+                            <p><strong>{{ __('messages.duration') }}:</strong> <span id="service_duration"></span></p>
                         </div>
 
                         <div class="mb-3">
-                            <label>{{ __('messages.reservation_dates') }}</label>
-                            <input type="text" name="reservation_dates[]" class="form-control flatpickr" placeholder="yyyy-mm-dd" required>
+                            <label>{{ __('messages.start_date') }}</label>
+                            <input type="text" id="start_date" name="start_date" class="form-control" placeholder="yyyy-mm-dd" required>
                         </div>
+                        <div class="mb-3">
+                            <label>{{ __('messages.end_date') }}</label>
+                            <input type="text" id="end_date" name="end_date" class="form-control" placeholder="yyyy-mm-dd" readonly required>
+                        </div>
+
+                        <!-- Start Time -->
+                        <div class="mb-3">
+                            <label for="start_time" class="form-label">{{ __('messages.start_time') }}</label>
+                            <input type="time" class="form-control" id="start_time" name="start_time" required>
+                        </div>
+
                         <div class="mb-3">
                             <label>{{ __('messages.adults') }}</label>
                             <input type="number" name="adults_count" id="adults_count" class="form-control" min="1" required>
@@ -194,7 +215,8 @@
                             <label>{{ __('messages.payment_status') }}</label>
                             <select name="payment_status" class="form-select" required>
                                 <option value="paid">{{ __('messages.paid') }}</option>
-                                <option value="unpaid">{{ __('messages.unpaid') }}</option>
+                                <option value="pending">{{ __('messages.pending') }}</option>
+                                <option value="cancelled">{{ __('messages.cancelled') }}</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -217,114 +239,128 @@
 
 
     <!-- Show Reservation Modal -->
-<div class="modal fade" id="showReservationModal" tabindex="-1" aria-labelledby="showReservationModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="showReservationModalLabel">{{ __('messages.reservation_details') }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <strong>{{ __('messages.client') }}:</strong>
-                    <span id="show_client"></span>
+    <div class="modal fade" id="showReservationModal" tabindex="-1" aria-labelledby="showReservationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="showReservationModalLabel">{{ __('messages.reservation_details') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="mb-3">
-                    <strong>{{ __('messages.service') }}:</strong>
-                    <span id="show_service"></span>
-                </div>
-                <div class="mb-3">
-                    <strong>{{ __('messages.reservation_dates') }}:</strong>
-                    <span id="show_dates"></span>
-                </div>
-                <div class="mb-3">
-                    <strong>{{ __('messages.adults') }}:</strong>
-                    <span id="show_adults"></span>
-                </div>
-                <div class="mb-3">
-                    <strong>{{ __('messages.children') }}:</strong>
-                    <span id="show_children"></span>
-                </div>
-                <div class="mb-3">
-                    <strong>{{ __('messages.total_price') }}:</strong>
-                    <span id="show_total"></span>
-                </div>
-                <div class="mb-3">
-                    <strong>{{ __('messages.payment_status') }}:</strong>
-                    <span id="show_payment_status"></span>
-                </div>
-                <div class="mb-3">
-                    <strong>{{ __('messages.status') }}:</strong>
-                    <span id="show_status"></span>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <strong>{{ __('messages.client') }}:</strong>
+                        <span id="show_client"></span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>{{ __('messages.service') }}:</strong>
+                        <span id="show_service"></span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>{{ __('messages.start_date') }}:</strong>
+                        <span id="show_dates"></span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>{{ __('messages.start_time') }}:</strong>
+                        <span id="show_start_time"></span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>{{ __('messages.adults') }}:</strong>
+                        <span id="show_adults"></span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>{{ __('messages.children') }}:</strong>
+                        <span id="show_children"></span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>{{ __('messages.total_price') }}:</strong>
+                        <span id="show_total"></span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>{{ __('messages.payment_status') }}:</strong>
+                        <span id="show_payment_status"></span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>{{ __('messages.status') }}:</strong>
+                        <span id="show_status"></span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Edit Reservation Modal -->
-<div class="modal fade" id="editReservationModal" tabindex="-1" aria-labelledby="editReservationModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editReservationModalLabel">{{ __('messages.edit_reservation') }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="editReservationForm" action="" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <div class="mb-3">
-                        <label>{{ __('messages.client') }}</label>
-                        <select name="client_id" class="form-select" id="edit_client" required>
-                            @foreach ($clients as $client)
-                                <option value="{{ $client->id }}">{{ $client->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label>{{ __('messages.service') }}</label>
-                        <select name="service_id" class="form-select" id="edit_service" required>
-                            @foreach ($services as $service)
-                                <option value="{{ $service->id }}">{{ $service->title }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label>{{ __('messages.reservation_dates') }}</label>
-                        <input type="text" name="reservation_dates[]" id="edit_reservation_dates" class="form-control flatpickr" required>
-                    </div>
-                    <div class="mb-3">
-                        <label>{{ __('messages.adults') }}</label>
-                        <input type="number" name="adults_count" id="edit_adults" class="form-control" min="1" required>
-                    </div>
-                    <div class="mb-3">
-                        <label>{{ __('messages.children') }}</label>
-                        <input type="number" name="children_count" id="edit_children" class="form-control" min="0">
-                    </div>
-                    <div class="mb-3">
-                        <label>{{ __('messages.payment_status') }}</label>
-                        <select name="payment_status" class="form-select" id="edit_payment_status" required>
-                            <option value="paid">{{ __('messages.paid') }}</option>
-                            <option value="unpaid">{{ __('messages.unpaid') }}</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label>{{ __('messages.status') }}</label>
-                        <select name="status" class="form-select" id="edit_status" required>
-                            <option value="confirmed">{{ __('messages.confirmed') }}</option>
-                            <option value="pending">{{ __('messages.pending') }}</option>
-                            <option value="cancelled">{{ __('messages.cancelled') }}</option>
-                        </select>
-                    </div>
-                    <div class="text-end">
-                        <button type="submit" class="btn btn-primary">{{ __('messages.save_changes') }}</button>
-                    </div>
-                </form>
+    <!-- Edit Reservation Modal -->
+    <div class="modal fade" id="editReservationModal" tabindex="-1" aria-labelledby="editReservationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editReservationModalLabel">{{ __('messages.edit_reservation') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editReservationForm" action="" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="mb-3">
+                            <label>{{ __('messages.client') }}</label>
+                            <select name="client_id" class="form-select" id="edit_client" required>
+                                @foreach ($clients as $client)
+                                    <option value="{{ $client->id }}">{{ $client->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label>{{ __('messages.service') }}</label>
+                            <select name="service_id" class="form-select" id="edit_service" required>
+                                @foreach ($services as $service)
+                                    <option value="{{ $service->id }}">{{ $service->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                        <label>{{ __('messages.start_date') }}</label>
+                            <input type="text" name="start_date" id="edit_start_date" class="form-control" placeholder="yyyy-mm-dd" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>{{ __('messages.end_date') }}</label>
+                            <input type="text" name="end_date" id="edit_end_date" class="form-control" placeholder="yyyy-mm-dd" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>{{ __('messages.start_time') }}</label>
+                            <input type="time" name="start_time" id="edit_start_time" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>{{ __('messages.adults') }}</label>
+                            <input type="number" name="adults_count" id="edit_adults" class="form-control" min="1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>{{ __('messages.children') }}</label>
+                            <input type="number" name="children_count" id="edit_children" class="form-control" min="0">
+                        </div>
+                        <div class="mb-3">
+                            <label>{{ __('messages.payment_status') }}</label>
+                            <select name="payment_status" class="form-select" id="edit_payment_status" required>
+                                <option value="paid">{{ __('messages.paid') }}</option>
+                                <option value="pending">{{ __('messages.pending') }}</option>
+                                <option value="cancelled">{{ __('messages.cancelled') }}</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label>{{ __('messages.status') }}</label>
+                            <select name="status" class="form-select" id="edit_status" required>
+                                <option value="confirmed">{{ __('messages.confirmed') }}</option>
+                                <option value="pending">{{ __('messages.pending') }}</option>
+                                <option value="cancelled">{{ __('messages.cancelled') }}</option>
+                            </select>
+                        </div>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary">{{ __('messages.save_changes') }}</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -333,7 +369,6 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     <script>
-
 
 
 
@@ -348,63 +383,51 @@
                     return response.json();
                 })
                 .then(data => {
-                    console.log("Fetched data for reservation:", data);
+                    console.log("Fetched reservation data:", data);
 
-                    // Populate the form fields
+                    // Populate the form fields directly with fetched data
                     document.getElementById('edit_client').value = data.client_id;
                     document.getElementById('edit_service').value = data.service_id;
+                    document.getElementById('edit_start_date').value = data.start_date;
+                    document.getElementById('edit_end_date').value = data.end_date;
+                    document.getElementById('edit_start_time').value = data.start_time;
+                    document.getElementById('edit_adults').value = data.adults_count;
+                    document.getElementById('edit_children').value = data.children_count;
+                    document.getElementById('edit_payment_status').value = data.payment_status;
+                    document.getElementById('edit_status').value = data.status;
 
-                    // Update flatpickr with reservation dates
-                    const editFlatpickrInput = document.getElementById('edit_reservation_dates');
-                    let datesArray = [];
-
-                    if (Array.isArray(data.reservation_dates) && data.reservation_dates.length > 0) {
-                        datesArray = data.reservation_dates[0].split(',').map(date => date.trim());
-                    }
-
-                    console.log("Parsed reservation dates array:", datesArray);
-
-                    if (editFlatpickrInput._flatpickr) {
-                        editFlatpickrInput._flatpickr.destroy();
-                    }
-
-                    flatpickr(editFlatpickrInput, {
-                        mode: 'multiple',
-                        dateFormat: 'Y-m-d',
-                        defaultDate: datesArray,
-                    });
-
-                    document.getElementById('edit_adults').value = data.adults_count || 1;
-                    document.getElementById('edit_children').value = data.children_count || 0;
-                    document.getElementById('edit_payment_status').value = data.payment_status || 'unpaid';
-                    document.getElementById('edit_status').value = data.status || 'pending';
-
+                    // Set the form action
                     const form = document.getElementById('editReservationForm');
                     form.action = `/reservations/${id}`;
 
+                    // Show the modal
                     const editModal = new bootstrap.Modal(document.getElementById('editReservationModal'));
                     editModal.show();
                 })
                 .catch(error => {
+                    console.error('Error fetching reservation:', error);
                     Swal.fire({
                         icon: 'error',
                         title: "{{ __('messages.error') }}",
                         text: "{{ __('messages.unable_to_fetch_reservation') }}",
-                        confirmButtonText: "{{ __('messages.ok') }}",
                     });
-                    console.error('Error fetching reservation:', error);
                 });
         }
 
+            
 
         document.addEventListener('DOMContentLoaded', function () {
-            flatpickr('.flatpickr', { mode: 'multiple', dateFormat: 'Y-m-d' });
-
             const serviceSelect = document.getElementById('service_id');
+            const startDateInput = document.querySelector('#start_date');
+            const endDateInput = document.querySelector('#end_date');
+            const startTimeInput = document.querySelector('#start_time');
             const adultsInput = document.getElementById('adults_count');
             const childrenInput = document.getElementById('children_count');
             const totalPriceInput = document.getElementById('total_price');
 
+            let duration = 0; // Default duration
+
+            // Function to calculate total price
             const calculateTotalPrice = () => {
                 const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
                 const price = parseFloat(selectedOption.dataset.price) || 0;
@@ -415,36 +438,65 @@
                 totalPriceInput.value = totalPrice.toFixed(2);
             };
 
+            // Function to initialize flatpickr for start_date
+            const initializeStartDatePicker = (availableStartDate, availableEndDate) => {
+                if (startDateInput._flatpickr) {
+                    startDateInput._flatpickr.destroy();
+                }
+
+                flatpickr(startDateInput, {
+                    mode: 'single', // Single date selection
+                    dateFormat: 'Y-m-d',
+                    minDate: availableStartDate,
+                    maxDate: availableEndDate,
+                    onChange: function (selectedDates) {
+                        if (selectedDates.length > 0 && duration > 0) {
+                            const startDate = selectedDates[0];
+                            const endDate = new Date(startDate);
+                            endDate.setDate(startDate.getDate() + duration); // Calculate end_date based on duration
+
+                            // Update end_date input
+                            endDateInput.value = endDate.toISOString().split('T')[0];
+                        }
+                    },
+                });
+            };
+
+            // Update service details and initialize flatpickr on service change
             serviceSelect.addEventListener('change', function () {
                 const selectedOption = this.options[this.selectedIndex];
-                const price = selectedOption.dataset.price;
-                const maxParticipants = selectedOption.dataset.maxParticipants;
-                const startDate = selectedOption.dataset.startDate;
-                const endDate = selectedOption.dataset.endDate;
-                const startTime = selectedOption.dataset.startTime;
-                const endTime = selectedOption.dataset.endTime;
+                const price = selectedOption.dataset.price || 'N/A';
+                const maxParticipants = selectedOption.dataset.maxParticipants || 'N/A';
+                const startDate = selectedOption.dataset.startDate || 'N/A';
+                const endDate = selectedOption.dataset.endDate || 'N/A';
+                const startTime = selectedOption.dataset.startTime || 'N/A';
+                const endTime = selectedOption.dataset.endTime || 'N/A';
+                duration = parseInt(selectedOption.dataset.duration, 10) || 0;
 
-                if (price && maxParticipants) {
+                if (price && maxParticipants && startDate && endDate) {
                     document.getElementById('service_price').textContent = price;
                     document.getElementById('max_participants').textContent = maxParticipants;
                     document.getElementById('available_dates').textContent = `${startDate} to ${endDate}`;
                     document.getElementById('start_time').textContent = startTime;
                     document.getElementById('end_time').textContent = endTime;
+                    document.getElementById('service_duration').textContent = duration || 'N/A';
                     document.getElementById('service_details').style.display = 'block';
+
+                    // Dynamically set default values for adults and children
+                    adultsInput.value = 1;
+                    childrenInput.value = 0;
+
+                    // Initialize start_date picker with available dates
+                    initializeStartDatePicker(startDate, endDate);
                 } else {
                     document.getElementById('service_details').style.display = 'none';
                 }
 
-                flatpickr('.flatpickr', {
-                    mode: 'multiple',
-                    dateFormat: 'Y-m-d',
-                    minDate: startDate,
-                    maxDate: endDate
-                });
-
-                calculateTotalPrice();
+                calculateTotalPrice(); // Recalculate price
             });
 
+
+            // Add event listeners for price calculation
             adultsInput.addEventListener('input', calculateTotalPrice);
             childrenInput.addEventListener('input', calculateTotalPrice);
 
@@ -517,6 +569,7 @@
                     }
 
                     document.getElementById('show_adults').textContent = data.adults_count || 'N/A';
+                    document.getElementById('show_start_time').textContent = data.start_time || 'N/A';
                     document.getElementById('show_children').textContent = data.children_count || 'N/A';
                     document.getElementById('show_total').textContent = data.total_price || 'N/A';
                     document.getElementById('show_payment_status').textContent = data.payment_status || 'N/A';

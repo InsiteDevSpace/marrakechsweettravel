@@ -28,13 +28,14 @@ class ServiceController extends Controller
      * Store a newly created service in storage.
      */
    
-   public function store(Request $request)
+    public function store(Request $request)
     {
         // Validate request
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'type' => 'required|in:day_trip,activity,tour',
             'price' => 'required|numeric|min:0',
+            'currency' => 'required|string|size:3',
             'duration' => 'required|string|max:255',
             'max_participants' => 'nullable|integer|min:1',
             'min_age' => 'nullable|integer|min:0',
@@ -127,9 +128,10 @@ class ServiceController extends Controller
             'title' => $service->title,
             'type' => $service->type,
             'price' => $service->price,
+            'currency' => $service->currency,
             'duration' => $service->duration,
             'max_participants' => $service->max_participants,
-            'min_age' => $service->min_age ?? 0, // Default to 0 if null
+            'min_age' => $service->min_age ?? 0, 
             'location' => $service->location,
             'map_lat' => $service->map_lat,
             'map_lng' => $service->map_lng,
@@ -173,6 +175,7 @@ class ServiceController extends Controller
         'title' => 'required|string|max:255',
         'type' => 'required|in:day_trip,activity,tour',
         'price' => 'required|numeric|min:0',
+        'currency' => 'required|string|size:3',
         'duration' => 'required|string|max:255',
         'max_participants' => 'nullable|integer|min:1',
         'min_age' => 'nullable|integer|min:0',
@@ -198,6 +201,7 @@ class ServiceController extends Controller
         'title' => $validated['title'],
         'type' => $validated['type'],
         'price' => $validated['price'],
+        'currency' => $validated['currency'],
         'duration' => $validated['duration'],
         'max_participants' => $validated['max_participants'],
         'min_age' => $validated['min_age'],

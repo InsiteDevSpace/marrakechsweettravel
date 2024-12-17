@@ -498,7 +498,10 @@
                                 {{ $service->duration }}
                             </div>
                             <div>
-                                From <span class="text-16 fw-500">${{ $service->price }}</span>
+                                From <span class="text-16 fw-500">
+                                    {{ session('currency', 'USD') }}
+                                    {{ number_format($service->price * ($conversionRates[session('currency', 'USD')] ?? 1), 2) }}
+                                </span>
                             </div>
                         </div>
                     </div>

@@ -14,6 +14,7 @@ class Service extends Model
         'title',
         'type',
         'price',
+        'currency',
         'duration',
         'max_participants',
         'min_age',
@@ -24,6 +25,18 @@ class Service extends Model
         'map_lng',
         'discount',
     ];
+
+
+
+     // Add a method to get the converted price
+    public function getConvertedPrice($currency, $conversionRates)
+    {
+        $baseCurrency = 'USD'; // Base currency
+        if (isset($conversionRates[$currency]) && $currency !== $baseCurrency) {
+            return round($this->price * $conversionRates[$currency], 2);
+        }
+        return $this->price; // Default to base price if no conversion needed
+    }
 
     public function images()
     {
@@ -56,6 +69,20 @@ class Service extends Model
     {
         return $this->hasMany(Reservation::class);
     }
+
+
+
+
+    protected static function booted()
+    {
+        static::deleting(function ($service) {
+            // Delete related availabilities
+            $service->availabilities()->delete();
+            // Delete related reservations
+            $service->reservations()->delete();
+        });
+    }
+
 
 
 

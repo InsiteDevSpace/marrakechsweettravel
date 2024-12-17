@@ -12,7 +12,9 @@ class Reservation extends Model
     protected $fillable = [
         'service_id',
         'client_id',
-        'reservation_dates',
+        'start_date',
+        'start_time',
+        'end_date',
         'adults_count',
         'children_count',
         'total_price',
@@ -20,9 +22,8 @@ class Reservation extends Model
         'status',
     ];
 
-    protected $casts = [
-        'reservation_dates' => 'array', // For storing multiple dates
-    ];
+
+
 
     public function service()
     {

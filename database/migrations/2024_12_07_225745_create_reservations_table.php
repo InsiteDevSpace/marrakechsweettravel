@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
              $table->unsignedBigInteger('service_id');
             $table->unsignedBigInteger('client_id');
-            $table->json('reservation_dates'); // Array of dates for multiple-day reservations
-            $table->integer('adults_count');
+            $table->integer('adults_count')->default(0);
             $table->integer('children_count')->default(0);
             $table->decimal('total_price', 8, 2);
             $table->enum('payment_status', ['pending', 'paid', 'cancelled'])->default('pending');

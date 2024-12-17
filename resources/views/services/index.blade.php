@@ -3,9 +3,6 @@
     @section('title', __('messages.services_list'))
 
 
-
-
-
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('messages.services') }}
@@ -22,38 +19,38 @@
         </div>
 
         <!-- Table -->
-       <div class="table-responsive">
-            <table class="table table-hover align-middle">
-                <thead class="bg-light border-bottom">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle border rounded shadow-sm">
+                <thead class="bg-primary text-white text-uppercase">
                     <tr>
-                        <th scope="col" class="text-center" style="width: 60px;">{{ __('messages.image') }}</th>
+                        <th scope="col" class="text-center" style="width: 80px;">{{ __('messages.image') }}</th>
                         <th scope="col">{{ __('messages.title') }}</th>
                         <th scope="col">{{ __('messages.type') }}</th>
                         <th scope="col">{{ __('messages.price') }}</th>
                         <th scope="col">{{ __('messages.duration') }}</th>
                         <th scope="col">{{ __('messages.location') }}</th>
-                        <th scope="col" class="text-center">{{ __('messages.actions') }}</th>
+                        <th scope="col">{{ __('messages.availability') }}</th>
+                        <th scope="col">{{ __('messages.creation_date') }}</th>
+                        <th scope="col" class="text-center" style="width: 150px;">{{ __('messages.actions') }}</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($services as $service)
-                        <tr class="border-bottom">
+                        <tr class="border-bottom align-middle">
                             <!-- Image -->
                             <td class="text-center">
                                 @if ($service->images && $service->images->isNotEmpty())
                                     <img 
                                         src="{{ asset($service->images->first()->image_path) }}" 
                                         alt="{{ $service->title }}" 
-                                        style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                                        style="width: 60px; height: 60px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
                                 @else
                                     <span class="text-muted">{{ __('messages.no_image') }}</span>
                                 @endif
                             </td>
 
                             <!-- Title -->
-                            <td class="fw-semibold">
-                                {{ $service->title }}
-                            </td>
+                            <td class="fw-bold">{{ $service->title }}</td>
 
                             <!-- Type -->
                             <td>
@@ -66,42 +63,59 @@
                             </td>
 
                             <!-- Price -->
-                            <td>
-                                <span class="fw-bold text-success">
-                                    {{ number_format($service->price, 2) }} {{ __('messages.currency_symbol') }}
-                                </span>
+                            <td class="">
+                                <i class="bi bi-tag"></i> {{ number_format($service->price, 2) }} {{ $service->currency }}
                             </td>
 
                             <!-- Duration -->
                             <td>
-                                <i class="bi bi-clock text-primary me-1"></i> {{ $service->duration }}
+                                <span class="badge bg-light text-dark">
+                                    <i class="bi bi-clock text-primary me-1"></i> {{ $service->duration }} {{ __('messages.days') }}
+                                </span>
                             </td>
 
                             <!-- Location -->
                             <td>
-                                <i class="bi bi-geo-alt text-danger me-1"></i> {{ $service->location }}
+                                <i class="bi bi-geo-alt text-danger me-1"></i> 
+                                <span class="fw-semibold">{{ $service->location }}</span>
+                            </td>
+
+                            <!-- Availability -->
+                            <td>
+                                @if ($service->availabilities && $service->availabilities->isNotEmpty())
+                                    <span class="badge bg-light text-dark">
+                                        {{ $service->availabilities->first()->start_date }} 
+                                        - {{ $service->availabilities->first()->end_date }}
+                                    </span>
+                                @else
+                                    <span class="badge bg-danger text-white">{{ __('messages.not_available') }}</span>
+                                @endif
+                            </td>
+
+                            <!-- Creation Date -->
+                            <td>
+                                
+                                {{ $service->created_at->format('Y-m-d') }}
                             </td>
 
                             <!-- Actions -->
                             <td class="text-center">
                                 <a href="javascript:void(0);" onclick="showService({{ $service->id }})" class="text-info me-2" data-bs-toggle="tooltip" title="{{ __('messages.show') }}">
-                                    <i class="bi bi-eye"></i>
+                                    <i class="bi bi-eye fs-5"></i>
                                 </a>
-                                <a href="javascript:void(0);" onclick="editService({{ $service->id }})" class="text-primary me-2">
-                                    <i class="bi bi-pencil-square"></i>
+                                <a href="javascript:void(0);" onclick="editService({{ $service->id }})" class="text-primary me-2" data-bs-toggle="tooltip" title="{{ __('messages.edit') }}">
+                                    <i class="bi bi-pencil-square fs-5"></i>
                                 </a>
-
-
-                                <a href="javascript:void(0);" onclick="deleteService({{ $service->id }})" class="text-danger me-2" data-bs-toggle="tooltip" title="{{ __('messages.delete') }}">
-                                    <i class="bi bi-trash"></i>
+                                <a href="javascript:void(0);" onclick="deleteService({{ $service->id }})" class="text-danger" data-bs-toggle="tooltip" title="{{ __('messages.delete') }}">
+                                    <i class="bi bi-trash fs-5"></i>
                                 </a>
-
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
+
 
 
 
@@ -198,6 +212,16 @@
                         <div class="mb-3">
                             <label for="price" class="form-label">{{ __('messages.price') }}</label>
                             <input type="number" class="form-control" id="price" name="price" min="0" placeholder="{{ __('messages.enter_price') }}" required>
+                        </div>
+
+                        <!-- Currency -->
+                        <div class="mb-3">
+                            <label for="currency" class="form-label">{{ __('messages.currency') }}</label>
+                            <select class="form-select" id="currency" name="currency" required>
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="MAD">MAD</option>
+                            </select>
                         </div>
 
                         <!-- Highlights -->
@@ -344,6 +368,15 @@
                         <div class="mb-3">
                             <label for="edit-price" class="form-label">{{ __('messages.price') }}</label>
                             <input type="number" class="form-control" id="edit-price" name="price" placeholder="{{ __('messages.enter_price') }}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edit-currency" class="form-label">{{ __('messages.currency') }}</label>
+                            <select class="form-select" id="edit-currency" name="currency" required>
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="MAD">MAD</option>
+                            </select>
                         </div>
 
                         <!-- Highlights -->
@@ -603,6 +636,7 @@
                         document.getElementById('edit-duration').value = service.duration || '';
                         document.getElementById('edit-location').value = service.location || '';
                         document.getElementById('edit-price').value = service.price || '';
+                        document.getElementById('edit-currency').value = service.currency || '';
                         document.getElementById('edit-discount').value = service.discount !== undefined ? service.discount : '';
                         document.getElementById('edit-max_participants').value = service.max_participants || '';
                         document.getElementById('edit-min_age').value = service.min_age !== undefined ? service.min_age : '';
@@ -713,7 +747,7 @@
                     // Populate modal fields with service data
                     document.getElementById('service-title').textContent = data.title || 'N/A';
                     document.getElementById('service-type').textContent = data.type || 'N/A';
-                    document.getElementById('service-price').textContent = data.price ? `$${data.price}` : 'N/A';
+                    document.getElementById('service-price').textContent = data.price ? `${data.price} ${data.currency}` : 'N/A';
                     document.getElementById('service-duration').textContent = data.duration || 'N/A';
                     document.getElementById('service-max-participants').textContent = data.max_participants || 'N/A';
                     document.getElementById('service-location').textContent = data.location || 'N/A';

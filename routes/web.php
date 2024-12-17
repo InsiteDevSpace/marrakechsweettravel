@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MembersController;
 use App\Http\Controllers\PostsController;
@@ -14,7 +15,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ReservationTransferController;
 use App\Http\Controllers\TransferController;
 use App\Http\Controllers\ServiceAvailabilityController;
-
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 // Static and specific routes
@@ -67,6 +68,17 @@ Route::middleware('auth')->group(function () {
 
 
 });
+
+
+
+Route::get('/set-currency', [CurrencyController::class, 'setCurrency'])->name('set.currency');
+
+Route::get('/set-currency', function (Request $request) {
+    $currency = $request->get('currency', 'USD'); // Default to USD
+    session(['currency' => $currency]); // Store the currency in the session
+    return response()->json(['success' => true]);
+});
+
 
 // Generic slug-based route (make sure to exclude known paths)
 Route::get('/{slug}', [ServiceController::class, 'showService'])

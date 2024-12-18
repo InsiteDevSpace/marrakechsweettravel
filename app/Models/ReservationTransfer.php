@@ -14,16 +14,17 @@ class ReservationTransfer extends Model
     protected $fillable = [
         'client_id',
         'transfer_id',
-        'total_people',
+        'adults_count',
+        'children_count',
         'total_price',
         'date',
         'status',
         'hotel_name',
         'hotel_address',
-        'Flight_number',
-        'Flight_time',
+        'flight_number',
+        'flight_time',
         'hotel_phone',
-        'Comment'
+        'comment'
     ];
 
     public function transfer()

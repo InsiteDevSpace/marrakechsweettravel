@@ -224,9 +224,9 @@ return [
     'add_transfer' => 'Add a transfer',
     'edit_transfer' => 'Edit transfer',
     'transfers' => 'Transfers',
-    'one_way' => 'one way',
-    'round_trip' => 'round trip',
-    'start_date' => 'start date',
+    'one_way' => 'One Way',
+    'round_trip' => 'Round Trip',
+    'start_date' => 'Start Date',
     'end_date' => 'end_date',
     'transfer_deleted_success' => 'Transfer deleted successfully.',
     'transfer_updated_success' => 'Transfer updated successfully.',
@@ -424,8 +424,13 @@ return [
     'tour' => 'Tour',
     'unknown' => 'Unknown',
     'not_available' => 'Not Available',
+    'minutes' => 'Minutes',
+    'adults_count' => 'Number of Adults',
+    'children_count' => 'Number of Children',
 
-
+    'transfer_information' => 'Transfer Information',
+    'reservation_information' => 'Reservation Information',
+    // Other translations...
 
 
 ];

@@ -174,14 +174,15 @@
                         </div>
 
                         <!-- Service Details -->
+                         
                         <div id="service_details" class="mb-3" style="display: none;">
                             <h6>{{ __('messages.service_details') }}</h6>
-                            <p><strong>{{ __('messages.price') }}:</strong> <span id="service_price"></span></p>
-                            <p><strong>{{ __('messages.max_participants') }}:</strong> <span id="max_participants"></span></p>
-                            <p><strong>{{ __('messages.available_date') }}:</strong> <span id="available_dates"></span></p>
-                            <p><strong>{{ __('messages.start_time') }}:</strong> <span id="start_time"></span></p>
-                            <p><strong>{{ __('messages.end_time') }}:</strong> <span id="end_time"></span></p>
-                            <p><strong>{{ __('messages.duration') }}:</strong> <span id="service_duration"></span></p>
+                            <strong>{{ __('messages.price') }}:</strong> <span id="service_price"></span></br>
+                            <strong>{{ __('messages.max_participants') }}:</strong> <span id="max_participants"></span></br>
+                            <strong>{{ __('messages.available_date') }}:</strong> <span id="available_dates"></span></br>
+                            <strong>{{ __('messages.start_time') }}:</strong> <span id="start_time"></span></br>
+                            <strong>{{ __('messages.end_time') }}:</strong> <span id="end_time"></span></br>
+                            <strong>{{ __('messages.duration') }}:</strong> <span id="service_duration"></span>
                         </div>
 
                         <div class="mb-3">
@@ -257,7 +258,11 @@
                     </div>
                     <div class="mb-3">
                         <strong>{{ __('messages.start_date') }}:</strong>
-                        <span id="show_dates"></span>
+                        <span id="show_start_date"></span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>{{ __('messages.end_date') }}:</strong>
+                        <span id="show_end_date"></span>
                     </div>
                     <div class="mb-3">
                         <strong>{{ __('messages.start_time') }}:</strong>
@@ -561,16 +566,13 @@
                     document.getElementById('show_client').textContent = data.client?.name || 'N/A';
                     document.getElementById('show_service').textContent = data.service?.title || 'N/A';
 
-                    // Check if reservation_dates is an array
-                    if (Array.isArray(data.reservation_dates)) {
-                        document.getElementById('show_dates').textContent = data.reservation_dates.join(', ');
-                    } else {
-                        document.getElementById('show_dates').textContent = 'N/A';
-                    }
+    
 
                     document.getElementById('show_adults').textContent = data.adults_count || 'N/A';
                     document.getElementById('show_start_time').textContent = data.start_time || 'N/A';
                     document.getElementById('show_children').textContent = data.children_count || 'N/A';
+                    document.getElementById('show_start_date').textContent = data.start_date || 'N/A';
+                    document.getElementById('show_end_date').textContent = data.end_date || 'N/A';
                     document.getElementById('show_total').textContent = data.total_price || 'N/A';
                     document.getElementById('show_payment_status').textContent = data.payment_status || 'N/A';
                     document.getElementById('show_status').textContent = data.status || 'N/A';

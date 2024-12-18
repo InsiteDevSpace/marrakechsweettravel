@@ -68,6 +68,8 @@ class TransferController extends Controller
             'price' => 'required|numeric|min:0',
             'departure' => 'required|string|max:255',
             'destination' => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
             'type' => 'required|in:one_way,round_trip',
         ]);
 

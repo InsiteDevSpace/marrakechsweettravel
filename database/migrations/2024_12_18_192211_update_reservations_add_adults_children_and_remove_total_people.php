@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('reservation_transfers', function (Blueprint $table) {
-            $table->string('hotel_name')->nullable()->after('status');
-            $table->string('hotel_address')->nullable()->after('hotel_name');
-            $table->string('flight_number')->nullable()->after('hotel_address');
-            $table->time('flight_time')->nullable()->after('flight_number');
-            $table->integer('hotel_phone')->nullable()->after('flight_time');
-            $table->string('comment')->nullable()->after('hotel_phone');
+            // Add new columns
+            $table->integer('adults_count')->default(1)->after('transfer_id');
+            $table->integer('children_count')->default(0)->after('adults_count');
+            
+            // Remove total_people column
+            $table->dropColumn('total_people');
         });
     }
 
@@ -27,7 +27,11 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('reservation_transfers', function (Blueprint $table) {
-            //
+            // Add the total_people column back
+            $table->integer('total_people')->nullable()->after('transfer_id');
+
+            // Drop the new columns
+            $table->dropColumn(['adults_count', 'children_count']);
         });
     }
 };

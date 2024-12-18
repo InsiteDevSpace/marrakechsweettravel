@@ -44,61 +44,137 @@
 
         <!-- Transfer Table -->
         <div class="table-responsive">
-            <table class="table table-striped table-hover">
-                <thead class="table-orange">
-                    <tr>
-                        <th>{{ __('messages.departure') }}</th>
-                        <th>{{ __('messages.destination') }}</th>
-                        <th>{{ __('messages.type') }}</th>
-                        <th>{{ __('messages.price') }}</th>
-                        <th>{{ __('messages.start_date') }}</th>
-                        <th>{{ __('messages.end_date') }}</th>
-                        <th>{{ __('messages.min_people') }}</th>
-                        <th>{{ __('messages.max_people') }}</th>
-                        <th>{{ __('messages.estimated_time') }}</th>
-                        <th class="text-center">{{ __('messages.actions') }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($transfers as $transfer)
-                        <tr>
-                            <td>{{ $transfer->departure }}</td>
-                            <td>{{ $transfer->destination }}</td>
-                            <td>{{ $transfer->type }}</td>
-                            <td>${{ number_format($transfer->price, 2) }}</td>
-                            <td>{{ $transfer->start_date }}</td>
-                            <td>{{ $transfer->end_date }}</td>
-                            <td>{{ $transfer->min_people }}</td>
-                            <td>{{ $transfer->max_people }}</td>
-                            <td>{{ $transfer->estimated_time ? $transfer->estimated_time . ' mins' : 'N/A' }}</td>
-                            <td class="text-center">
-                                <a href="javascript:void(0);" onclick="showTransfer({{ $transfer->id }})"
-                                    class="me-2" data-bs-toggle="tooltip" title="{{ __('messages.show') }}">
-                                    <i data-feather="eye" class="action-icon text-info"></i>
-                                </a>
+    <table class="table table-hover align-middle border rounded shadow-sm">
+        <!-- Table Header -->
+        <thead class="bg-light border-bottom">
+            <tr>
+                <th scope="col" class="text-center" style="width: 80px;">{{ __('messages.image') }}</th>
+                <th>{{ __('messages.departure') }}</th>
+                <th>{{ __('messages.destination') }}</th>
+                <th>{{ __('messages.type') }}</th>
+                <th>{{ __('messages.price') }}</th>
+                <th>{{ __('messages.start_date') }}</th>
+                <th>{{ __('messages.end_date') }}</th>
+                <th>{{ __('messages.min_people') }}</th>
+                <th>{{ __('messages.max_people') }}</th>
+                <th>{{ __('messages.estimated_time') }}</th>
+                <th class="text-center">{{ __('messages.actions') }}</th>
+            </tr>
+        </thead>
 
-                                <a href="javascript:void(0);" onclick="editTransfer({{ $transfer->id }})"
-                                    class="me-2" data-bs-toggle="tooltip" title="{{ __('messages.edit') }}">
-                                    <i data-feather="edit" class="action-icon text-success"></i>
-                                </a>
+        <!-- Table Body -->
+        <tbody>
+            @foreach ($transfers as $transfer)
+                <tr>
 
-                                <a href="javascript:void(0);" onclick="confirmDelete({{ $transfer->id }})"
-                                    class="text-danger" data-bs-toggle="tooltip" title="{{ __('messages.delete') }}">
-                                    <i data-feather="trash" class="action-icon text-danger"></i>
-                                </a>
+                    <td class="text-center">
+                        @if ($transfer->image)
+                            <img 
+                                src="/uploads/transfers/{{ $transfer->image }}" 
+                                style="width: 60px; height: 60px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+                        @else
+                            <span class="text-muted">{{ __('messages.no_image') }}</span>
+                        @endif
+                    </td>
+                    <!-- Departure -->
+                    <td>
+                        <span class="fw-bold">{{ $transfer->departure }}</span>
+                    </td>
 
-                                <form id="delete-form-{{ $transfer->id }}"
-                                    action="{{ route('transfers.destroy', $transfer->id) }}" method="POST"
-                                    style="display: none;">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+                    <!-- Destination -->
+                    <td>
+                        <span class="badge bg-info text-dark">{{ $transfer->destination }}</span>
+                    </td>
+
+                    <!-- Type -->
+                    <td>
+                        @switch($transfer->type)
+                            @case('one_way')
+                                <span class="badge bg-primary">{{ __('messages.one_way') }}</span>
+                                @break
+                            @case('round_trip')
+                                <span class="badge bg-success">{{ __('messages.round_trip') }}</span>
+                                @break
+                            @default
+                                <span class="badge bg-secondary">{{ __('messages.unknown') }}</span>
+                        @endswitch
+                    </td>
+
+                    <!-- Price -->
+                    <td>
+                        <span class="fw-bold text-success">
+                            ${{ number_format($transfer->price, 2) }}
+                        </span>
+                    </td>
+
+                    <!-- Start Date -->
+                    <td>
+                        <span class="badge bg-light text-dark">
+                            {{ $transfer->start_date }}
+                        </span>
+                    </td>
+
+                    <!-- End Date -->
+                    <td>
+                        @if($transfer->end_date)
+                            <span class="badge bg-light text-dark">
+                                {{ $transfer->end_date }}
+                            </span>
+                        @else
+                            <span class="text-muted">-</span>
+                        @endif
+                    </td>
+
+                    <!-- Min People -->
+                    <td>
+                        <span class="badge bg-primary text-white">
+                            {{ $transfer->min_people }}
+                        </span>
+                    </td>
+
+                    <!-- Max People -->
+                    <td>
+                        <span class="badge bg-warning text-dark">
+                            {{ $transfer->max_people }}
+                        </span>
+                    </td>
+
+                    <!-- Estimated Time -->
+                    <td>
+                        @if($transfer->estimated_time)
+                            <span class="fw-semibold">{{ $transfer->estimated_time }} {{ __('messages.minutes') }}</span>
+                        @else
+                            <span class="text-muted">{{ __('messages.not_applicable') }}</span>
+                        @endif
+                    </td>
+
+                    <!-- Actions -->
+                    <td class="text-center">
+                        <a href="javascript:void(0);" onclick="showTransfer({{ $transfer->id }})" 
+                            class="text-info me-2" data-bs-toggle="tooltip" title="{{ __('messages.show') }}">
+                            <i class="bi bi-eye"></i>
+                        </a>
+                        <a href="javascript:void(0);" onclick="editTransfer({{ $transfer->id }})" 
+                            class="text-primary me-2" data-bs-toggle="tooltip" title="{{ __('messages.edit') }}">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <a href="javascript:void(0);" onclick="confirmDelete({{ $transfer->id }})" 
+                            class="text-danger" data-bs-toggle="tooltip" title="{{ __('messages.delete') }}">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                        <!-- Delete Form -->
+                        <form id="delete-form-{{ $transfer->id }}" 
+                            action="{{ route('transfers.destroy', $transfer->id) }}" method="POST" style="display: none;">
+                            @csrf
+                            @method('DELETE')
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
 
         <!-- Pagination -->
         <div class="d-flex justify-content-center">
@@ -129,63 +205,160 @@
                         <div class="mb-3">
                             <label for="departure" class="form-label">{{ __('messages.departure') }}</label>
                             <select name="departure" class="form-select" required>
-                                <option value="AGAFAY">AGAFAY</option>
-                                <option value="MARRAKECH_CENTRE_VILLE">MARRAKECH CENTRE VILLE</option>
-                                <option value="LA_PALMERAIE_MARRAKECH">LA PALMERAIE MARRAKECH</option>
-                                <option value="LES_ENVIRONS_DE_MARRAKECH">LES ENVIRONS DE MARRAKECH</option>
-                                <option value="ESSAOURIA">ESSAOURIA</option>
-                                <option value="CASABLANCA_CENTER_VILLE">CASABLANCA CENTER VILLE</option>
-                                <option value="RABAT">RABAT</option>
-                                <option value="AGADIR">AGADIR</option>
-                                <option value="TIZNIT">TIZNIT</option>
-                                <option value="OUARZAZATE">OUARZAZATE</option>
-                                <option value="FES">FES</option>
-                                <option value="MERZOUGA">MERZOUGA</option>
-                                <option value="TANGIER">TANGIER</option>
-                                <option value="OUKAIMEDEN">OUKAIMEDEN</option>
-                                <option value="ZAGORA">ZAGORA</option>
-                                <option value="ARFOUD">ARFOUD</option>
-                                <option value="SETTI_FADMA">SETTI FADMA</option>
-                                <option value="IMLIL">IMLIL</option>
-                                <option value="BIN_EL_OUIDANE">BIN EL OUIDANE</option>
-                                <option value="MAZAGANE">MAZAGANE</option>
-                                <option value="TAROUDANT">TAROUDANT</option>
-                                <option value="TAGHAZOUT">TAGHAZOUT</option>
-                                <option value="INEZGANE">INEZGANE</option>
-                                <option value="TOUBKAL">TOUBKAL</option>
-                                <option value="BENGUERIR">BENGUERIR</option>
+                                <!-- Aéroport Section -->
+                                <optgroup label="Aéroport">
+                                    <option value="Aéroport de Marrakech (RAK)">Aéroport de Marrakech (RAK)</option>
+                                    <option value="Aéroport de Casablanca (CMN)">Aéroport de Casablanca (CMN)</option>
+                                    <option value="Aéroport d'Agadir (AGA)">Aéroport d'Agadir (AGA)</option>
+                                    <option value="Aéroport d'Essaouira (ESU)">Aéroport d'Essaouira (ESU)</option>
+                                    <option value="Aéroport de Ouarzazate (OZZ)">Aéroport de Ouarzazate (OZZ)</option>
+                                    <option value="Aéroport de Fès (FEZ)">Aéroport de Fès (FEZ)</option>
+                                    <option value="Station de train">Station de train</option>
+                                    <option value="Aéroport de Tangier (TNG)">Aéroport de Tangier (TNG)</option>
+                                    <option value="Aéroport Rabat (RBA)">Aéroport Rabat (RBA)</option>
+                                    <option value="Aéroport Nador (NDR)">Aéroport Nador (NDR)</option>
+                                    <option value="Aéroport Al Hoceima (AHU)">Aéroport Al Hoceima (AHU)</option>
+                                </optgroup>
+
+                                <!-- Villes Section -->
+                                <optgroup label="Villes">
+                                    <option value="Agafay">Agafay</option>
+                                    <option value="Marrakech Centre Ville">Marrakech Centre Ville</option>
+                                    <option value="La Palmeraie Marrakech">La Palmeraie Marrakech</option>
+                                    <option value="Les environs de Marrakech">Les environs de Marrakech</option>
+                                    <option value="Essaouira">Essaouira</option>
+                                    <option value="Casablanca Centre Ville">Casablanca Centre Ville</option>
+                                    <option value="Rabat">Rabat</option>
+                                    <option value="Agadir">Agadir</option>
+                                    <option value="Tiznit">Tiznit</option>
+                                    <option value="Ouarzazate">Ouarzazate</option>
+                                    <option value="Erfoud">Erfoud</option>
+                                    <option value="Fès">Fès</option>
+                                    <option value="Merzouga">Merzouga</option>
+                                    <option value="El Jadida">El Jadida</option>
+                                    <option value="Chefchaouen">Chefchaouen</option>
+                                    <option value="Tangier">Tangier</option>
+                                    <option value="Safi">Safi</option>
+                                    <option value="Oukaimeden">Oukaimeden</option>
+                                    <option value="Zagora">Zagora</option>
+                                    <option value="Arfoud">Arfoud</option>
+                                    <option value="Setti Fadma">Setti Fadma</option>
+                                    <option value="Sidi Ifni">Sidi Ifni</option>
+                                    <option value="Imlil">Imlil</option>
+                                    <option value="Sidi Kaouki">Sidi Kaouki</option>
+                                    <option value="Tafraoute">Tafraoute</option>
+                                    <option value="Tamraght">Tamraght</option>
+                                    <option value="Tiguert">Tiguert</option>
+                                    <option value="Skoura">Skoura</option>
+                                    <option value="Tinghir">Tinghir</option>
+                                    <option value="Ouirgane">Ouirgane</option>
+                                    <option value="Bin El Ouidane">Bin El Ouidane</option>
+                                    <option value="Demnate">Demnate</option>
+                                    <option value="Mazagane">Mazagane</option>
+                                    <option value="Tamadot">Tamadot</option>
+                                    <option value="Asni">Asni</option>
+                                    <option value="Taroudant">Taroudant</option>
+                                    <option value="Taghazout">Taghazout</option>
+                                    <option value="Meknes">Meknes</option>
+                                    <option value="Oualidia">Oualidia</option>
+                                    <option value="Paradis Plage">Paradis Plage</option>
+                                    <option value="Aourir">Aourir</option>
+                                    <option value="Beni-Mellal">Beni-Mellal</option>
+                                    <option value="Imouzzer">Imouzzer</option>
+                                    <option value="Imsouane">Imsouane</option>
+                                    <option value="Inezgane">Inezgane</option>
+                                    <option value="Mirleft">Mirleft</option>
+                                    <option value="Toubkal">Toubkal</option>
+                                    <option value="Tetouan">Tetouan</option>
+                                    <option value="Settat">Settat</option>
+                                    <option value="T'mara">T'mara</option>
+                                    <option value="Ouzoud">Ouzoud</option>
+                                    <option value="Azilal">Azilal</option>
+                                    <option value="Errachidia">Errachidia</option>
+                                    <option value="Benguerir">Benguerir</option>
+                                </optgroup>
                             </select>
+
+                            
                         </div>
 
                         <!-- Destination select -->
                         <div class="mb-3">
                             <label for="destination" class="form-label">{{ __('messages.destination') }}</label>
                             <select name="destination" class="form-select" required>
-                                <option value="AGAFAY">AGAFAY</option>
-                                <option value="MARRAKECH_CENTRE_VILLE">MARRAKECH CENTRE VILLE</option>
-                                <option value="LA_PALMERAIE_MARRAKECH">LA PALMERAIE MARRAKECH</option>
-                                <option value="LES_ENVIRONS_DE_MARRAKECH">LES ENVIRONS DE MARRAKECH</option>
-                                <option value="ESSAOURIA">ESSAOURIA</option>
-                                <option value="CASABLANCA_CENTER_VILLE">CASABLANCA CENTER VILLE</option>
-                                <option value="RABAT">RABAT</option>
-                                <option value="AGADIR">AGADIR</option>
-                                <option value="TIZNIT">TIZNIT</option>
-                                <option value="OUARZAZATE">OUARZAZATE</option>
-                                <option value="FES">FES</option>
-                                <option value="MERZOUGA">MERZOUGA</option>
-                                <option value="TANGIER">TANGIER</option>
-                                <option value="OUKAIMEDEN">OUKAIMEDEN</option>
-                                <option value="ZAGORA">ZAGORA</option>
-                                <option value="ARFOUD">ARFOUD</option>
-                                <option value="SETTI_FADMA">SETTI FADMA</option>
-                                <option value="IMLIL">IMLIL</option>
-                                <option value="BIN_EL_OUIDANE">BIN EL OUIDANE</option>
-                                <option value="MAZAGANE">MAZAGANE</option>
-                                <option value="TAROUDANT">TAROUDANT</option>
-                                <option value="TAGHAZOUT">TAGHAZOUT</option>
-                                <option value="INEZGANE">INEZGANE</option>
-                                <option value="TOUBKAL">TOUBKAL</option>
-                                <option value="BENGUERIR">BENGUERIR</option>
+                                  <!-- Aéroport Section -->
+                                <optgroup label="Aéroport">
+                                    <option value="Aéroport de Marrakech (RAK)">Aéroport de Marrakech (RAK)</option>
+                                    <option value="Aéroport de Casablanca (CMN)">Aéroport de Casablanca (CMN)</option>
+                                    <option value="Aéroport d'Agadir (AGA)">Aéroport d'Agadir (AGA)</option>
+                                    <option value="Aéroport d'Essaouira (ESU)">Aéroport d'Essaouira (ESU)</option>
+                                    <option value="Aéroport de Ouarzazate (OZZ)">Aéroport de Ouarzazate (OZZ)</option>
+                                    <option value="Aéroport de Fès (FEZ)">Aéroport de Fès (FEZ)</option>
+                                    <option value="Station de train">Station de train</option>
+                                    <option value="Aéroport de Tangier (TNG)">Aéroport de Tangier (TNG)</option>
+                                    <option value="Aéroport Rabat (RBA)">Aéroport Rabat (RBA)</option>
+                                    <option value="Aéroport Nador (NDR)">Aéroport Nador (NDR)</option>
+                                    <option value="Aéroport Al Hoceima (AHU)">Aéroport Al Hoceima (AHU)</option>
+                                </optgroup>
+
+                                <!-- Villes Section -->
+                                <optgroup label="Villes">
+                                    <option value="Agafay">Agafay</option>
+                                    <option value="Marrakech Centre Ville">Marrakech Centre Ville</option>
+                                    <option value="La Palmeraie Marrakech">La Palmeraie Marrakech</option>
+                                    <option value="Les environs de Marrakech">Les environs de Marrakech</option>
+                                    <option value="Essaouira">Essaouira</option>
+                                    <option value="Casablanca Centre Ville">Casablanca Centre Ville</option>
+                                    <option value="Rabat">Rabat</option>
+                                    <option value="Agadir">Agadir</option>
+                                    <option value="Tiznit">Tiznit</option>
+                                    <option value="Ouarzazate">Ouarzazate</option>
+                                    <option value="Erfoud">Erfoud</option>
+                                    <option value="Fès">Fès</option>
+                                    <option value="Merzouga">Merzouga</option>
+                                    <option value="El Jadida">El Jadida</option>
+                                    <option value="Chefchaouen">Chefchaouen</option>
+                                    <option value="Tangier">Tangier</option>
+                                    <option value="Safi">Safi</option>
+                                    <option value="Oukaimeden">Oukaimeden</option>
+                                    <option value="Zagora">Zagora</option>
+                                    <option value="Arfoud">Arfoud</option>
+                                    <option value="Setti Fadma">Setti Fadma</option>
+                                    <option value="Sidi Ifni">Sidi Ifni</option>
+                                    <option value="Imlil">Imlil</option>
+                                    <option value="Sidi Kaouki">Sidi Kaouki</option>
+                                    <option value="Tafraoute">Tafraoute</option>
+                                    <option value="Tamraght">Tamraght</option>
+                                    <option value="Tiguert">Tiguert</option>
+                                    <option value="Skoura">Skoura</option>
+                                    <option value="Tinghir">Tinghir</option>
+                                    <option value="Ouirgane">Ouirgane</option>
+                                    <option value="Bin El Ouidane">Bin El Ouidane</option>
+                                    <option value="Demnate">Demnate</option>
+                                    <option value="Mazagane">Mazagane</option>
+                                    <option value="Tamadot">Tamadot</option>
+                                    <option value="Asni">Asni</option>
+                                    <option value="Taroudant">Taroudant</option>
+                                    <option value="Taghazout">Taghazout</option>
+                                    <option value="Meknes">Meknes</option>
+                                    <option value="Oualidia">Oualidia</option>
+                                    <option value="Paradis Plage">Paradis Plage</option>
+                                    <option value="Aourir">Aourir</option>
+                                    <option value="Beni-Mellal">Beni-Mellal</option>
+                                    <option value="Imouzzer">Imouzzer</option>
+                                    <option value="Imsouane">Imsouane</option>
+                                    <option value="Inezgane">Inezgane</option>
+                                    <option value="Mirleft">Mirleft</option>
+                                    <option value="Toubkal">Toubkal</option>
+                                    <option value="Tetouan">Tetouan</option>
+                                    <option value="Settat">Settat</option>
+                                    <option value="T'mara">T'mara</option>
+                                    <option value="Ouzoud">Ouzoud</option>
+                                    <option value="Azilal">Azilal</option>
+                                    <option value="Errachidia">Errachidia</option>
+                                    <option value="Benguerir">Benguerir</option>
+                                </optgroup>
+
                             </select>
                         </div>
 
@@ -269,31 +442,78 @@
                         <div class="mb-3">
                             <label for="departure" class="form-label">{{ __('messages.departure') }}</label>
                             <select name="departure" class="form-select" required>
-                                <option value="AGAFAY">AGAFAY</option>
-                                <option value="MARRAKECH_CENTRE_VILLE">MARRAKECH CENTRE VILLE</option>
-                                <option value="LA_PALMERAIE_MARRAKECH">LA PALMERAIE MARRAKECH</option>
-                                <option value="LES_ENVIRONS_DE_MARRAKECH">LES ENVIRONS DE MARRAKECH</option>
-                                <option value="ESSAOURIA">ESSAOURIA</option>
-                                <option value="CASABLANCA_CENTER_VILLE">CASABLANCA CENTER VILLE</option>
-                                <option value="RABAT">RABAT</option>
-                                <option value="AGADIR">AGADIR</option>
-                                <option value="TIZNIT">TIZNIT</option>
-                                <option value="OUARZAZATE">OUARZAZATE</option>
-                                <option value="FES">FES</option>
-                                <option value="MERZOUGA">MERZOUGA</option>
-                                <option value="TANGIER">TANGIER</option>
-                                <option value="OUKAIMEDEN">OUKAIMEDEN</option>
-                                <option value="ZAGORA">ZAGORA</option>
-                                <option value="ARFOUD">ARFOUD</option>
-                                <option value="SETTI_FADMA">SETTI FADMA</option>
-                                <option value="IMLIL">IMLIL</option>
-                                <option value="BIN_EL_OUIDANE">BIN EL OUIDANE</option>
-                                <option value="MAZAGANE">MAZAGANE</option>
-                                <option value="TAROUDANT">TAROUDANT</option>
-                                <option value="TAGHAZOUT">TAGHAZOUT</option>
-                                <option value="INEZGANE">INEZGANE</option>
-                                <option value="TOUBKAL">TOUBKAL</option>
-                                <option value="BENGUERIR">BENGUERIR</option>
+                                <!-- Aéroport Section -->
+                                <optgroup label="Aéroport">
+                                    <option value="Aéroport de Marrakech (RAK)">Aéroport de Marrakech (RAK)</option>
+                                    <option value="Aéroport de Casablanca (CMN)">Aéroport de Casablanca (CMN)</option>
+                                    <option value="Aéroport d'Agadir (AGA)">Aéroport d'Agadir (AGA)</option>
+                                    <option value="Aéroport d'Essaouira (ESU)">Aéroport d'Essaouira (ESU)</option>
+                                    <option value="Aéroport de Ouarzazate (OZZ)">Aéroport de Ouarzazate (OZZ)</option>
+                                    <option value="Aéroport de Fès (FEZ)">Aéroport de Fès (FEZ)</option>
+                                    <option value="Station de train">Station de train</option>
+                                    <option value="Aéroport de Tangier (TNG)">Aéroport de Tangier (TNG)</option>
+                                    <option value="Aéroport Rabat (RBA)">Aéroport Rabat (RBA)</option>
+                                    <option value="Aéroport Nador (NDR)">Aéroport Nador (NDR)</option>
+                                    <option value="Aéroport Al Hoceima (AHU)">Aéroport Al Hoceima (AHU)</option>
+                                </optgroup>
+
+                                <!-- Villes Section -->
+                                <optgroup label="Villes">
+                                    <option value="Agafay">Agafay</option>
+                                    <option value="Marrakech Centre Ville">Marrakech Centre Ville</option>
+                                    <option value="La Palmeraie Marrakech">La Palmeraie Marrakech</option>
+                                    <option value="Les environs de Marrakech">Les environs de Marrakech</option>
+                                    <option value="Essaouira">Essaouira</option>
+                                    <option value="Casablanca Centre Ville">Casablanca Centre Ville</option>
+                                    <option value="Rabat">Rabat</option>
+                                    <option value="Agadir">Agadir</option>
+                                    <option value="Tiznit">Tiznit</option>
+                                    <option value="Ouarzazate">Ouarzazate</option>
+                                    <option value="Erfoud">Erfoud</option>
+                                    <option value="Fès">Fès</option>
+                                    <option value="Merzouga">Merzouga</option>
+                                    <option value="El Jadida">El Jadida</option>
+                                    <option value="Chefchaouen">Chefchaouen</option>
+                                    <option value="Tangier">Tangier</option>
+                                    <option value="Safi">Safi</option>
+                                    <option value="Oukaimeden">Oukaimeden</option>
+                                    <option value="Zagora">Zagora</option>
+                                    <option value="Arfoud">Arfoud</option>
+                                    <option value="Setti Fadma">Setti Fadma</option>
+                                    <option value="Sidi Ifni">Sidi Ifni</option>
+                                    <option value="Imlil">Imlil</option>
+                                    <option value="Sidi Kaouki">Sidi Kaouki</option>
+                                    <option value="Tafraoute">Tafraoute</option>
+                                    <option value="Tamraght">Tamraght</option>
+                                    <option value="Tiguert">Tiguert</option>
+                                    <option value="Skoura">Skoura</option>
+                                    <option value="Tinghir">Tinghir</option>
+                                    <option value="Ouirgane">Ouirgane</option>
+                                    <option value="Bin El Ouidane">Bin El Ouidane</option>
+                                    <option value="Demnate">Demnate</option>
+                                    <option value="Mazagane">Mazagane</option>
+                                    <option value="Tamadot">Tamadot</option>
+                                    <option value="Asni">Asni</option>
+                                    <option value="Taroudant">Taroudant</option>
+                                    <option value="Taghazout">Taghazout</option>
+                                    <option value="Meknes">Meknes</option>
+                                    <option value="Oualidia">Oualidia</option>
+                                    <option value="Paradis Plage">Paradis Plage</option>
+                                    <option value="Aourir">Aourir</option>
+                                    <option value="Beni-Mellal">Beni-Mellal</option>
+                                    <option value="Imouzzer">Imouzzer</option>
+                                    <option value="Imsouane">Imsouane</option>
+                                    <option value="Inezgane">Inezgane</option>
+                                    <option value="Mirleft">Mirleft</option>
+                                    <option value="Toubkal">Toubkal</option>
+                                    <option value="Tetouan">Tetouan</option>
+                                    <option value="Settat">Settat</option>
+                                    <option value="T'mara">T'mara</option>
+                                    <option value="Ouzoud">Ouzoud</option>
+                                    <option value="Azilal">Azilal</option>
+                                    <option value="Errachidia">Errachidia</option>
+                                    <option value="Benguerir">Benguerir</option>
+                                </optgroup>
                             </select>
                         </div>
 
@@ -301,31 +521,79 @@
                         <div class="mb-3">
                             <label for="destination" class="form-label">{{ __('messages.destination') }}</label>
                             <select name="destination" class="form-select" required>
-                                <option value="AGAFAY">AGAFAY</option>
-                                <option value="MARRAKECH_CENTRE_VILLE">MARRAKECH CENTRE VILLE</option>
-                                <option value="LA_PALMERAIE_MARRAKECH">LA PALMERAIE MARRAKECH</option>
-                                <option value="LES_ENVIRONS_DE_MARRAKECH">LES ENVIRONS DE MARRAKECH</option>
-                                <option value="ESSAOURIA">ESSAOURIA</option>
-                                <option value="CASABLANCA_CENTER_VILLE">CASABLANCA CENTER VILLE</option>
-                                <option value="RABAT">RABAT</option>
-                                <option value="AGADIR">AGADIR</option>
-                                <option value="TIZNIT">TIZNIT</option>
-                                <option value="OUARZAZATE">OUARZAZATE</option>
-                                <option value="FES">FES</option>
-                                <option value="MERZOUGA">MERZOUGA</option>
-                                <option value="TANGIER">TANGIER</option>
-                                <option value="OUKAIMEDEN">OUKAIMEDEN</option>
-                                <option value="ZAGORA">ZAGORA</option>
-                                <option value="ARFOUD">ARFOUD</option>
-                                <option value="SETTI_FADMA">SETTI FADMA</option>
-                                <option value="IMLIL">IMLIL</option>
-                                <option value="BIN_EL_OUIDANE">BIN EL OUIDANE</option>
-                                <option value="MAZAGANE">MAZAGANE</option>
-                                <option value="TAROUDANT">TAROUDANT</option>
-                                <option value="TAGHAZOUT">TAGHAZOUT</option>
-                                <option value="INEZGANE">INEZGANE</option>
-                                <option value="TOUBKAL">TOUBKAL</option>
-                                <option value="BENGUERIR">BENGUERIR</option>
+                                  <!-- Aéroport Section -->
+                                <optgroup label="Aéroport">
+                                    <option value="Aéroport de Marrakech (RAK)">Aéroport de Marrakech (RAK)</option>
+                                    <option value="Aéroport de Casablanca (CMN)">Aéroport de Casablanca (CMN)</option>
+                                    <option value="Aéroport d'Agadir (AGA)">Aéroport d'Agadir (AGA)</option>
+                                    <option value="Aéroport d'Essaouira (ESU)">Aéroport d'Essaouira (ESU)</option>
+                                    <option value="Aéroport de Ouarzazate (OZZ)">Aéroport de Ouarzazate (OZZ)</option>
+                                    <option value="Aéroport de Fès (FEZ)">Aéroport de Fès (FEZ)</option>
+                                    <option value="Station de train">Station de train</option>
+                                    <option value="Aéroport de Tangier (TNG)">Aéroport de Tangier (TNG)</option>
+                                    <option value="Aéroport Rabat (RBA)">Aéroport Rabat (RBA)</option>
+                                    <option value="Aéroport Nador (NDR)">Aéroport Nador (NDR)</option>
+                                    <option value="Aéroport Al Hoceima (AHU)">Aéroport Al Hoceima (AHU)</option>
+                                </optgroup>
+
+                                <!-- Villes Section -->
+                                <optgroup label="Villes">
+                                    <option value="Agafay">Agafay</option>
+                                    <option value="Marrakech Centre Ville">Marrakech Centre Ville</option>
+                                    <option value="La Palmeraie Marrakech">La Palmeraie Marrakech</option>
+                                    <option value="Les environs de Marrakech">Les environs de Marrakech</option>
+                                    <option value="Essaouira">Essaouira</option>
+                                    <option value="Casablanca Centre Ville">Casablanca Centre Ville</option>
+                                    <option value="Rabat">Rabat</option>
+                                    <option value="Agadir">Agadir</option>
+                                    <option value="Tiznit">Tiznit</option>
+                                    <option value="Ouarzazate">Ouarzazate</option>
+                                    <option value="Erfoud">Erfoud</option>
+                                    <option value="Fès">Fès</option>
+                                    <option value="Merzouga">Merzouga</option>
+                                    <option value="El Jadida">El Jadida</option>
+                                    <option value="Chefchaouen">Chefchaouen</option>
+                                    <option value="Tangier">Tangier</option>
+                                    <option value="Safi">Safi</option>
+                                    <option value="Oukaimeden">Oukaimeden</option>
+                                    <option value="Zagora">Zagora</option>
+                                    <option value="Arfoud">Arfoud</option>
+                                    <option value="Setti Fadma">Setti Fadma</option>
+                                    <option value="Sidi Ifni">Sidi Ifni</option>
+                                    <option value="Imlil">Imlil</option>
+                                    <option value="Sidi Kaouki">Sidi Kaouki</option>
+                                    <option value="Tafraoute">Tafraoute</option>
+                                    <option value="Tamraght">Tamraght</option>
+                                    <option value="Tiguert">Tiguert</option>
+                                    <option value="Skoura">Skoura</option>
+                                    <option value="Tinghir">Tinghir</option>
+                                    <option value="Ouirgane">Ouirgane</option>
+                                    <option value="Bin El Ouidane">Bin El Ouidane</option>
+                                    <option value="Demnate">Demnate</option>
+                                    <option value="Mazagane">Mazagane</option>
+                                    <option value="Tamadot">Tamadot</option>
+                                    <option value="Asni">Asni</option>
+                                    <option value="Taroudant">Taroudant</option>
+                                    <option value="Taghazout">Taghazout</option>
+                                    <option value="Meknes">Meknes</option>
+                                    <option value="Oualidia">Oualidia</option>
+                                    <option value="Paradis Plage">Paradis Plage</option>
+                                    <option value="Aourir">Aourir</option>
+                                    <option value="Beni-Mellal">Beni-Mellal</option>
+                                    <option value="Imouzzer">Imouzzer</option>
+                                    <option value="Imsouane">Imsouane</option>
+                                    <option value="Inezgane">Inezgane</option>
+                                    <option value="Mirleft">Mirleft</option>
+                                    <option value="Toubkal">Toubkal</option>
+                                    <option value="Tetouan">Tetouan</option>
+                                    <option value="Settat">Settat</option>
+                                    <option value="T'mara">T'mara</option>
+                                    <option value="Ouzoud">Ouzoud</option>
+                                    <option value="Azilal">Azilal</option>
+                                    <option value="Errachidia">Errachidia</option>
+                                    <option value="Benguerir">Benguerir</option>
+                                </optgroup>
+
                             </select>
                         </div>
 
@@ -416,6 +684,10 @@
                                     id="transfer-start_date"></span></p>
                         </li>
                         <li class="list-group-item">
+                            <p><strong>{{ __('messages.end_date') }}:</strong> <span
+                                    id="transfer-end_date"></span></p>
+                        </li>
+                        <li class="list-group-item">
                             <p><strong>{{ __('messages.end_date') }}:</strong> <span id="transfer-end_date"></span>
                             </p>
                         </li>
@@ -482,6 +754,8 @@
 
                     form.querySelector('[name="departure"]').value = data.departure;
                     form.querySelector('[name="destination"]').value = data.destination;
+                    form.querySelector('[name="start_date"]').value = data.start_date;
+                    form.querySelector('[name="end_date"]').value = data.end_date;
                     form.querySelector('[name="type"]').value = data.type;
                     form.querySelector('[name="price"]').value = data.price;
                     form.querySelector('[name="min_people"]').value = data.min_people;

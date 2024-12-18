@@ -104,8 +104,8 @@ class ReservationController extends Controller
             'end_date' => 'required|date|after_or_equal:start_date',
             'adults_count' => 'required|integer|min:1',
             'children_count' => 'nullable|integer|min:0',
-            'payment_status' => 'required|in:paid,unpaid',
-            'status' => 'required|in:confirmed,pending,cancelled',
+            'payment_status' => 'required',
+            'status' => 'required',
         ]);
 
         // Step 1: Fetch previous total slots and availability
